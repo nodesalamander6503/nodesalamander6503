@@ -66,11 +66,20 @@ body {
 	margin: 0;
 }
 
-header {
+#ho {
+	display: flex;
+	position: sticky;
+	top: 0;
+	left: 0;
+	width: 100%;
+	justify-content: center;
+}
+#hi {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
-	align-items: space-between;
+	justify-content: space-between;
+	max-width: 80ch;
 }
 
 main {
