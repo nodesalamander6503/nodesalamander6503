@@ -81,6 +81,7 @@ body {
 	flex-direction: row;
 	flex-wrap: nowrap;
 	justify-content: space-between;
+	width: calc(100% - 2rem);
 	max-width: 80ch;
 }
 
