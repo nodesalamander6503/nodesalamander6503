@@ -104,8 +104,8 @@ main {
 	position: relative;
 	background: #11457d;
 	background: linear-gradient(90deg,rgba(17, 69, 125, 1) 0%, rgba(8, 94, 102, 1) 100%);
-	margin: 0 auto 4rem auto;
-	padding: 4rem auto;
+	margin: 0 0 4rem 0;
+	padding: 4rem 0;
 }
 #landing:before {
 	content: "";
@@ -120,6 +120,7 @@ main {
 #landing-content {
 	max-width: 40rem;
 	width: calc(100% - 2rem);
+	margin: 0 auto;
 }
 #landing h1 {
 	font-size: 4rem;
