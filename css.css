@@ -118,6 +118,7 @@ main {
 }
 #landing-content {
 	z-index: 100;
+	position: relative;
 }
 #landing h1 {
 	font-size: 2rem;
