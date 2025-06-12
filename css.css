@@ -62,6 +62,10 @@ table {
  * Or do - this is a sign, not a cop.
  */
 
+html, body {
+	overscroll-behavior: none;
+}
+
 body {
 	margin: 0;
 	background: #202224;
