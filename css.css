@@ -31,6 +31,8 @@ time, mark, audio, video {
 	font-weight: normal;
 	font: inherit;
 	vertical-align: baseline;
+	
+	color: #eee;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -69,7 +71,7 @@ html, body {
 body {
 	margin: 0;
 	background: #202224;
-	color: #eeeeee;
+	color: #eee;
 	font-size: calc(max(16px, 1rem));
 }
 
