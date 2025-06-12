@@ -188,7 +188,7 @@ a:hover {
 .block {
 	display: block;
 }
-.card .block {
+.card.block {
 	padding: 1rem 2rem;
 }
 
