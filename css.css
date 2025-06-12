@@ -73,6 +73,7 @@ body {
 	background: #202224;
 	color: #eee;
 	font-size: calc(max(16px, 1rem));
+	min-height: 100vh;
 }
 
 #ho {
@@ -95,7 +96,6 @@ body {
 
 main {
 	display: block;
-	min-height: 100vh;
 }
 
 #landing {
@@ -196,5 +196,13 @@ a:hover {
 }
 .card.block {
 	padding: 1rem 2rem;
+}
+
+
+
+@media screen and (min-width: 42rem) {
+	#main-content {
+		flex-direction: row;
+	}
 }
 
