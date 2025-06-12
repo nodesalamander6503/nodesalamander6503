@@ -104,6 +104,8 @@ main {
 	position: relative;
 	background: #11457d;
 	background: linear-gradient(90deg,rgba(17, 69, 125, 1) 0%, rgba(8, 94, 102, 1) 100%);
+	margin: 0 auto 4rem auto;
+	padding: 4rem auto;
 }
 #landing:before {
 	content: "";
@@ -116,7 +118,6 @@ main {
 	background: linear-gradient(0deg,rgba(0, 103, 0, 0.4) 0%, rgba(255, 0, 0, 0.1) 100%);
 }
 #landing-content {
-	margin: 4rem auto;
 	max-width: 40rem;
 	width: calc(100% - 2rem);
 }
