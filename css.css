@@ -130,9 +130,14 @@ main {
 	gap: 1rem;
 }
 
+#chapter-nav {
+	grow: 1;
+}
+
 main p {
 	margin-bottom: 1rem;
 	text-indent: 2rem;
+	grow: 4;
 }
 main h2 {
 	font-size: 2rem;
@@ -202,7 +207,7 @@ a:hover {
 
 @media screen and (min-width: 42rem) {
 	#main-content {
-		flex-direction: row;
+		flex-direction: row-reverse;
 	}
 }
 
