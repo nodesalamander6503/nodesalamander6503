@@ -88,15 +88,10 @@ body {
 	flex-direction: row;
 	flex-wrap: nowrap;
 	justify-content: space-between;
-	width: calc(100% - 2rem);
-	max-width: 40rem;
 }
 
 main {
 	display: block;
-	width: calc(100% - 2rem);
-	max-width: 40rem;
-	margin: 0 auto;
 	min-height: 100vh;
 }
 
@@ -116,11 +111,6 @@ main {
 	width: 100%;
 	height: 100%;
 	background: linear-gradient(0deg,rgba(0, 103, 0, 0.4) 0%, rgba(255, 0, 0, 0.1) 100%);
-}
-#landing-content {
-	max-width: 40rem;
-	width: calc(100% - 2rem);
-	margin: 0 auto;
 }
 #landing h1 {
 	font-size: 4rem;
@@ -161,8 +151,6 @@ a:hover {
 #f1i {
 	display: flex;
 	flex-direction: row;
-	width: calc(100% - 2rem);
-	max-width: 40rem;
 	gap: 1rem;
 }
 #f1i .fc {
@@ -181,6 +169,11 @@ a:hover {
 
 
 
+.widthcontrol {
+	width: calc(100% - 2rem);
+	max-width: 40rem;
+	margin: 0 auto;
+}
 .card {
 	background: #303336;
 	border: 1px solid #404448;
