@@ -66,6 +66,7 @@ table {
 
 html, body {
 	overscroll-behavior: none;
+	font-family: "Times New Roman", serif, sans-serif, monospace;
 }
 
 body {
