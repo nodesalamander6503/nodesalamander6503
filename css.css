@@ -115,6 +115,11 @@ main {
 	height: 100%;
 	background: linear-gradient(0deg,rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 100%);
 }
+#landing content-inner {
+	margin: 4rem auto;
+	max-width: 40rem;
+	width: calc(100% - 2rem);
+}
 
 main p {
 	margin-bottom: 1rem;
