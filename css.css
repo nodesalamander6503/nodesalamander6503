@@ -31,8 +31,6 @@ time, mark, audio, video {
 	font-weight: normal;
 	font: inherit;
 	vertical-align: baseline;
-	
-	color: #eee;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
