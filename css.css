@@ -112,6 +112,8 @@ main em {
 }
 
 #f1 {
+	background: #101112;
+	color: #AAAAAA;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -121,6 +123,11 @@ main em {
 	width: calc(100% - 2rem);
 	max-width: calc(calc(30ch - 4rem)/3);
 	flex-grow: 1;
+}
+#f2 {
+	text-align: center;
+	background: #000000;
+	color: #888888;
 }
 
 
