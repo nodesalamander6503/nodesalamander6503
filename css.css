@@ -142,11 +142,11 @@ main em {
 }
 
 a {
-	color: #1057A2;
+	color: #136ac6;
 	transition: color 0.7s;
 }
 a:hover {
-	color: #1057A2;
+	color: #0c6ed6;
 	transition: color 0.3s;
 }
 
