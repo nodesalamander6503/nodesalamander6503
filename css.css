@@ -151,6 +151,11 @@ main h3 {
 main em {
 	font-weight: bold;
 }
+main blockquote {
+	margin-left: 4rem;
+	padding-left: 1rem;
+	border-left: 0.5rem solid #666666;
+}
 
 a {
 	color: #136ac6;
