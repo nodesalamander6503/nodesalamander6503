@@ -80,7 +80,8 @@ body {
 	width: 100%;
 	justify-content: center;
 	background: #303336;
-	padding: 1rem 0;
+	font-size: 0.75rem;
+	padding: 0.5rem 0;
 }
 #hi {
 	display: flex;
@@ -122,23 +123,32 @@ a {
 	color: #1057A2;
 }
 
-#f1 {
+#f1o {
 	background: #101112;
 	color: #AAAAAA;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
+}
+#f1i {
+	display: flex;
+	flex-direction: row;
+	width: calc(100% - 2rem);
+	max-width: 80ch;
 	gap: 1rem;
 }
-#f1 .fc {
-	width: calc(100% - 2rem);
-	max-width: calc(calc(30ch - 4rem)/3);
+#f1i .fc {
 	flex-grow: 1;
+}
+#f1i .fc h2 {
+	font-size: 1.5rem;
+	margin-bottom: 1rem;
 }
 #f2 {
 	text-align: center;
 	background: #000000;
 	color: #888888;
+	margin: 1rem 0;
 }
 
 
