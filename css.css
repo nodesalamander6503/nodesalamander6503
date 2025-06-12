@@ -89,13 +89,13 @@ body {
 	flex-wrap: nowrap;
 	justify-content: space-between;
 	width: calc(100% - 2rem);
-	max-width: 80ch;
+	max-width: 80rem;
 }
 
 main {
 	display: block;
 	width: calc(100% - 2rem);
-	max-width: 80ch;
+	max-width: 80rem;
 	margin: 0 auto;
 	min-height: 100vh;
 }
@@ -135,7 +135,7 @@ a {
 	display: flex;
 	flex-direction: row;
 	width: calc(100% - 2rem);
-	max-width: 80ch;
+	max-width: 80rem;
 	gap: 1rem;
 }
 #f1i .fc {
@@ -149,7 +149,7 @@ a {
 	text-align: center;
 	background: #000000;
 	color: #888888;
-	margin: 1rem 0;
+	padding: 1rem 0;
 }
 
 
