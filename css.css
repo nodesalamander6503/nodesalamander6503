@@ -93,12 +93,13 @@ main {
 #f1 {
 	display: flex;
 	flex-direction: row;
-	align-items: center;
+	justify-content: center;
 	gap: 1rem;
 }
 #f1 .fc {
 	width: calc(100% - 2rem);
 	max-width: calc(calc(30ch - 4rem)/3);
+	flex-grow: 1;
 }
 
 
