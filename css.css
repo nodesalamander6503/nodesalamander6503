@@ -90,13 +90,13 @@ body {
 	flex-wrap: nowrap;
 	justify-content: space-between;
 	width: calc(100% - 2rem);
-	max-width: 80rem;
+	max-width: 40rem;
 }
 
 main {
 	display: block;
 	width: calc(100% - 2rem);
-	max-width: 80rem;
+	max-width: 40rem;
 	margin: 0 auto;
 	min-height: 100vh;
 }
@@ -141,7 +141,7 @@ a:hover {
 	display: flex;
 	flex-direction: row;
 	width: calc(100% - 2rem);
-	max-width: 80rem;
+	max-width: 40rem;
 	gap: 1rem;
 }
 #f1i .fc {
