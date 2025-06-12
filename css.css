@@ -210,6 +210,9 @@ a:hover {
 	#main-content {
 		flex-direction: row-reverse;
 	}
+	#main-content main {
+		margin: 0;
+	}
 	#main-content #chapter-nav {
 		max-width: 19rem;
 	}
