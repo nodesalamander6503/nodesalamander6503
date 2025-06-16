@@ -23,7 +23,7 @@
 		<div id = "landing-content" class = "widthcontrol">
 			<h1>  About Snackflation  </h1>
 			
-			I built a fully automatic tool  <a href=" https://nodesalamander6503.github.io/nodesalamander6503/snackflation.html " class="citation">[?]</a>  to predict market behavior and price indices of popular snack foods.
+			I built a fully automatic tool    to predict market behavior and price indices of popular snack foods.
 			It works by using a simple linear regression model to predict the future value of snacks such as potato chips.
 			I regressed prices against the date and found that the date tends to have a statistically-significant impact upon price.
 			This reflects well-known notions of inflation as predicted by many empirical models, which state that (during short runs) a market tends to be in an inflationary state rather than a deflationary state and all goods&#x27; prices will therefore rise over time, often at rates which are somewhat consistent.
@@ -49,7 +49,7 @@
 <p>
 
 			I built a fully automatic tool 
-<a href=" https://nodesalamander6503.github.io/nodesalamander6503/snackflation.html " class="citation">[?]</a>
+<a href=" https://nodesalamander6503.github.io/nodesalamander6503/snackflation.html " class="citation">[link]</a>
  to predict market behavior and price indices of popular snack foods.
 			It works by using a simple linear regression model to predict the future value of snacks such as potato chips.
 			I regressed prices against the date and found that the date tends to have a statistically-significant impact upon price.
@@ -63,7 +63,7 @@
 
 			As of June 2025, a 12.5 ounce bag of chips costs $5.44.
 			That&#x27;s roughly how much you would pay for an entire McDonalds&#x27; Big Mac 
-<a href=" https://moneynotmoney.com/historical-price-of-big-mac-in-united-states/#absolute_price " class="citation">[?]</a>
+<a href=" https://moneynotmoney.com/historical-price-of-big-mac-in-united-states/#absolute_price " class="citation">[link]</a>
  during the 2010s.
 			It&#x27;s no secret that snack foods and cheap lunches have been rapidly inflating their prices.
 			However, Consumer Price Index (CPI) data is often hidden and misunderstood.
@@ -103,7 +103,7 @@
 			This is not very good for producing a robust, high-quality regression model.
 			Furthermore, while a custom web scraper would work for free, it would be brittle and lack historic data.
 			With FRED, a free API key and a single HTTPS call give me up-to-date monthly prices for any give CPI item category all the way back to 1958 
-<a href=" https://www.stlouisfed.org/on-the-economy/2014/november/the-history-of-fred " class="citation">[?]</a>
+<a href=" https://www.stlouisfed.org/on-the-economy/2014/november/the-history-of-fred " class="citation">[link]</a>
  .
 		
 </p>
@@ -113,7 +113,7 @@
 			It starts by using a FRED API key to download JSON files containing all the historic price data.
 			It then sorts the data into time and price columns, being careful to eliminate rows with malformed data.
 			Dates are converted into UNIX timestamps 
-<a href=" https://en.wikipedia.org/wiki/Unix_time " class="citation">[?]</a>
+<a href=" https://en.wikipedia.org/wiki/Unix_time " class="citation">[link]</a>
  to allow me to treat time as an integer.
 			Finally, I use scipy to regress price against time.
 		
