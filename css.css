@@ -120,8 +120,9 @@ main {
 	position: relative;
 }
 #landing h1 {
-	font-size: 2rem;
+	font-size: 3rem;
 	margin-bottom: 2rem;
+	font-weight: bold;
 }
 
 #main-content {
@@ -153,9 +154,11 @@ main p, main blockquote{
 main h2 {
 	font-size: 1.5rem;
 	margin: 4rem 0 2rem 0;
+	font-weight: bold;
 }
 main h3 {
 	margin: 2rem 0 1rem 0;
+	font-weight: bold;
 }
 main em {
 	font-weight: bold;
