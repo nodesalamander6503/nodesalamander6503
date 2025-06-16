@@ -170,11 +170,11 @@ main .citation {
 }
 
 a {
-	color: #136ac6;
+	color: #05acff;
 	transition: color 0.7s;
 }
 a:hover {
-	color: #0c6ed6;
+	color: #36bcff;
 	transition: color 0.3s;
 }
 
