@@ -141,6 +141,10 @@ main {
 	flex-direction: column;
 	gap: 1rem;
 }
+#chapter-nav .chapnav-l1 { padding-left: 0rem; }
+#chapter-nav .chapnav-l2 { padding-left: 1rem; }
+#chapter-nav .chapnav-l3 { padding-left: 2rem; }
+#chapter-nav .chapnav-l4 { padding-left: 3rem; }
 
 main p, main blockquote{
 	margin-bottom: 1rem;
