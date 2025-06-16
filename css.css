@@ -170,6 +170,7 @@ main blockquote {
 }
 main .citation {
 	font-size: 0.5rem;
+	vertical-align: super;
 }
 
 a {
