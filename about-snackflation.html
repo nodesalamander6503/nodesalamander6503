@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> About Snackflation  | Avner's Site</title>
+	<link rel="stylesheet" href="/nodesalamander6503/css.css">
+</head>
+
+<body>
+	<div id = "ho">
+		<div id = "hi" class = "widthcontrol">
+			<a id = "ht" href = "https://nodesalamander6503.github.io/nodesalamander6503/index.html">
+				Avner's Site
+			</a>
+			<nav>
+				 
+			</nav>
+		</div>
+	</div>
+
+	<div id = "landing">
+		<div id = "landing-content" class = "widthcontrol">
+			<h1>  About Snackflation  </h1>
+			
+			I built a fully automatic tool  <a href=" https://nodesalamander6503.github.io/nodesalamander6503/snackflation.html " class="citation">[?]</a>  to predict market behavior and price indices of popular snack foods.
+			It works by using a simple linear regression model to predict the future value of snacks such as potato chips.
+			I regressed prices against the date and found that the date tends to have a statistically-significant impact upon price.
+			This reflects well-known notions of inflation as predicted by many empirical models, which state that (during short runs) a market tends to be in an inflationary state rather than a deflationary state and all goods&#x27; prices will therefore rise over time, often at rates which are somewhat consistent.
+		
+		</div>
+	</div>
+	
+	<div id = "main-content">
+		<div id = "chapter-nav" class = "card block widthcontrol">
+			<nav>
+				<a href = "#TEMP" class = "chapnav-l1">  Abstract </a>
+<a href = "#TEMP" class = "chapnav-l1">  Inspiration and goals </a>
+<a href = "#TEMP" class = "chapnav-l1">  Theory </a>
+<a href = "#TEMP" class = "chapnav-l1">  Implementation </a>
+<a href = "#TEMP" class = "chapnav-l1">  Takeaways </a>
+
+			</nav>
+		</div>
+		<main class = "widthcontrol">
+			<h2>
+ Abstract 
+</h2>
+<p>
+
+			I built a fully automatic tool 
+<a href=" https://nodesalamander6503.github.io/nodesalamander6503/snackflation.html " class="citation">[?]</a>
+ to predict market behavior and price indices of popular snack foods.
+			It works by using a simple linear regression model to predict the future value of snacks such as potato chips.
+			I regressed prices against the date and found that the date tends to have a statistically-significant impact upon price.
+			This reflects well-known notions of inflation as predicted by many empirical models, which state that (during short runs) a market tends to be in an inflationary state rather than a deflationary state and all goods&#x27; prices will therefore rise over time, often at rates which are somewhat consistent.
+		
+</p>
+<h2>
+ Inspiration and goals 
+</h2>
+<p>
+
+			As of June 2025, a 12.5 ounce bag of chips costs $5.44.
+			That&#x27;s roughly how much you would pay for an entire McDonalds&#x27; Big Mac 
+<a href=" https://moneynotmoney.com/historical-price-of-big-mac-in-united-states/#absolute_price " class="citation">[?]</a>
+ during the 2010s.
+			It&#x27;s no secret that snack foods and cheap lunches have been rapidly inflating their prices.
+			However, Consumer Price Index (CPI) data is often hidden and misunderstood.
+			As an economics student, I know where to go to find out about these things.
+			However, my friends and family might have a harder time using these models to discern useful information such as how much they&#x27;ll pay in groceries next quarter.
+		
+</p>
+<p>
+
+			To deal with this evident inaccessibility of information, I decided to create a tool that&#x27;d track the inflation of snacks and predict their price in the future.
+			That way, anyone could click on a link, go to a web page, and trivially find out how much more everything will cost in the near future.
+		
+</p>
+<h2>
+ Theory 
+</h2>
+<p>
+
+			Empirical evidence shows that prices tend to rise at a rate called the inflation rate.
+			I conjecture that, because consumers and firms reject large leaps in price, this rate can be approximated linearly.
+			In particular, I think that we can infer the future inflated price using a linear model that correlates time and price.
+		
+</p>
+<p>
+
+			I construct the null hypothesis that my conjecture is incorrect (that is, the slope is around 0 and inflation can not be estimated using time), and the alternate hypothesis that there is a statistically significant correlation between time and price.
+		
+</p>
+<h2>
+ Implementation 
+</h2>
+<p>
+
+			To implement this project, I first had to choose where to procure my data.
+			I chose the FRED API because it delivers decades-long CPI sub-indices in a clean JSON format, all free of charge.
+			Most other datasets are paid and cover only small time durations.
+			This is not very good for producing a robust, high-quality regression model.
+			Furthermore, while a custom web scraper would work for free, it would be brittle and lack historic data.
+			With FRED, a free API key and a single HTTPS call give me up-to-date monthly prices for any give CPI item category all the way back to 1958 
+<a href=" https://www.stlouisfed.org/on-the-economy/2014/november/the-history-of-fred " class="citation">[?]</a>
+ .
+		
+</p>
+<p>
+
+			To handle the data processing, I created a lightweight Python 3.12 script.
+			It starts by using a FRED API key to download JSON files containing all the historic price data.
+			It then sorts the data into time and price columns, being careful to eliminate rows with malformed data.
+			Dates are converted into UNIX timestamps 
+<a href=" https://en.wikipedia.org/wiki/Unix_time " class="citation">[?]</a>
+ to allow me to treat time as an integer.
+			Finally, I use scipy to regress price against time.
+		
+</p>
+<p>
+
+			Of course, just producing a linear model isn&#x27;t enough.
+			I must also interpret and apply it.
+			A simple hypothesis testing routine examines the R and P values to discern the nature and degree of correlation.
+			If the correlation is high, it annotates the writeup.
+			A series of future timestamps are generated by a helper function.
+			These timestamps are inserted into the model to generate predictions about future prices.
+			These predictions are also added to the writeup.
+		
+</p>
+<h2>
+ Takeaways 
+</h2>
+<p>
+
+			I tested the null hypothesis that there was no correlation between time and price against the alternate hypothesis that a correlation existed.
+			I concluded that there is a statistically significant correlation.
+			This makes a lot of sense, because that&#x27;s how inflation generally is assumed to work.
+		
+</p>
+<p>
+
+			I also learned that APIs are often quite easy to use.
+			I generally gather data by writing scripts to scrape the web.
+			However, this is time-consuming and brittle.
+			It&#x27;s far easier to just use an API when one is made available.
+		
+</p>
+		</main>
+	</div>
+
+<!--
+	<footer id = "f1">
+		<div class = "fc">
+			<h2> Me </h2>
+			<p> <a> About </a> </p>
+			<p> <a> Education </a> </p>
+			<p> <a> Skills </a> </p>
+			<p> <a> Contact </a> </p>
+		</div>
+		<div class = "fc">
+			<h2> Flows </h2>
+			<p> <a> Top 16 </a> </p>
+			<p> <a> Bullish </a> </p>
+			<p> <a> Bearish </a> </p>
+			<p> <a> Stable </a> </p>
+		</div>
+		<div class = "fc">
+			<h2> Third </h2>
+		</div>
+	</footer>
+-->
+	<footer id = "f2">
+		<p>
+			© 2025. All rights reserved.
+		</p>
+	</footer>
+</body>
+</html>
+
