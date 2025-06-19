@@ -138,7 +138,7 @@ main {
 	justify-content: flex-start;
 	align-items: start;
 	min-height: 80vh;
-	margin: 0 auto;
+	margin: 0 auto 4rem auto;
 }
 
 #chapter-nav {
