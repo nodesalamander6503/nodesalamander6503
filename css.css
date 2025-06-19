@@ -236,7 +236,7 @@ a:hover {
 	display: block;
 	width: 100%;
 	text-align: center;
-	box-shadow: 0 0.2rem 1rem #00000066;
+	border-radius: 0.25rem;
 }
 .button.funky-bg {
 	color: #303336;
