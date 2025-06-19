@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> How to cheat at Wordle  | Avner's Site</title>
+	<link rel="stylesheet" href="/nodesalamander6503/css.css">
+</head>
+
+<body>
+	<div id = "ho">
+		<div id = "hi" class = "widthcontrol">
+			<a id = "ht" href = "https://nodesalamander6503.github.io/nodesalamander6503/index.html">
+				Avner's Site
+			</a>
+			<nav>
+				 
+			</nav>
+		</div>
+	</div>
+
+	<div id = "landing">
+		<div id = "landing-content" class = "widthcontrol">
+			<h1>  How to cheat at Wordle  </h1>
+			
+			Wordle was purportedly created by Josh Wardle    as a fun word-guessing game.
+			The rules are simple: You have six tries to guess a five-letter word.
+			If a letter is guessed right, the letter gets colored green.
+			If a letter is present in the word but it is not in that position, the letter gets colored yellow.
+			Otherwise, the letter is colored gray.
+			It&#x27;s a conceptually simple game, but it has spawned a large amount of discussion over how it can be optimized.
+		
+		</div>
+	</div>
+	
+	<div id = "main-content">
+		<div id = "chapter-nav" class = "card block widthcontrol">
+			<nav>
+				<a href = "#-What-does-informati" class = "chapnav-l1">  What does information theory tell us about Wordle? </a>
+<a href = "#-A-probabilistic-app" class = "chapnav-l1">  A probabilistic approach </a>
+<a href = "#-The-solution-" class = "chapnav-l1">  The solution </a>
+<a href = "#-Useful-takeaways-" class = "chapnav-l1">  Useful takeaways </a>
+
+			</nav>
+		</div>
+		<main class = "widthcontrol">
+			<p>
+
+			Wordle was purportedly created by Josh Wardle 
+<a href=" https://en.wikipedia.org/wiki/Wordle " class="citation">[link]</a>
+ as a fun word-guessing game.
+			The rules are simple: You have six tries to guess a five-letter word.
+			If a letter is guessed right, the letter gets colored green.
+			If a letter is present in the word but it is not in that position, the letter gets colored yellow.
+			Otherwise, the letter is colored gray.
+			It&#x27;s a conceptually simple game, but it has spawned a large amount of discussion over how it can be optimized.
+		
+</p>
+<p>
+
+			In this article, I discuss an automaton I created, which is capable of beating Wordle efficiently and in a near-optimal manner.
+		
+</p>
+<div class="card"> <p> A useful or pertinent external resource. </p> <a href=" https://github.com/nodesalamander6503/cheat-at-wordle "> Let's go! </a> </div>
+<h2>
+ What does information theory tell us about Wordle? 
+</h2>
+<p>
+
+			Information theory is, as the name suggests, the study of information 
+<a href=" https://en.wikipedia.org/wiki/Information_theory " class="citation">[link]</a>
+.
+			More specifically, information theory discusses the quantification, storage, and communication of information.
+		
+</p>
+<p>
+
+			Information is generally described in terms of &quot;Shannons&quot;, or bits, which are a relatively abstract unit of measurement.
+			Essentially, if some event has one Shannon of information, then the probability of that event is 50%.
+		
+</p>
+<p>
+
+			Clearly, when a guess fails, we want to maximize the amount of information we get.
+			A word that has a low likelihood of providing a lot of information is far less useful that a word that has a high likelihood of providing a small amount of new information.
+			We therefore want to minimize entropy and maximize possible information.
+		
+</p>
+<p>
+
+			Since most letters will end up being gray, one approximation is to approximate information by the probability that we discover a letter that will be present in the word.
+			This is because we expect letters to be gray, so knowing that a letter is gray tells us very little.
+			However, only up to 5 letters can be green or yellow.
+			That&#x27;s only about 20% of all possible letters.
+			Hence knowing that a letter is green or yellow tells us much more than does knowing that it is gray.
+		
+</p>
+<h2>
+ A probabilistic approach 
+</h2>
+<p>
+
+			Of course, we&#x27;re not just trying to find information.
+			We want to 
+<em> win </em>
+ this game.
+		
+</p>
+<p>
+
+			Most simple Wordle-solving algorithms try to maximize the probability that a guess is correct.
+			This is a good approach, especially late in the game when information is ample.
+			However, in the early game, any given word is very unlikely to win.
+			It is therefore much more useful to optimize for gathering information when there is little present.
+		
+</p>
+<p>
+
+			To accomodate both facts, I chose to have the algorithm maximize a synthetic &quot;utility factor&quot;.
+			This factor represents the probability that the guess is useful - that is, that the guess is either correct or earns information.
+			We can represent this trivially as P(win) + P(get information | not win).
+		
+</p>
+<p>
+
+			Notably, P(win) and P(get information) can be treated as approximately independent.
+			For the most part, knowing that a certain guess will not win does not significantly impact the probability that the guess earns new information.
+			We therefore represent P(useful) as P(win) + P(not win) * P(get information).
+		
+</p>
+<h2>
+ The solution 
+</h2>
+<p>
+
+			By simply maximizing the utility of each guess, we&#x27;re able to win very efficiently.
+			Every time I&#x27;ve tested the tool, it won in 5 tries or fewer.
+			It almost always succeeds in 4 tries, and frequently takes as few as three.
+		
+</p>
+<div class="card"> <p> A useful or pertinent external resource. </p> <a href=" https://github.com/nodesalamander6503/cheat-at-wordle "> Let's go! </a> </div>
+<h2>
+ Useful takeaways 
+</h2>
+<p>
+
+			One thing to note is that seeking information tends to have diminishing returns to scale.
+			If you know a lot, there is very little you have left to learn, and any subsequent attempt is thus unlikely to yield new data.
+			On the other hand, if you know very little, you thus have a lot to learn.
+			Hence it is useful to start by optimizing for information gathering, and gradually shift your focus towards producing immediate value (maximizing Y) as your information increases.
+		
+</p>
+		</main>
+	</div>
+
+<!--
+	<footer id = "f1">
+		<div class = "fc">
+			<h2> Me </h2>
+			<p> <a> About </a> </p>
+			<p> <a> Education </a> </p>
+			<p> <a> Skills </a> </p>
+			<p> <a> Contact </a> </p>
+		</div>
+		<div class = "fc">
+			<h2> Flows </h2>
+			<p> <a> Top 16 </a> </p>
+			<p> <a> Bullish </a> </p>
+			<p> <a> Bearish </a> </p>
+			<p> <a> Stable </a> </p>
+		</div>
+		<div class = "fc">
+			<h2> Third </h2>
+		</div>
+	</footer>
+-->
+	<footer id = "f2">
+		<p>
+			© 2025. All rights reserved.
+		</p>
+	</footer>
+</body>
+</html>
+
