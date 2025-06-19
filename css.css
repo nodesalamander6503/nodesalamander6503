@@ -236,6 +236,12 @@ a:hover {
 	display: block;
 	width: 100%;
 	text-align: center;
+	box-shadow: 0 0.2rem 1rem #00000066;
+}
+.button.funky-bg {
+	color: #303336;
+	font-weight: bold;
+	text-decoration: none;
 }
 
 
