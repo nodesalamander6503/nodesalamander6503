@@ -43,10 +43,11 @@
 			</nav>
 		</div>
 		<main class = "widthcontrol">
-			<h2>
+			<h2id="-Abstract-">
  Abstract 
 </h2>
-<p>
+<pid="
+			I-built-a-fully-">
 
 			I built a fully automatic tool 
 <a href=" https://nodesalamander6503.github.io/nodesalamander6503/snackflation.html " class="citation">[link]</a>
@@ -56,10 +57,11 @@
 			This reflects well-known notions of inflation as predicted by many empirical models, which state that (during short runs) a market tends to be in an inflationary state rather than a deflationary state and all goods&#x27; prices will therefore rise over time, often at rates which are somewhat consistent.
 		
 </p>
-<h2>
+<h2id="-Inspiration-and-goa">
  Inspiration and goals 
 </h2>
-<p>
+<pid="
+			As-of-June-2025,">
 
 			As of June 2025, a 12.5 ounce bag of chips costs $5.44.
 			That&#x27;s roughly how much you would pay for an entire McDonalds&#x27; Big Mac 
@@ -71,31 +73,35 @@
 			However, my friends and family might have a harder time using these models to discern useful information such as how much they&#x27;ll pay in groceries next quarter.
 		
 </p>
-<p>
+<pid="
+			To-deal-with-thi">
 
 			To deal with this evident inaccessibility of information, I decided to create a tool that&#x27;d track the inflation of snacks and predict their price in the future.
 			That way, anyone could click on a link, go to a web page, and trivially find out how much more everything will cost in the near future.
 		
 </p>
-<h2>
+<h2id="-Theory-">
  Theory 
 </h2>
-<p>
+<pid="
+			Empirical-eviden">
 
 			Empirical evidence shows that prices tend to rise at a rate called the inflation rate.
 			I conjecture that, because consumers and firms reject large leaps in price, this rate can be approximated linearly.
 			In particular, I think that we can infer the future inflated price using a linear model that correlates time and price.
 		
 </p>
-<p>
+<pid="
+			I-construct-the-">
 
 			I construct the null hypothesis that my conjecture is incorrect (that is, the slope is around 0 and inflation can not be estimated using time), and the alternate hypothesis that there is a statistically significant correlation between time and price.
 		
 </p>
-<h2>
+<h2id="-Implementation-">
  Implementation 
 </h2>
-<p>
+<pid="
+			To-implement-thi">
 
 			To implement this project, I first had to choose where to procure my data.
 			I chose the FRED API because it delivers decades-long CPI sub-indices in a clean JSON format, all free of charge.
@@ -107,7 +113,8 @@
  .
 		
 </p>
-<p>
+<pid="
+			To-handle-the-da">
 
 			To handle the data processing, I created a lightweight Python 3.12 script.
 			It starts by using a FRED API key to download JSON files containing all the historic price data.
@@ -118,7 +125,8 @@
 			Finally, I use scipy to regress price against time.
 		
 </p>
-<p>
+<pid="
+			Of-course,-just-">
 
 			Of course, just producing a linear model isn&#x27;t enough.
 			I must also interpret and apply it.
@@ -129,17 +137,19 @@
 			These predictions are also added to the writeup.
 		
 </p>
-<h2>
+<h2id="-Takeaways-">
  Takeaways 
 </h2>
-<p>
+<pid="
+			I-tested-the-nul">
 
 			I tested the null hypothesis that there was no correlation between time and price against the alternate hypothesis that a correlation existed.
 			I concluded that there is a statistically significant correlation.
 			This makes a lot of sense, because that&#x27;s how inflation generally is assumed to work.
 		
 </p>
-<p>
+<pid="
+			I-also-learned-t">
 
 			I also learned that APIs are often quite easy to use.
 			I generally gather data by writing scripts to scrape the web.
