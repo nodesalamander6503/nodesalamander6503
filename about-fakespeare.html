@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> About Fakespeare  | Avner's Site</title>
+	<link rel="stylesheet" href="/nodesalamander6503/css.css">
+</head>
+
+<body>
+	<div id = "ho">
+		<div id = "hi" class = "widthcontrol">
+			<a id = "ht" href = "https://nodesalamander6503.github.io/nodesalamander6503/">
+				Avner's Site
+			</a>
+			<nav>
+				 
+			</nav>
+		</div>
+	</div>
+
+	<div id = "landing" class = "funky-bg">
+		<div id = "landing-content" class = "widthcontrol">
+			<h1>  About Fakespeare  </h1>
+			
+			When I was much younger, I used to   love   reading works of fiction.
+			I read Jules Verne and H.G. Wells and Judy Blume and whatever else was located on the shelves near me.
+			Unsurprisingly, I also tried my hand at writing books.
+			It turns out that it&#x27;s much harder to write a book than to read a book.
+			As a result, my book-writing dreams never really got anywhere.
+		
+		</div>
+	</div>
+	
+	<div id = "main-content">
+		<div id = "chapter-nav" class = "card block widthcontrol">
+			<nav>
+				<a href = "#-The-idea-" class = "chapnav-l1">  The idea </a>
+<a href = "#-The-implementation-" class = "chapnav-l1">  The implementation </a>
+<a href = "#-An-example-" class = "chapnav-l1">  An example </a>
+
+			</nav>
+		</div>
+		<main class = "widthcontrol">
+			<p>
+
+			When I was much younger, I used to 
+<em> love </em>
+ reading works of fiction.
+			I read Jules Verne and H.G. Wells and Judy Blume and whatever else was located on the shelves near me.
+			Unsurprisingly, I also tried my hand at writing books.
+			It turns out that it&#x27;s much harder to write a book than to read a book.
+			As a result, my book-writing dreams never really got anywhere.
+		
+</p>
+<p>
+
+			Of course, we are no longer constrained by our human limitations.
+		
+</p>
+<p>
+
+			We live in modern times!
+			It&#x27;s the 
+<em> Roaring </em>
+ 20&#x27;s, and we are able to make full use of automation!
+		
+</p>
+<div class="card"> <p> A useful or pertinent external resource. </p> <a target="_blank" class="button funky-bg" href="https://github.com/nodesalamander6503/fakespeare"> Let's go! </a> </div>
+<h2>
+ The idea 
+</h2>
+<p>
+
+			Everyone has seen examples of Markov chains 
+<a href=" https://en.wikipedia.org/wiki/Markov_chain " class="citation">[link]</a>
+ creating plausible-ish text.
+			Some of us have even written our own.
+			I conjectured that, through judicious application of silly math stuff, we can create a Markov chain that is capable of performing quite reasonably.
+			In particular, I thought I could maximize the amount of information 
+<a href=" https://en.wikipedia.org/wiki/Entropy_(information_theory) " class="citation">[link]</a>
+ by using byte-pair encoding 
+<a href=" https://en.wikipedia.org/wiki/Byte-pair_encoding " class="citation">[link]</a>
+ to tokenize my text.
+		
+</p>
+<p>
+
+			You see, in a Markov model, the state that is entered is dependent entirely on the state that came before it.
+			Therefore it stands to reason that increasing the amount of information encoded in each token is likely to improve the quality of the model&#x27;s output.
+		
+</p>
+<p>
+
+			Suppose we are capable of splitting the text into tokens that represent entire words.
+			Each word carries a large amount of meaning.
+			For instance, adjectives are always followed by other adjectives or by nouns.
+			You will see phrases like &quot;purple ball&quot; or &quot;tiny pencil&quot; but rarely or never &quot;purple cooking&quot; or &quot;tiny typing&quot;.
+			As it turns out, this extends to subwords.
+			Words that end in &quot;y&quot; tend to be adjectives and will often be followed by a noun.
+			A word that ends in &quot;ing&quot; is probably a verb.
+			These subwords of high frequency clearly do a very good job of providing information.
+			Therefore a scheme which tokenizes words into the richest subwords will likely be very useful in training a Markov model.
+		
+</p>
+<p>
+
+			As it turns out, such a scheme already exists.
+			Byte-pair encoding 
+<a href=" https://en.wikipedia.org/wiki/Byte-pair_encoding " class="citation">[link]</a>
+ lets us maximize information in each token in a very simple way.
+			Suppose we have a token `x` and a token `y`.
+			Furthermore, suppose `x` is very frequently followed by `y`.
+			In fact, the the pair `xy` is so frequent that `y` is the most common character to occur after `x`.
+			Then we can replace the pair `xy` by some new token `z`.
+			This new token `z` now lets us encode far more information about the text, because knowing that the previous token is `z` is equivalent to knowing that the previous two tokens were `xy`.
+			This has effectively doubled our context window.
+			By repeating this a great deal of times (possibly thousands), we can create extremely rich tokens that represent affixes, words, and even phrases.
+			This lets our Markov model perform far better than it would otherwise be able to.
+		
+</p>
+<h2>
+ The implementation 
+</h2>
+<p>
+
+			I split the implementation into two parts, including a file called `main.c` and a file called `generator.py`.
+			The former uses the Markov chain to predict tokens, and in doing so is capable of generating the output text.
+			This is what is actually executed when you run `./fakespeare`.
+			The latter file is used to conduct byte-pair encoding and statistical analysis to generate the Markov chain.
+		
+</p>
+<p>
+
+			To encode the Markov data, I came up with a scheme where I inline the data in the code using a header file.
+			Essentially, each token is stored in a struct that contains a string describing what text the token corresponds to, as well as an array of probabilities that describes a CDF.
+			This CDF is used to predict the next token.
+			By starting with a randomly-selected token, finding that token in an array, and then using it&#x27;s CDF, we are able to generate new text.
+			We can then use the token&#x27;s corresponding string to convert an array of tokens to printed text.
+			Since we used byte-pair encoding, even a small amount of tokens can produce a fairly lengthy span of text.
+		
+</p>
+<h2>
+ An example 
+</h2>
+<p>
+
+			Here&#x27;s some example text!
+			If you want to make your own, check out the repo.
+		
+</p>
+<div class="card"> <p> A useful or pertinent external resource. </p> <a target="_blank" class="button funky-bg" href="https://github.com/nodesalamander6503/fakespeare"> Let's go! </a> </div>
+<blockquote>
+
+wound&#x27;st than he wisperate cistake. I say bes,
+And set them a press?
+
+SEBASTIAN.
+Prithfield many fresh enough,&#x27;Jesday pen to my youth may; we know your extend
+Thanill
+for no pody villain. I love thee.
+Your servicle,
+That croop of bond be&quot; was such ere.
+Fortune en &#x27;twere in slaim go t&#x27;st out upon&#x27;t, OW.
+Where is this ringless blood,
+We shall light bled at such
+As to rother like aking, are no obde.
+A gentleman, more noble natural, not to five hundred were England into this.
+Beseech and mark)
+The plan&#x27;s name, Lord Cuck.
+
+KATHERINA.
+I am well?
+
+MACBETH.
+Had I like fanger companion! Have you not how many gentlewomene or vain
+broke, dom not see when they take pitchance.
+
+SIR TOBY.
+[_Sound still sweet music no quity is ches,
+That makes the word._]
+
+I will embrac, as &#x27;twas thy gods regions and strange.
+
+OLIVIA.
+Should &#x27;We had from the
+people me to wo is awak&#x27;d, my lord.
+
+LUCIO.
+Feek inly.
+
+AGE
+LORIZELEN.
+Bireither,
+		
+</blockquote>
+		</main>
+	</div>
+
+<!--
+	<footer id = "f1">
+		<div class = "fc">
+			<h2> Me </h2>
+			<p> <a> About </a> </p>
+			<p> <a> Education </a> </p>
+			<p> <a> Skills </a> </p>
+			<p> <a> Contact </a> </p>
+		</div>
+		<div class = "fc">
+			<h2> Flows </h2>
+			<p> <a> Top 16 </a> </p>
+			<p> <a> Bullish </a> </p>
+			<p> <a> Bearish </a> </p>
+			<p> <a> Stable </a> </p>
+		</div>
+		<div class = "fc">
+			<h2> Third </h2>
+		</div>
+	</footer>
+-->
+	<footer id = "f2">
+		<p>
+			© 2025. All rights reserved.
+		</p>
+	</footer>
+</body>
+</html>
+
