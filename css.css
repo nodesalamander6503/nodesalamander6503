@@ -62,6 +62,13 @@ table {
  * Or do - this is a sign, not a cop.
  */
 
+.hook {
+	width: 0;
+	height: 0;
+	position: relative;
+	transform: translate(0, -8rem);
+}
+
 html, body {
 	overscroll-behavior: none;
 	font-family: "Times New Roman", serif, sans-serif, monospace;

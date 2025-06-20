@@ -42,8 +42,9 @@
 			</nav>
 		</div>
 		<main class = "widthcontrol">
-			<p id="
-			When-I-was-much-">
+			<p>
+<span id = "
+			When-I-was-much-" class = "hook"> </span>
 
 			When I was much younger, I used to 
 <em> love </em>
@@ -54,14 +55,16 @@
 			As a result, my book-writing dreams never really got anywhere.
 		
 </p>
-<p id="
-			Of-course,-we-ar">
+<p>
+<span id = "
+			Of-course,-we-ar" class = "hook"> </span>
 
 			Of course, we are no longer constrained by our human limitations.
 		
 </p>
-<p id="
-			We-live-in-moder">
+<p>
+<span id = "
+			We-live-in-moder" class = "hook"> </span>
 
 			We live in modern times!
 			It&#x27;s the 
@@ -70,11 +73,13 @@
 		
 </p>
 <div class="card"> <p> The github repo at hand. </p> <a target="_blank" class="button funky-bg" href="https://github.com/nodesalamander6503/fakespeare"> Let's go! </a> </div>
-<h2 id="-The-idea-">
+<h2>
+<span id = "-The-idea-" class = "hook"> </span>
  The idea 
 </h2>
-<p id="
-			Everyone-has-see">
+<p>
+<span id = "
+			Everyone-has-see" class = "hook"> </span>
 
 			Everyone has seen examples of Markov chains 
 <a href=" https://en.wikipedia.org/wiki/Markov_chain " class="citation">[link]</a>
@@ -88,15 +93,17 @@
  to tokenize my text.
 		
 </p>
-<p id="
-			You-see,-in-a-Ma">
+<p>
+<span id = "
+			You-see,-in-a-Ma" class = "hook"> </span>
 
 			You see, in a Markov model, the state that is entered is dependent entirely on the state that came before it.
 			Therefore it stands to reason that increasing the amount of information encoded in each token is likely to improve the quality of the model&#x27;s output.
 		
 </p>
-<p id="
-			Suppose-we-are-c">
+<p>
+<span id = "
+			Suppose-we-are-c" class = "hook"> </span>
 
 			Suppose we are capable of splitting the text into tokens that represent entire words.
 			Each word carries a large amount of meaning.
@@ -109,8 +116,9 @@
 			Therefore a scheme which tokenizes words into the richest subwords will likely be very useful in training a Markov model.
 		
 </p>
-<p id="
-			As-it-turns-out,">
+<p>
+<span id = "
+			As-it-turns-out," class = "hook"> </span>
 
 			As it turns out, such a scheme already exists.
 			Byte-pair encoding 
@@ -126,11 +134,13 @@
 			This lets our Markov model perform far better than it would otherwise be able to.
 		
 </p>
-<h2 id="-The-implementation-">
+<h2>
+<span id = "-The-implementation-" class = "hook"> </span>
  The implementation 
 </h2>
-<p id="
-			I-split-the-impl">
+<p>
+<span id = "
+			I-split-the-impl" class = "hook"> </span>
 
 			I split the implementation into two parts, including a file called `main.c` and a file called `generator.py`.
 			The former uses the Markov chain to predict tokens, and in doing so is capable of generating the output text.
@@ -138,8 +148,9 @@
 			The latter file is used to conduct byte-pair encoding and statistical analysis to generate the Markov chain.
 		
 </p>
-<p id="
-			To-encode-the-Ma">
+<p>
+<span id = "
+			To-encode-the-Ma" class = "hook"> </span>
 
 			To encode the Markov data, I came up with a scheme where I inline the data in the code using a header file.
 			Essentially, each token is stored in a struct that contains a string describing what text the token corresponds to, as well as an array of probabilities that describes a CDF.
@@ -149,19 +160,22 @@
 			Since we used byte-pair encoding, even a small amount of tokens can produce a fairly lengthy span of text.
 		
 </p>
-<h2 id="-An-example-">
+<h2>
+<span id = "-An-example-" class = "hook"> </span>
  An example 
 </h2>
-<p id="
-			Here&#x27;s-some">
+<p>
+<span id = "
+			Here&#x27;s-some" class = "hook"> </span>
 
 			Here&#x27;s some example text!
 			If you want to make your own, check out the repo.
 		
 </p>
 <div class="card"> <p> The github repo at hand. </p> <a target="_blank" class="button funky-bg" href="https://github.com/nodesalamander6503/fakespeare"> Let's go! </a> </div>
-<blockquote id="
-wound&#x27;st-than-">
+<blockquote>
+<span id = "
+wound&#x27;st-than-" class = "hook"> </span>
 
 wound&#x27;st than he wisperate cistake. I say bes,
 And set them a press?

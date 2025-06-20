@@ -44,8 +44,9 @@
 			</nav>
 		</div>
 		<main class = "widthcontrol">
-			<p id="
-			Wordle-was-purpo">
+			<p>
+<span id = "
+			Wordle-was-purpo" class = "hook"> </span>
 
 			Wordle was purportedly created by Josh Wardle 
 <a href=" https://en.wikipedia.org/wiki/Wordle " class="citation">[link]</a>
@@ -57,18 +58,21 @@
 			It&#x27;s a conceptually simple game, but it has spawned a large amount of discussion over how it can be optimized.
 		
 </p>
-<p id="
-			In-this-article,">
+<p>
+<span id = "
+			In-this-article," class = "hook"> </span>
 
 			In this article, I discuss an automaton I created, which is capable of beating Wordle efficiently and in a near-optimal manner.
 		
 </p>
 <div class="card"> <p> The github repo at hand. </p> <a target="_blank" class="button funky-bg" href="https://github.com/nodesalamander6503/cheat-at-wordle"> Let's go! </a> </div>
-<h2 id="-What-does-informati">
+<h2>
+<span id = "-What-does-informati" class = "hook"> </span>
  What does information theory tell us about Wordle? 
 </h2>
-<p id="
-			Information-theo">
+<p>
+<span id = "
+			Information-theo" class = "hook"> </span>
 
 			Information theory is, as the name suggests, the study of information 
 <a href=" https://en.wikipedia.org/wiki/Information_theory " class="citation">[link]</a>
@@ -76,23 +80,26 @@
 			More specifically, information theory discusses the quantification, storage, and communication of information.
 		
 </p>
-<p id="
-			Information-is-g">
+<p>
+<span id = "
+			Information-is-g" class = "hook"> </span>
 
 			Information is generally described in terms of &quot;Shannons&quot;, or bits, which are a relatively abstract unit of measurement.
 			Essentially, if some event has one Shannon of information, then the probability of that event is 50%.
 		
 </p>
-<p id="
-			Clearly,-when-a-">
+<p>
+<span id = "
+			Clearly,-when-a-" class = "hook"> </span>
 
 			Clearly, when a guess fails, we want to maximize the amount of information we get.
 			A word that has a low likelihood of providing a lot of information is far less useful that a word that has a high likelihood of providing a small amount of new information.
 			We therefore want to minimize entropy and maximize possible information.
 		
 </p>
-<p id="
-			Since-most-lette">
+<p>
+<span id = "
+			Since-most-lette" class = "hook"> </span>
 
 			Since most letters will end up being gray, one approximation is to approximate information by the probability that we discover a letter that will be present in the word.
 			This is because we expect letters to be gray, so knowing that a letter is gray tells us very little.
@@ -101,11 +108,13 @@
 			Hence knowing that a letter is green or yellow tells us much more than does knowing that it is gray.
 		
 </p>
-<h2 id="-A-probabilistic-app">
+<h2>
+<span id = "-A-probabilistic-app" class = "hook"> </span>
  A probabilistic approach 
 </h2>
-<p id="
-			Of-course,-we&#x">
+<p>
+<span id = "
+			Of-course,-we&#x" class = "hook"> </span>
 
 			Of course, we&#x27;re not just trying to find information.
 			We want to 
@@ -113,8 +122,9 @@
  this game.
 		
 </p>
-<p id="
-			Most-simple-Word">
+<p>
+<span id = "
+			Most-simple-Word" class = "hook"> </span>
 
 			Most simple Wordle-solving algorithms try to maximize the probability that a guess is correct.
 			This is a good approach, especially late in the game when information is ample.
@@ -122,27 +132,31 @@
 			It is therefore much more useful to optimize for gathering information when there is little present.
 		
 </p>
-<p id="
-			To-accomodate-bo">
+<p>
+<span id = "
+			To-accomodate-bo" class = "hook"> </span>
 
 			To accomodate both facts, I chose to have the algorithm maximize a synthetic &quot;utility factor&quot;.
 			This factor represents the probability that the guess is useful - that is, that the guess is either correct or earns information.
 			We can represent this trivially as P(win) + P(get information | not win).
 		
 </p>
-<p id="
-			Notably,-P(win)-">
+<p>
+<span id = "
+			Notably,-P(win)-" class = "hook"> </span>
 
 			Notably, P(win) and P(get information) can be treated as approximately independent.
 			For the most part, knowing that a certain guess will not win does not significantly impact the probability that the guess earns new information.
 			We therefore represent P(useful) as P(win) + P(not win) * P(get information).
 		
 </p>
-<h2 id="-The-solution-">
+<h2>
+<span id = "-The-solution-" class = "hook"> </span>
  The solution 
 </h2>
-<p id="
-			By-simply-maximi">
+<p>
+<span id = "
+			By-simply-maximi" class = "hook"> </span>
 
 			By simply maximizing the utility of each guess, we&#x27;re able to win very efficiently.
 			Every time I&#x27;ve tested the tool, it won in 5 tries or fewer.
@@ -150,11 +164,13 @@
 		
 </p>
 <div class="card"> <p> The github repo at hand. </p> <a target="_blank" class="button funky-bg" href="https://github.com/nodesalamander6503/cheat-at-wordle"> Let's go! </a> </div>
-<h2 id="-Useful-takeaways-">
+<h2>
+<span id = "-Useful-takeaways-" class = "hook"> </span>
  Useful takeaways 
 </h2>
-<p id="
-			One-thing-to-not">
+<p>
+<span id = "
+			One-thing-to-not" class = "hook"> </span>
 
 			One thing to note is that seeking information tends to have diminishing returns to scale.
 			If you know a lot, there is very little you have left to learn, and any subsequent attempt is thus unlikely to yield new data.

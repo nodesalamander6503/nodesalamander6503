@@ -43,11 +43,13 @@
 			</nav>
 		</div>
 		<main class = "widthcontrol">
-			<h2 id="-Abstract-">
+			<h2>
+<span id = "-Abstract-" class = "hook"> </span>
  Abstract 
 </h2>
-<p id="
-			I-built-a-fully-">
+<p>
+<span id = "
+			I-built-a-fully-" class = "hook"> </span>
 
 			I built a fully automatic tool 
 <a href=" https://nodesalamander6503.github.io/nodesalamander6503/snackflation.html " class="citation">[link]</a>
@@ -57,11 +59,13 @@
 			This reflects well-known notions of inflation as predicted by many empirical models, which state that (during short runs) a market tends to be in an inflationary state rather than a deflationary state and all goods&#x27; prices will therefore rise over time, often at rates which are somewhat consistent.
 		
 </p>
-<h2 id="-Inspiration-and-goa">
+<h2>
+<span id = "-Inspiration-and-goa" class = "hook"> </span>
  Inspiration and goals 
 </h2>
-<p id="
-			As-of-June-2025,">
+<p>
+<span id = "
+			As-of-June-2025," class = "hook"> </span>
 
 			As of June 2025, a 12.5 ounce bag of chips costs $5.44.
 			That&#x27;s roughly how much you would pay for an entire McDonalds&#x27; Big Mac 
@@ -73,35 +77,41 @@
 			However, my friends and family might have a harder time using these models to discern useful information such as how much they&#x27;ll pay in groceries next quarter.
 		
 </p>
-<p id="
-			To-deal-with-thi">
+<p>
+<span id = "
+			To-deal-with-thi" class = "hook"> </span>
 
 			To deal with this evident inaccessibility of information, I decided to create a tool that&#x27;d track the inflation of snacks and predict their price in the future.
 			That way, anyone could click on a link, go to a web page, and trivially find out how much more everything will cost in the near future.
 		
 </p>
-<h2 id="-Theory-">
+<h2>
+<span id = "-Theory-" class = "hook"> </span>
  Theory 
 </h2>
-<p id="
-			Empirical-eviden">
+<p>
+<span id = "
+			Empirical-eviden" class = "hook"> </span>
 
 			Empirical evidence shows that prices tend to rise at a rate called the inflation rate.
 			I conjecture that, because consumers and firms reject large leaps in price, this rate can be approximated linearly.
 			In particular, I think that we can infer the future inflated price using a linear model that correlates time and price.
 		
 </p>
-<p id="
-			I-construct-the-">
+<p>
+<span id = "
+			I-construct-the-" class = "hook"> </span>
 
 			I construct the null hypothesis that my conjecture is incorrect (that is, the slope is around 0 and inflation can not be estimated using time), and the alternate hypothesis that there is a statistically significant correlation between time and price.
 		
 </p>
-<h2 id="-Implementation-">
+<h2>
+<span id = "-Implementation-" class = "hook"> </span>
  Implementation 
 </h2>
-<p id="
-			To-implement-thi">
+<p>
+<span id = "
+			To-implement-thi" class = "hook"> </span>
 
 			To implement this project, I first had to choose where to procure my data.
 			I chose the FRED API because it delivers decades-long CPI sub-indices in a clean JSON format, all free of charge.
@@ -113,8 +123,9 @@
  .
 		
 </p>
-<p id="
-			To-handle-the-da">
+<p>
+<span id = "
+			To-handle-the-da" class = "hook"> </span>
 
 			To handle the data processing, I created a lightweight Python 3.12 script.
 			It starts by using a FRED API key to download JSON files containing all the historic price data.
@@ -125,8 +136,9 @@
 			Finally, I use scipy to regress price against time.
 		
 </p>
-<p id="
-			Of-course,-just-">
+<p>
+<span id = "
+			Of-course,-just-" class = "hook"> </span>
 
 			Of course, just producing a linear model isn&#x27;t enough.
 			I must also interpret and apply it.
@@ -137,19 +149,22 @@
 			These predictions are also added to the writeup.
 		
 </p>
-<h2 id="-Takeaways-">
+<h2>
+<span id = "-Takeaways-" class = "hook"> </span>
  Takeaways 
 </h2>
-<p id="
-			I-tested-the-nul">
+<p>
+<span id = "
+			I-tested-the-nul" class = "hook"> </span>
 
 			I tested the null hypothesis that there was no correlation between time and price against the alternate hypothesis that a correlation existed.
 			I concluded that there is a statistically significant correlation.
 			This makes a lot of sense, because that&#x27;s how inflation generally is assumed to work.
 		
 </p>
-<p id="
-			I-also-learned-t">
+<p>
+<span id = "
+			I-also-learned-t" class = "hook"> </span>
 
 			I also learned that APIs are often quite easy to use.
 			I generally gather data by writing scripts to scrape the web.
