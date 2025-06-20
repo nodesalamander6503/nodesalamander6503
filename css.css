@@ -65,6 +65,7 @@ table {
 .hook {
 	width: 0;
 	height: 0;
+	display: block;
 	position: relative;
 	transform: translate(0, -8rem);
 }
