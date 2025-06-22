@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> I made a tiny calculator  | Avner's Site</title>
+	<link rel="stylesheet" href="/nodesalamander6503/css.css">
+</head>
+
+<body>
+	<div id = "ho">
+		<div id = "hi" class = "widthcontrol">
+			<a id = "ht" href = "https://nodesalamander6503.github.io/nodesalamander6503/">
+				Avner's Site
+			</a>
+			<nav>
+				<a href="project.html"> Projects </a>
+			</nav>
+		</div>
+	</div>
+
+	<div id = "landing" class = "funky-bg">
+		<div id = "landing-content" class = "widthcontrol">
+			<h1>  I made a tiny calculator  </h1>
+			
+			Ever since the creation of the ENIAC    and its bretheren, people have been quite fond of using machines to speed up math.
+			The benefit therein is twofold.
+			First, it decreases effort dramatically.
+			What once took legions of people to compute can now be done by a single automaton in a fraction of the time.
+			Second, it decreases expenses.
+			People take time to solve problems, and they can make mistakes.
+			In critical situations, waiting for a calculation to complete can cost lives.
+			Having that calculation come back incorrect can be even worse.
+			Using a well-designed machine to perform mathematical computations solves this problem by gauranteeing that mathematical computations are performed accurately and punctually.
+		
+		</div>
+	</div>
+	
+	<div id = "main-content">
+		<div id = "chapter-nav" class = "card block widthcontrol chapnav-visible">
+			<nav>
+				<a href = "#-The-goal-" class = "chapnav-l1">  The goal </a>
+<a href = "#-The-implementation-" class = "chapnav-l1">  The implementation </a>
+<a href = "#-The-features-" class = "chapnav-l1">  The features </a>
+
+			</nav>
+		</div>
+		<main class = "widthcontrol">
+			<p>
+<span id = "
+			Ever-since-the-c" class = "hook"> </span>
+
+			Ever since the creation of the ENIAC 
+<a href=" https://en.wikipedia.org/wiki/ENIAC " class="citation">[link]</a>
+ and its bretheren, people have been quite fond of using machines to speed up math.
+			The benefit therein is twofold.
+			First, it decreases effort dramatically.
+			What once took legions of people to compute can now be done by a single automaton in a fraction of the time.
+			Second, it decreases expenses.
+			People take time to solve problems, and they can make mistakes.
+			In critical situations, waiting for a calculation to complete can cost lives.
+			Having that calculation come back incorrect can be even worse.
+			Using a well-designed machine to perform mathematical computations solves this problem by gauranteeing that mathematical computations are performed accurately and punctually.
+		
+</p>
+<p>
+<span id = "
+			It-might-not-be-" class = "hook"> </span>
+
+			It might not be the 1940s anymore, but math is still very important.
+			It&#x27;s also still very annoying to compute by hand.
+		
+</p>
+<p>
+<span id = "
+			So-I-made-my-own" class = "hook"> </span>
+
+			So I made my own calculator.
+		
+</p>
+<h2>
+<span id = "-The-goal-" class = "hook"> </span>
+ The goal 
+</h2>
+<p>
+<span id = "
+			The-idea-behind-" class = "hook"> </span>
+
+			The idea behind this calculator was to create a tool that would let me do basic math quickly from my command line.
+			If I just want to calculate how many blocks I need to construct something in Minecraft, I shouldn&#x27;t need to wait for Desmos to load.
+			I therefore wanted this tool to load and execute very quickly by being very simple.
+		
+</p>
+<p>
+<span id = "
+			I-also-wanted-it" class = "hook"> </span>
+
+			I also wanted it to be easy to extend.
+			A tool with many hard-coded features can be annoying to update.
+			I wanted my calculator to be as easy to extend as possible, so that useful niche features could be added as built-in functions.
+		
+</p>
+<h2>
+<span id = "-The-implementation-" class = "hook"> </span>
+ The implementation 
+</h2>
+<p>
+<span id = "
+			To-create-a-calc" class = "hook"> </span>
+
+			To create a calculator, I needed to make four parts.
+			Essentially, I needed an input, a parser, an evaluator, and an output.
+		
+</p>
+<p>
+<span id = "
+			Since-this-is-a-" class = "hook"> </span>
+
+			Since this is a command-line tool, the input and output were easy.
+			All I needed to do was to use C&#x27;s standard IO library.
+		
+</p>
+<p>
+<span id = "
+			For-the-calculat" class = "hook"> </span>
+
+			For the calculator to understand the input, I&#x27;d need to select a parsing model.
+			There are many to choose from, such as infix, postfix, s-expressions, ALGOL-style syntax, and many more.
+			I elected to go with an s-expression based system for two reasons.
+			First, s-expressions are far easier to parse than most other systems.
+			Second, they allow for a great deal of expressability and readability, which is valuable in a fast calculator.
+			You don&#x27;t need to mentally juggle the order of items on a stack when handling sequences of elements, as with postfixes, and you don&#x27;t need to implement special array operators or repeat an infix many times.
+			Instead, s-expressions can take as many or as few arguments as needed, and can be composed in a manner that is often very easy to make sense of.
+		
+</p>
+<p>
+<span id = "
+			Finally,-I-creat" class = "hook"> </span>
+
+			Finally, I created the evaluator.
+			It works recursively by first evaluating all the arguments, then looking up a C implementation of a function in a table, and finally executing that function.
+		
+</p>
+<p>
+<span id = "
+			Of-course,-diffe" class = "hook"> </span>
+
+			Of course, different functions take different amounts of arguments.
+			To handle this, I implemented many different kinds of functions.
+			When a label is identified within the lookup routine, it corresponds to both a function and an arity.
+			The arity indicates the kind of execution that the function desires.
+		
+</p>
+<p>
+<span id = "
+			For-functions-li" class = "hook"> </span>
+
+			For functions like addition, the C implementation takes only 2 arguments.
+			To account for sums of more than 2 values, the function is given the label &quot;fold&quot; as it&#x27;s arity.
+			Folding functions 
+<a href=" https://en.wikipedia.org/wiki/Fold_(higher-order_function) " class="citation">[link]</a>
+ allows foldable functions to handle an unbounded number of arguments.
+		
+</p>
+<p>
+<span id = "
+			Other-functions-" class = "hook"> </span>
+
+			Other functions might have a 1-arity or 2-arity.
+			These functions require a fixed quantity of arguments, and can not be made to work with any more or any fewer.
+			When these functions recieve the wrong number of arguments, an error is thrown.
+		
+</p>
+<p>
+<span id = "
+			By-recursively-e" class = "hook"> </span>
+
+			By recursively evaluating functions according to their arities, the calculator is able to solve whatever problem you give it in a very efficient manner.
+		
+</p>
+<h2>
+<span id = "-The-features-" class = "hook"> </span>
+ The features 
+</h2>
+<p>
+<span id = "
+			This-calculator-" class = "hook"> </span>
+
+			This calculator supports the basic four functions, like any other calculator.
+			It also supports a variety of more advanced features.
+		
+</p>
+<p>
+<span id = "
+			For-instance,-it" class = "hook"> </span>
+
+			For instance, it can be used as an actuarial calculator.
+			It is capable of finding the present or future value of an investment when compounded at a constant rate.
+			This includes support for lump sums that are accruing interest as well as annuities with a fixed payout.
+		
+</p>
+<p>
+<span id = "
+			The-calculator-h" class = "hook"> </span>
+
+			The calculator has both an immediate and REPL mode.
+			If you pass in a problem as a string, it&#x27;ll execute that in place and print the result.
+			However, if you don&#x27;t give it any arguments, it&#x27;ll just give you access to a REPL.
+			This means that it can be used as either a regular calculator or as a component inside of other programs.
+		
+</p>
+<p>
+<span id = "
+			It&#x27;s-also-q" class = "hook"> </span>
+
+			It&#x27;s also quite easy to install.
+			Check out the github below.
+		
+</p>
+<div class="card"> <p> The github repo at hand. </p> <a target="_blank" class="button funky-bg" href="https://github.com/nodesalamander6503/tiny-calculator"> Let's go! </a> </div>
+		</main>
+	</div>
+
+	<footer id = "f1o"> <div id = "f1i">
+		<div class = "fc">
+			<h2> Me </h2>
+			<p> <a> About </a> </p>
+			<p> <a> Education </a> </p>
+			<p> <a> Skills </a> </p>
+			<p> <a> Contact </a> </p>
+		</div>
+		<!--
+		<div class = "fc">
+			<h2> Flows </h2>
+			<p> <a> Top 16 </a> </p>
+			<p> <a> Bullish </a> </p>
+			<p> <a> Bearish </a> </p>
+			<p> <a> Stable </a> </p>
+		</div>
+		-->
+		<div class = "fc">
+			<h2> QOTD </h2>
+			<div style="width:100%;display:flex;flex-direction:row;flex-wrap:no-wrap;">
+			<iframe style="width:auto;flex-grow:1;flex-basis:0;" src = "https://nodesalamander6503.github.io/nodesalamander6503/quot.html">
+				The QOTD feature is not supported on your device.
+			</iframe>
+			</div>
+		</div>
+	</div> </footer>
+
+	<footer id = "f2">
+		<p>
+			© 2025. All rights reserved.
+		</p>
+	</footer>
+</body>
+</html>
+
