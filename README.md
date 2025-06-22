@@ -1,9 +1,7 @@
 # Hi, I'm Avner
 
-
-I&#x27;m a UC San Diego junior majoring in Probability &amp; Statistics, with a second major in Economics.
-I perform statistical analyses, study market trends, write software, and play games.
-
+UC San Diego junior doing statistics in Python, C, and even custom languages.
+I analyze everything from the economy to games like Wordle.
 
 Feel free to check out my [web site](https://nodesalamander6503.github.io/nodesalamander6503/) if you're interested.
 
