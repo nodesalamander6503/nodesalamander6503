@@ -260,6 +260,7 @@ a:hover {
 	#main-content {
 		flex-direction: row-reverse;
 		width: 58rem;
+		justify-content: center;
 	}
 	#main-content main {
 		margin: 0;
