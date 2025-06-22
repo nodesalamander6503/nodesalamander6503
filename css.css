@@ -151,6 +151,9 @@ main {
 
 #chapter-nav {
 }
+#chapter-nav.chapnav-hidden {
+	display: hidden;
+}
 #chapter-nav nav {
 	display: flex;
 	flex-direction: column;
