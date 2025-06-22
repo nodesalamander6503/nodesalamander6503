@@ -152,7 +152,7 @@ main {
 #chapter-nav {
 }
 #chapter-nav.chapnav-hidden {
-	display: hidden;
+	display: none;
 }
 #chapter-nav nav {
 	display: flex;
