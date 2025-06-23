@@ -151,7 +151,7 @@ main {
 
 #chapter-nav {
 }
-#chapter-nav.chapnav-hidden {
+.chapnav-hidden {
 	display: none;
 }
 #chapter-nav nav {
