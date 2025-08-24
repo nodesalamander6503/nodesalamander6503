@@ -73,6 +73,7 @@ table {
 #bnr-head, #bnr-more {
 	width: calc(100% - 2rem);
 	max-width: 80ch;
+	margin: 0 auto;
 }
 
 #bnr-head {
@@ -84,7 +85,7 @@ table {
 }
 
 #bnr-more {
-	display: hidden;
+	display: none;
 }
 
 #bnr-more.visible {
