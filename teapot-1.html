@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> nodeTeapot: Version 1  | Avner's Site</title>
+	<link rel="stylesheet" href="/nodesalamander6503/css.css">
+</head>
+
+<body>
+	<div id = "bnr">
+		<div id = "bnr-head">
+			<h2> Under construction </h2>
+			<button onclick="document.getElementById('bnr-more').classList.toggle('visible');"> Learn more </div>
+		</div>
+		<div id = "bnr-more">
+			<p>
+				This web site is being remodeled to use a more modern CMS and SSG.
+			</p>
+			<p>
+				The new CMS will allow a greater variety of content to be hosted on this site.
+				For instance, it'll allow for interactive demos.
+				These new features are intended to permit better demonstration of information.
+				Expected site features include minigames, live or semi-live statistical predictions, simulations and emulations, neural networks that run in-browser, and more.
+			</p>
+			<p>
+				The new SSG is therefore necessary to support this.
+				It will be able to generate new types of HTML5 and ECMAScript, permitting both static and dynamic widgets for various roles and capabilities.
+				The new SSG will also support modern accessibility endeavors.
+				It'll permit people using screenreaders and other automated or semiautomated interfaces to interact more easily with my web site.
+				This will be accomplished by using HTML5 semantic components, as well as by using the ARIA accessibility metadata tags.
+				It'll even be able to handle multilingual text.
+				This will vastly increase the accessibility and usability of the site.
+			</p>
+			<p>
+				In summary, the web site is being remodeled to use a more modern CMS and SSG.
+				The result of these new features will be to create a novel, more interesting experience for those who come to the site, while also increasing the amount of people who are capable of using this site.
+			</p>
+		</div>
+	</div>
+
+	<div id = "ho">
+		<div id = "hi" class = "widthcontrol">
+			<a id = "ht" href = "https://nodesalamander6503.github.io/nodesalamander6503/">
+				Avner's Site
+			</a>
+			<nav>
+				<a href="project.html"> Projects </a>
+			</nav>
+		</div>
+	</div>
+
+	<div id = "landing" class = "funky-bg">
+		<div id = "landing-content" class = "widthcontrol">
+			<h1>  nodeTeapot: Version 1  </h1>
+			
+			In this article, I&#x27;ll discuss how I created my first 3D renderer.
+			This is the first entry in a series where I&#x27;ll explore various 3D rendering mechanisms and automata.
+			We’ll begin with a simple point-cloud renderer.
+		
+		</div>
+	</div>
+	
+	<div id = "main-content">
+		<div class = "widthcontrol chapnav-visible"> <div id = "chapter-nav" class = "card">
+			<nav>
+				<a href = "#-Goal-" class = "chapnav-l1">  Goal </a>
+<a href = "#-Implementation-" class = "chapnav-l1">  Implementation </a>
+<a href = "#-Thoughts-" class = "chapnav-l1">  Thoughts </a>
+
+			</nav>
+		</div> </div>
+		<main class = "widthcontrol">
+			<p>
+<span id = "
+			In-this-article," class = "hook"> </span>
+
+			In this article, I&#x27;ll discuss how I created my first 3D renderer.
+			This is the first entry in a series where I&#x27;ll explore various 3D rendering mechanisms and automata.
+			We’ll begin with a simple point-cloud renderer.
+		
+</p>
+<div class="card"> <p> A useful or pertinent external resource. </p> <a target="_blank" class="button funky-bg" href="https://www.khanacademy.org/computer-programming/teapot/4526253737951232"> Let's go! </a> </div>
+<h2>
+<span id = "-Goal-" class = "hook"> </span>
+ Goal 
+</h2>
+<p>
+<span id = "
+			When-I-set-out-t" class = "hook"> </span>
+
+			When I set out to build my first teapot 3D renderer, my goal was simply to produce a rendering of the Utah Teapot using my own code.
+			I wasn’t aiming for a polished image; rather, I wanted to understand how rendering algorithms work by implementing one myself.
+		
+</p>
+<h2>
+<span id = "-Implementation-" class = "hook"> </span>
+ Implementation 
+</h2>
+<p>
+<span id = "
+			There-are-many-m" class = "hook"> </span>
+
+			There are many methods one can use to generate a 3D image.
+			Most rely on linear algebra.
+			For instance, by multiplying a point by a matrix, I could rotate it in space about some origin.
+			Using another matrix, I could project a 3D image into a 2D plane.
+			To simulate visual depth, I could warp points that are farther away, bringing them closer to the center of the image.
+		
+</p>
+<p>
+<span id = "
+			I-decided-to-att" class = "hook"> </span>
+
+			I decided to attempt rendering a 3D entity by drawing a set of points in space, rotating them using matrices, and then projecting them into 2D using a projection matrix and depth function.
+		
+</p>
+<p>
+<span id = "
+			I-implemented-th" class = "hook"> </span>
+
+			I implemented the functions for rotating points and projecting them from 3D space into 2D.
+			To make the points appear more dimensional, I shaded each as a circle with the top slightly brighter and the bottom slightly dimmer.
+			Since points exist in 3D space, I needed to sort them before rendering. I used JavaScript’s native sorting algorithm to sort them by depth.
+			I chose to render each point in a brass color because it looks visually pleasing.
+			To contrast it, I set the background to a dim gray.
+		
+</p>
+<p>
+<span id = "
+			Finally,-to-test" class = "hook"> </span>
+
+			Finally, to test the renderer, I created a simple &quot;always rotate&quot; script and loaded several objects.
+			The Utah teapot, of course, was among them.
+			I also included the Utah teaspoon, which is less famous but still interesting.
+			Additionally, the renderer displays a sphere and a cube.
+		
+</p>
+<h2>
+<span id = "-Thoughts-" class = "hook"> </span>
+ Thoughts 
+</h2>
+<p>
+<span id = "
+			All-in-all,-this" class = "hook"> </span>
+
+			All in all, this was a fun project and I&#x27;m glad I undertook it.
+			This simple renderer helped me better understand the applications of linear algebra to practical 3D modeling.
+			It also gave me insight into why the Utah Teapot remains so popular.
+		
+</p>
+<p>
+<span id = "
+			Of-course,-rende" class = "hook"> </span>
+
+			Of course, rendering only points isn&#x27;t especially exciting.
+			For my next project, I’ve decided to render the teapot using triangles instead.
+		
+</p>
+<div class="card"> <p> A useful or pertinent external resource. </p> <a target="_blank" class="button funky-bg" href="https://www.khanacademy.org/computer-programming/teapot/4526253737951232"> Let's go! </a> </div>
+		</main>
+	</div>
+
+	<footer id = "f1o"> <div id = "f1i">
+		<div class = "fc">
+			<h2> Me </h2>
+			<p> <a> About </a> </p>
+			<p> <a> Education </a> </p>
+			<p> <a> Skills </a> </p>
+			<p> <a> Contact </a> </p>
+		</div>
+		<!--
+		<div class = "fc">
+			<h2> Flows </h2>
+			<p> <a> Top 16 </a> </p>
+			<p> <a> Bullish </a> </p>
+			<p> <a> Bearish </a> </p>
+			<p> <a> Stable </a> </p>
+		</div>
+		-->
+		<div class = "fc">
+			<h2> QOTD </h2>
+			<div style="width:100%;display:flex;flex-direction:row;flex-wrap:no-wrap;">
+			<iframe style="width:0;flex-grow:1;flex-basis:0;" src = "https://nodesalamander6503.github.io/nodesalamander6503/quot.html">
+				The QOTD feature is not supported on your device.
+			</iframe>
+			</div>
+		</div>
+	</div> </footer>
+
+	<footer id = "f2">
+		<p>
+			© 2025. All rights reserved.
+		</p>
+	</footer>
+</body>
+</html>
+

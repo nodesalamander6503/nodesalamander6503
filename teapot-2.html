@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> nodeTeapot: Version 2  | Avner's Site</title>
+	<link rel="stylesheet" href="/nodesalamander6503/css.css">
+</head>
+
+<body>
+	<div id = "bnr">
+		<div id = "bnr-head">
+			<h2> Under construction </h2>
+			<button onclick="document.getElementById('bnr-more').classList.toggle('visible');"> Learn more </div>
+		</div>
+		<div id = "bnr-more">
+			<p>
+				This web site is being remodeled to use a more modern CMS and SSG.
+			</p>
+			<p>
+				The new CMS will allow a greater variety of content to be hosted on this site.
+				For instance, it'll allow for interactive demos.
+				These new features are intended to permit better demonstration of information.
+				Expected site features include minigames, live or semi-live statistical predictions, simulations and emulations, neural networks that run in-browser, and more.
+			</p>
+			<p>
+				The new SSG is therefore necessary to support this.
+				It will be able to generate new types of HTML5 and ECMAScript, permitting both static and dynamic widgets for various roles and capabilities.
+				The new SSG will also support modern accessibility endeavors.
+				It'll permit people using screenreaders and other automated or semiautomated interfaces to interact more easily with my web site.
+				This will be accomplished by using HTML5 semantic components, as well as by using the ARIA accessibility metadata tags.
+				It'll even be able to handle multilingual text.
+				This will vastly increase the accessibility and usability of the site.
+			</p>
+			<p>
+				In summary, the web site is being remodeled to use a more modern CMS and SSG.
+				The result of these new features will be to create a novel, more interesting experience for those who come to the site, while also increasing the amount of people who are capable of using this site.
+			</p>
+		</div>
+	</div>
+
+	<div id = "ho">
+		<div id = "hi" class = "widthcontrol">
+			<a id = "ht" href = "https://nodesalamander6503.github.io/nodesalamander6503/">
+				Avner's Site
+			</a>
+			<nav>
+				<a href="project.html"> Projects </a>
+			</nav>
+		</div>
+	</div>
+
+	<div id = "landing" class = "funky-bg">
+		<div id = "landing-content" class = "widthcontrol">
+			<h1>  nodeTeapot: Version 2  </h1>
+			
+			In this article, I&#x27;ll discuss how I extended my renderer to support triangles and simple color banding.
+			This is the second article in my nodeTeapot series, where I continue exploring different approaches to 3D rendering.
+			After rendering the Utah Teapot as a collection of points, the natural next step was to render it properly using triangles.
+		
+		</div>
+	</div>
+	
+	<div id = "main-content">
+		<div class = "widthcontrol chapnav-visible"> <div id = "chapter-nav" class = "card">
+			<nav>
+				<a href = "#-Goal-" class = "chapnav-l1">  Goal </a>
+<a href = "#-Implementation-" class = "chapnav-l1">  Implementation </a>
+<a href = "#-Thoughts-" class = "chapnav-l1">  Thoughts </a>
+
+			</nav>
+		</div> </div>
+		<main class = "widthcontrol">
+			<p>
+<span id = "
+			In-this-article," class = "hook"> </span>
+
+			In this article, I&#x27;ll discuss how I extended my renderer to support triangles and simple color banding.
+			This is the second article in my nodeTeapot series, where I continue exploring different approaches to 3D rendering.
+			After rendering the Utah Teapot as a collection of points, the natural next step was to render it properly using triangles.
+		
+</p>
+<div class="card"> <p> A useful or pertinent external resource. </p> <a target="_blank" class="button funky-bg" href="https://www.khanacademy.org/computer-programming/teapot-2/4979480950390784"> Let's go! </a> </div>
+<h2>
+<span id = "-Goal-" class = "hook"> </span>
+ Goal 
+</h2>
+<p>
+<span id = "
+			The-goal-of-this" class = "hook"> </span>
+
+			The goal of this version was twofold:
+			First, to transition from rendering individual points to rendering filled triangles.
+			Second, to experiment with simple color banding techniques to give the render a stylized appearance by discretizing colors in the style of old 8bit images.
+		
+</p>
+<h2>
+<span id = "-Implementation-" class = "hook"> </span>
+ Implementation 
+</h2>
+<p>
+<span id = "
+			I-started-by-imp" class = "hook"> </span>
+
+			I started by implementing basic triangle rasterization.
+			For each triangle, I computed its screen-space coordinates after projection, and filled it using a simple scanline algorithm.
+			To handle depth properly, I used a z-buffer to ensure that nearer triangles obscure farther ones.
+		
+</p>
+<p>
+<span id = "
+			For-color-bandin" class = "hook"> </span>
+
+			For color banding, I quantized the shading into a small number of discrete levels based on depth or the triangle&#x27;s normal.
+			This gives the result a somewhat artificial, posterized look — something between &quot;retro 3D graphics&quot; and &quot;procedural art experiment.&quot;
+			The brass color from the first version became optional; now I could experiment with any color palette I liked.
+		
+</p>
+<p>
+<span id = "
+			To-demonstrate-t" class = "hook"> </span>
+
+			To demonstrate the improvements, I again rendered the Utah Teapot.
+			However, I decided not to keep the other elements with it.
+			This time, the teapot now appeared to be a solid object, not just collections of floating points.
+			It almost looks like a normal 3D render.
+		
+</p>
+<h2>
+<span id = "-Thoughts-" class = "hook"> </span>
+ Thoughts 
+</h2>
+<p>
+<span id = "
+			This-version-of-" class = "hook"> </span>
+
+			This version of the renderer felt like a natural evolution from the point-cloud approach.
+			It reinforced my understanding of projection, depth handling, and basic rasterization techniques.
+			Additionally, experimenting with color banding gave me ideas for future procedural rendering styles.
+		
+</p>
+<p>
+<span id = "
+			Next,-I-plan-to-" class = "hook"> </span>
+
+			Next, I plan to implement proper camera controls and object transformations.
+			This will allow me to move objects independently and explore dynamic scenes, rather than relying on a static center-of-rotation.
+		
+</p>
+<div class="card"> <p> A useful or pertinent external resource. </p> <a target="_blank" class="button funky-bg" href="https://www.khanacademy.org/computer-programming/teapot-2/4979480950390784"> Let's go! </a> </div>
+		</main>
+	</div>
+
+	<footer id = "f1o"> <div id = "f1i">
+		<div class = "fc">
+			<h2> Me </h2>
+			<p> <a> About </a> </p>
+			<p> <a> Education </a> </p>
+			<p> <a> Skills </a> </p>
+			<p> <a> Contact </a> </p>
+		</div>
+		<!--
+		<div class = "fc">
+			<h2> Flows </h2>
+			<p> <a> Top 16 </a> </p>
+			<p> <a> Bullish </a> </p>
+			<p> <a> Bearish </a> </p>
+			<p> <a> Stable </a> </p>
+		</div>
+		-->
+		<div class = "fc">
+			<h2> QOTD </h2>
+			<div style="width:100%;display:flex;flex-direction:row;flex-wrap:no-wrap;">
+			<iframe style="width:0;flex-grow:1;flex-basis:0;" src = "https://nodesalamander6503.github.io/nodesalamander6503/quot.html">
+				The QOTD feature is not supported on your device.
+			</iframe>
+			</div>
+		</div>
+	</div> </footer>
+
+	<footer id = "f2">
+		<p>
+			© 2025. All rights reserved.
+		</p>
+	</footer>
+</body>
+</html>
+
