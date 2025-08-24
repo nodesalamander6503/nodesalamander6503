@@ -62,6 +62,35 @@ table {
  * Or do - this is a sign, not a cop.
  */
 
+#bnr {
+	display: block;
+	position: sticky;
+	top: 0;
+	left: 0;
+	background: #FADF7F;
+}
+
+#bnr-head, #bnr-more {
+	width: calc(100% - 2rem);
+	max-width: 80ch;
+}
+
+#bnr-head {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: space-between;
+}
+
+#bnr-more {
+	display: hidden;
+}
+
+#bnr-more.visible {
+	display: block;
+}
+
 .hook {
 	width: 0;
 	height: 0;
