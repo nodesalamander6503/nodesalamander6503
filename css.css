@@ -103,6 +103,9 @@ table {
 
 #bnr-more.visible {
 	display: block;
+}
+
+#bnr-more p {
 	margin-top: 1rem;
 }
 
