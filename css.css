@@ -67,8 +67,7 @@ table {
 	position: sticky;
 	top: 0;
 	left: 0;
-	background: #FADF7F;
-	color: #202224;
+	border-bottom: 4px solid #FADF7F;
 	padding: 1rem 0;
 }
 
@@ -91,7 +90,6 @@ table {
 }
 
 #bnr-head button {
-	color: #224488;
 	text-decoration: underline;
 	background: none;
 	outline: none;
