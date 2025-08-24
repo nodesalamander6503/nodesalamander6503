@@ -230,11 +230,11 @@ main .citation {
 	vertical-align: super;
 }
 
-a {
+a, button {
 	color: #05acff;
 	transition: color 0.4s;
 }
-a:hover {
+a:hover, button:hover {
 	color: #36bcff;
 	transition: color 0.1s;
 }
