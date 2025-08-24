@@ -85,8 +85,12 @@ table {
 	align-items: space-between;
 }
 
+#bnr-head h2 {
+	font-weight: bold;
+}
+
 #bnr-head button {
-	color: #88BBFF;
+	color: #224488;
 	text-decoration: underline;
 	background: none;
 	outline: none;
@@ -99,6 +103,7 @@ table {
 
 #bnr-more.visible {
 	display: block;
+	margin-top: 1rem;
 }
 
 .hook {
