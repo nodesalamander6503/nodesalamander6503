@@ -1,0 +1,233 @@
+<!doctype html>
+<html class = "theme-copper">
+	<head>
+		<title>  Binomial operations  | node's site </title>
+		<link rel="stylesheet" href="/Users/amccord/Library/Mobile Documents/com~apple~CloudDocs/Home/Projects/nodeBlog/css.css">
+		<link rel="stylesheet" href="/Users/avnercordero/Library/Mobile%20Documents/com~apple~CloudDocs/Home/Projects/nodeBlog/css.css">
+	</head>
+	<body>
+		<div id = "above-fold">
+			<h1 id = "title">  Binomial operations  </h1>
+			<p id = "desc">  </p>
+			<div id = "buttons">
+				<a href = "#main-body">
+					<span> Read more </span>
+				</a>
+				<a href = "$HOME$">
+					<span> Home </span>
+				</a>
+				<a href = "/main/hire-me.html">
+					<span> Contact Me </span>
+				</a>
+				
+			</div>
+		</div>
+		<div id = "majority">
+			<aside>
+				<nav>
+<div id = "inline-nav"><a href="#Introduction" style="padding-left: 0rem;"> Introduction </a><a href="#Handling-Errors" style="padding-left: 0rem;"> Handling Errors </a><a href="#A-major-blunder" style="padding-left: 1rem;line-height: 1.5rem;"> A major blunder </a><a href="#A-better-method" style="padding-left: 1rem;line-height: 1.5rem;"> A better method </a><a href="#Panic-At-the-software" style="padding-left: 1rem;line-height: 1.5rem;"> Panic! At the software </a><a href="#Adding-functionality" style="padding-left: 0rem;"> Adding functionality </a><a href="#Do-it-better-makes-us-faster" style="padding-left: 0rem;"> Do it better, makes us faster </a><a href="#Do-it-better" style="padding-left: 1rem;line-height: 1.5rem;"> Do it better </a><a href="#Makes-us-faster" style="padding-left: 1rem;line-height: 1.5rem;"> Makes us faster </a><a href="#Conclusion" style="padding-left: 0rem;"> Conclusion </a></div>
+				</nav>
+			</aside>
+			<main>
+				<div id = "main-body">
+<h2 id="Introduction"> Introduction </h2><p>
+			In the last episode, we built a REPL.
+			A REPL is essentially an interactive calculator, and our REPL was a calculator focused on integers.
+			It had many issues, such as ignorance of negative numbers, and an inability to do basic addition.
+			However, all these issues pale in comparison to it's fatal flaw.
+		</p><p>
+			Imagine you're in a math exam.
+			It's worth 90% of your grade, so you're very nervous about your exam performance - if you do poorly on this exam, your grade will drop by an astonishing degree!
+			The one saving grace is that the professor permitted you to use a basic calculator.
+			You go to calculate some difficult arithmetic problem - say, the seventy-sixth root of the sum of eight factorial with six hundred forty-three.
+			You make a minor mistake.
+			The "equals" button is pressed before you enter the final parenthesis.
+			All of a sudden, the calculator explodes in your hand!
+			The resulting fireball leaves your hair alight and chars your exam papers beyond all recognition or repair.
+		</p><p>
+			This is a slightly dramatized depiction of what happens when you make a mistake while using the REPL we made in the last episode.
+			While the REPL won't actually make your computer explode, any mistake will cause the REPL to crash, forcing you to restart the REPL if you want to continue using it.
+			It doesn't matter how minor the mistake is.
+			This calculator is, for all intents and purposes, a landmine that can manipulate numbers.
+		</p><p>
+			This is not good.
+			Therefore, in this episode, we will modify the REPL to turn it from a clunky, finicky, one-operation-only system into a powerful tool of arithmetic and calculation.
+		</p><h2 id="Handling-Errors"> Handling Errors </h2><p>
+			As previously mentioned, the REPL becomes completely useless whenever an error occurs.
+			This is because it lacks any sort of error-handling capabilities.
+			If you were a professional calculator (which, by the way, actually used to be a thing that they paid people to do), you might take in math problems in some inbox, solve them, and then send them back to whomever requested the answers via some outbox.
+			If someone accidentally sent you something that isn't math, such as a photo of a cat, you'd probably just assume that they made a mistake and send it right back to them.
+			However, unlike you, the REPL we've devised does not have common sense.
+			Your computer does not have a life and has no idea what to do about anything that we don't explicitly teach it to handle.
+		</p><p>
+			To deal with this, we must modify the REPL program to allow it to fail gracefully when something unexpected happens.
+			It should say that something incorrect happened, explain why it is incorrect, and possibly even suggest remedies, rather than simply dying every time something strange occurs.
+		</p><h3 id="A-major-blunder"> A major blunder </h3><p>
+			A traditional method for error handling is what is known as a setjmp / longjmp pattern.
+			If you have experience with some modern programming languages, you may have seen this before.
+			It's how exceptions work in languages such as C++.
+			This pattern lets you capture a sort of snapshot of the program at a particular point in time.
+			You can then "rewind" to that snapshot if an error occurs.
+			If we implemented this in our REPL, it would be akin to automatically restarting the REPL every time an error occurs.
+		</p><p>
+			This would certainly let us recover from errors, but it wouldn't be that much of an improvement.
+			Not only is it rather slow, it is also hard to debug because it discards all information.
+			As we progress with this REPL project, we will discover that debuggability is a very important thing - how are we supposed to invent a tool if we can't figure out why it doesn't work?
+			Additionally, because it discards information, this pattern would break many features we might add in the future.
+			For instance, if a future update adds variables to the REPL, using a setjmp / longjmp pattern for error handling would cause all your variables to disappear whenever an error occurs.
+			This would not be very nice to use.
+		</p><h3 id="A-better-method"> A better method </h3><p>
+			As an alternative solution, we can simply modify our existing code to return slightly more data than they used to.
+			In particular, I created a <code>result</code> construct.
+			Any function that can experience an error now returns this type of construct, rather than a plain value.
+			The <code>result</code> construct is basically an envelope with a shipping label.
+			The label tells us what is inside the envelope.
+			The contents can either be the desired return value, such as an integer, or a special error construct that contains important data about the error.
+		</p><p>
+			Our result construct resembles the following code.
+			If you're a programmer who is familiar with certain languages, you might notice the resemblance to Rust's <code>std::result<T, E></code>.
+		</p><pre>
+enum error {
+	some_sort_of_error
+};
+union result__datum {
+	void * contents;
+	int integer;
+	enum error error;
+};
+struct result {
+	bool is_erroneous;
+	union result__datum datum;
+};</pre><p>
+			If we imagine the program as a boss and each function as a tiny employee who can perform only one task, then this <code>result</code> envelope allows each employee to provide their boss with either the answer that the boss asked for or a detailed message explaining what went wrong.
+			The boss can then decide to handle the error on their own, or to pass the error along to the boss' boss.
+			However, this new mechanism means that both the boss and the employees must be taught how the new messaging system works!
+		</p><p>
+			To account for this, I created a set of useful tools for the boss and employees to use.
+			These tools can automatically package a successful result or error message into an envelope and send it in one step.
+			They can also be used to automatically un-package successful results, capture unsuccessful results and trigger specific error-handling tasks, or even pass an error along.
+		</p><p>
+			These tools permitted me to alter the behavior of all the functions constituting the REPL to support the new message-passing system and therefore to allow them to handle and recover from any and all recoverable errors in a logical, straightforward manner.
+		</p><h3 id="Panic-At-the-software"> Panic! At the software </h3><p>
+			However, not all mistakes can be fixed.
+			You can erase text from a whiteboard and pick up a dropped message, but you can't un-break a glass.
+			Therefore, to handle irrecoverable errors such as running out of computer memory, I added a sort of panic button.
+			Each function ("employee") inside the program can then press the panic button to kill the entire program and display an error message whenever an irrecoverable error occurs.
+			Fortunately, irrecoverable errors are a fairly rare occurrence, so you'll likely never see the button's results.
+		</p><p>
+			With all this done, the REPL is now capable of handling errors in a straightforward manner.
+			Instead of crashing, it will tell you what happened and invite you to try again.
+		</p><h2 id="Adding-functionality"> Adding functionality </h2><p>
+			At the moment, there is only one possibility within the calculator: Integer.
+			You can make the calculator have an integer, but you can't do anything else with it.
+			This calculator can't even take the sum of two integers, which renders it quite useless.
+			To fix this, we must implement a system that allows the calculator's user to tell it what to do with the integers.
+		</p><p>
+			Let's consider our goals.
+			We want the calculator to be able to take in any two integers, and then do a specific thing with those integers.
+			Moreover, we want to be able to specify what to do.
+			Addition (<code>1 + 1</code>) and multiplication (<code>1 * 1</code>) are very different, but we should be able to represent them in a way that is similar enough to allow us to easily add new methods later, while still being sufficiently distinct that multiplication and addition are obviously not the same.
+		</p><p>
+			My solution is to create a new construct that represents the application of an arbitrary mathematical operation to any two integers.
+			If you remember the last article, I created a <code>mathnode</code> structure that I claimed could be extended to represent any arbitrary mathematical expression.
+			Let's extend it to be able to include these mathematical applications.
+			Since <code>1 + 1</code> contains two integers as inputs, this application construct should store two integers in it.
+			Furthermore, to disambiguate what mathematical method is being applied, the application construct should also contain a name.
+		</p><p>
+			Once this has been created, we can modify the evaluator to let it support these new application constructs.
+			We'll make it first get the two inputs.
+			Next, it'll look up the function's name in some sort of table.
+			This table will translate English names (such as "add" or "multiply") into a form the computer understands.
+			This will inform the computer what action we want it to perform with the two inputs.
+			Finally, we'll have it execute that action, and return the result.
+		</p><p>
+			Occasionally, we will make a typo.
+			When this happens, the dictionary translator will fail, and the computer will have no idea what we mean.
+			We can use the error-handling system we created earlier to return an "unknown input" error, which allows the user to correct their typo instead of having the calculator crash.
+		</p><p>
+			Now that this is done, we are capable of computing arbitrary mathematical expressions.
+			We can even compute really difficult tasks, such as one thousand plus one!
+			We are only capable of computing a single problem at a time, but this is still far more capable than the previous model.
+		</p><p> [[todo:  add REPL picture here, showing (add 1000 1) ]]</p><h2 id="Do-it-better-makes-us-faster"> Do it better, makes us faster </h2><p>
+			As previously mentioned, we are limited to a single computation at a time.
+			Not only is it impossible for this calculator to compute the sum of a million numbers in one go, it also can't even calculate something as simple as (1 + 1) + 1.
+			How useless!
+			To make the calculator better, we must remedy this at once.
+		</p><h3 id="Do-it-better"> Do it better </h3><p>
+			To be more specific, our calculator is ineffective because it lacks the ability to handle nested computations.
+			For instance, suppose we want to calculate something such as <code>(div (add 3 7) 10)</code>.
+			To compute this, we must first evaluate the inner expression, transforming <code>(add 3 7)</code> into the integer 10.
+			This yields <code>(div 10 10)</code> Once that is done, we can evaluate the outer expression, giving us the final result of one.
+		</p><p>
+			Since the current calculator is incapable of representing or evaluating nested expressions, it is incapable of solving problems such as the aforementioned <code>(div (add 3 7) 10)</code>.
+			We must therefore solve this by implementing some method that allows us to solve an inner part of a math problem before solving an outer part.
+		</p><p>
+			One method might be to very literally just create a function that handles the inner parts, and a second one that handles outer parts.
+			The part that handles the outside of a mathematical formula would simply use the component that handles the inner part in order to obtain integers.
+			We can call the one that handles the inner part the "child handler", and the function that handles the inner part might be the "parent handler".
+		</p><p>
+			The child handler would essentially be what we already have.
+			It would be capable of handling any mathematical node provided that its inputs are integers that are already known.
+			The parent handler would then be able to account for nodes that have exactly one "layer" of inputs, by using the child handler to turn the layer of inputs into integers.
+		</p><p>
+			This allows us to handle exactly one layer of inputs, making problems such as <code>(div (add 3 7) 10)</code> solvable.
+			However, this is still limited.
+			While we could continue to add more layers, it would always be finite.
+			Furthermore, adding more layers would make the program needlessly complicated, and might make it hard for us to update.
+		</p><p>
+			Mathnodes should be able to be nested inside other mathnodes to an arbitrary depth, like a set of Russian nesting dolls that could potentially be comprised of hundreds or even thousands of dolls.
+			Our program must be capable of handling such an enormous glut of nodes just as easily as it would handle a simple program containing only one or two nodes.
+			While the current method can handle a few nodes, it will break down at some pre-determined limit.
+		</p><p>
+			Wouldn't it be neat if we could handle an arbitrary amount of nested nodes using a single simple function?
+		</p><h3 id="Makes-us-faster"> Makes us faster </h3><p>
+			As it turns out, it is entirely possible to handle an infinite number of nested nodes using a single function.
+			This is because we can simply have the function or algorithm include itself as one step, as a way to repeat.
+		</p><p>
+			Imagine you have a strange type of Russian nesting doll.
+			Instead of having exactly one doll immediately inside each other doll, the number of dolls immediately inside a "parent" doll is a quantity within the range of 0 and 3.
+			Suppose you want to un-nest all the dolls, so that you have them all laid out on the table.
+			Your set of instructions might look like this:
+		</p><ul><li> Obtain the current doll </li><li> Open it up </li><li> Repeat these steps (starting from step 1) for each doll inside the current doll </li><li> Place the current doll on the table </li><li> Done! </li></ul><p>
+			This set of steps will clearly result in all dolls being arranged on the table, and yet is done with only one small set of steps!
+			We achieved this by essentially splitting the problem into a bunch of little problems, each of which is both simple and similar, and then having the instructions only explain how to subdivide a big problem into little problems and then solve one of the simple problems.
+			This is called recursion.
+			More formally, recursion is when some function is defined in terms of itself.
+		</p><p>
+			Therefore, we can make the evaluator capable of solving complex problems by teaching it to split the complex problems into smaller, simpler problems, use many "copies" of itself to solve all the problems, then return the final result.
+		</p><p>
+			Now that recursion has been added, we can compute arbitrarily complex nested equations, such as a division of sums.
+		</p><pre>
+> (div (add 3 7) 10)
+1</pre><h2 id="Conclusion"> Conclusion </h2><p>
+			Overall, through this article, we turned our REPL from a clunky, finicky, one-operation-only system into a robust tool that can solve all sorts of problems and can even recover from various types of errors. 
+			At the moment, this tool only supports integers.
+			While integers are useful, they aren't everything.
+			There exist many sorts of data that are not integers, such as text and irrational numbers and polygons and pictures and colors.
+			To address this limitation, we might consider introducing some sort of system that permits the use of multiple different types of data within the same REPL - a "type system", if you will.
+		</p><p>
+			Your homework, should you choose to accept it, is to try to figure out what kind of mechanism we could invent to allow our REPL to be able to handle and manipulate a variety of types of data.
+		</p>
+				</div>
+			</main>
+		</div>
+		<footer id = "footer">
+			<div class = "foot-bloc">
+				<h2> Thanks for reading! </h2>
+				<p>
+					Writing content takes a lot of effort, so it means a lot to me that you took the time to read this.
+					If you thought this was good, feel free to share it with your friends or online.
+					Furthermore, if you benefitted from this content and you'd like more, consider <!--subscribing to my RSS, or--> checking out my <a href="/hire-me">hire me</a> page.
+					Thanks, and have a nice day!
+				</p>
+			</div>
+			<div>
+				<h2> Quick links </h2>
+				<p> <a href = "/"> Home </a> </p>
+				<p> <a href = "/redirect/recent"> Recent article </a> </p>
+				<p> <a href = "/about"> About </a> </p>
+				<p> <a href = "/hire-me"> My cover letter </a> </p>
+			</div>
+		</footer>
+	</body>
+</html>
