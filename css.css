@@ -122,7 +122,7 @@ code {
 	color: var(--fg);
 	text-indent: 2rem;
 }
-#main-body li {
+#main-body ul {
 	padding-left: 2rem;
 }
 
