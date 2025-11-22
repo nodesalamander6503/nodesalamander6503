@@ -126,7 +126,7 @@ code {
 	color: var(--fg);
 	text-indent: 2rem;
 }
-#main-body p b {
+#main-body b {
 	font-weight: bold;
 	color: var(--fg-heavy);
 }
@@ -141,7 +141,7 @@ code {
 	padding: 0 1rem;
 	gap: 1rem;
 	justify-content: center;
-	margin-top: 1rem;
+font-weight: bold;	margin-top: 1rem;
 }
 #footer .foot-bloc {
 	flex-grow: 1;
