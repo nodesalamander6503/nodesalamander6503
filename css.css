@@ -4,6 +4,7 @@ html.theme-copper {
 	--bg-2: #303336;
 	--bg-a: #43B3AE;
 	--fg: #EEEEEE;
+	--fg-heavy: #FFFFFF;
 	--interactive: var(--bg-a);
 	--interactive-fg: #EEEEEE;
 }
@@ -12,6 +13,7 @@ html.theme-zinc {
 	--bg-2: #53565B;
 	--bg-a: #8895A8;
 	--fg: #EEEEEE;
+	--fg-heavy: #FFFFFF;
 	--interactive: #85AEED;
 	--interactive-fg: #53565B;
 }
@@ -114,13 +116,19 @@ code {
 #main-body h2 {
 	font-weight: bold;
 	text-align: center;
+	color: var(--fg-heavy);
 }
 #main-body h3 {
 	font-weight: bold;
+	color: var(--fg-heavy);
 }
 #main-body p {
 	color: var(--fg);
 	text-indent: 2rem;
+}
+#main-body p b {
+	font-weight: bold;
+	color: var(--fg-heavy);
 }
 #main-body ul {
 	padding-left: 2rem;
