@@ -47,7 +47,8 @@ body * {
 #above-fold {
 	background: #FFF;
 	background: var(--bg-2);
-font-weight: bold;	min-height: 30vh;
+	font-weight: bold;
+	min-height: 30vh;
 	padding: 4rem;
 	position: relative;
 	overflow: hidden;
@@ -84,8 +85,6 @@ font-weight: bold;	min-height: 30vh;
 	margin: 0 auto;
 	width: calc(100% - 2rem);
 	max-width: 40rem;
-	display: flex;
-	flex-direction: column;
 	line-height: 2rem;
 }
 #majority {
