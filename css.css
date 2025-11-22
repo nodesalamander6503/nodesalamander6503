@@ -21,7 +21,7 @@ html.theme-zinc {
 html {
 	margin: 0;
 	padding: 0;
-	font-size: calc(max(1rem, 18px));
+	font-size: calc(max(1rem, 16px));
 	font-family: "Fira Code", "Times New Roman", Times, "Roboto Mono", "Roboto", serif, monospace, sans-serif;
 	color: #000;
 	color: var(--fg);
