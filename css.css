@@ -122,6 +122,9 @@ code {
 	color: var(--fg);
 	text-indent: 2rem;
 }
+#main-body li {
+	padding-left: 2rem;
+}
 
 #footer {
 	background: var(--bg-2);
