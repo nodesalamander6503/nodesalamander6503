@@ -80,6 +80,7 @@ body * {
 	background: var(--interactive);
 	box-shadow: 0 0 0 0.5rem var(--interactive);
 	color: var(--interactive-fg);
+	padding: 0 0.5rem;
 }
 
 
