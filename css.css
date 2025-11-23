@@ -6,7 +6,7 @@ html {
 	--fg-heavy: #FFFFFF;
 	--fg-interactive: #EEEEEE;
 	--interactive: var(--bg-a);
-	--interactive: var(--fg);
+	--interactive-fg: var(--fg);
 }
 html.theme-four {
 	/* it's four-coded, yk */
@@ -77,7 +77,6 @@ body * {
 	gap: inherit;
 }
 #above-fold #buttons a {
-	background: #6495ED;
 	background: var(--interactive);
 	box-shadow: 0 0 0 0.5rem var(--interactive);
 	color: var(--interactive-fg);
