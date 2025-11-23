@@ -1,21 +1,22 @@
-html.theme-copper {
-	/* patina */
+html {
 	--bg-1: #202224;
 	--bg-2: #303336;
-	--bg-a: #43B3AE;
+	--bg-a: #44FF44;
 	--fg: #EEEEEE;
 	--fg-heavy: #FFFFFF;
 	--interactive: var(--bg-a);
 	--interactive-fg: #EEEEEE;
 }
+html.theme-four {
+	/* it's four-coded, yk */
+	--bg-1: #1A0F24;
+	--bg-2: #272033;
+	--bg-a: #8CF29B;
+}
 html.theme-zinc {
 	--bg-1: #3C3F42;
 	--bg-2: #53565B;
 	--bg-a: #8895A8;
-	--fg: #EEEEEE;
-	--fg-heavy: #FFFFFF;
-	--interactive: #85AEED;
-	--interactive-fg: #53565B;
 }
 
 html {
