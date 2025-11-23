@@ -97,7 +97,7 @@ body * {
 	max-width: 80rem;
 }
 a {
-	color: var(--interactive);
+	color: var(--interactive-fg);
 	text-decoration: underline;
 	cursor: pointer;
 }
