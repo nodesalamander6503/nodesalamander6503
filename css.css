@@ -4,8 +4,9 @@ html {
 	--bg-a: #44FF44;
 	--fg: #EEEEEE;
 	--fg-heavy: #FFFFFF;
+	--fg-interactive: #EEEEEE;
 	--interactive: var(--bg-a);
-	--interactive-fg: #EEEEEE;
+	--interactive: var(--fg);
 }
 html.theme-four {
 	/* it's four-coded, yk */
@@ -17,7 +18,7 @@ html.theme-zinc {
 	--bg-1: #3C3F42;
 	--bg-2: #53565B;
 	--bg-a: #8895A8;
-	--interactive-fg: #B5C6E0;
+	--fg-interactive: #B5C6E0;
 }
 
 html {
@@ -97,7 +98,7 @@ body * {
 	max-width: 80rem;
 }
 a {
-	color: var(--interactive-fg);
+	color: var(--fg-interactive);
 	text-decoration: underline;
 	cursor: pointer;
 }
