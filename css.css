@@ -1,23 +1,24 @@
 html {
 	--bg-1: #202224;
 	--bg-2: #303336;
-	--bg-a: #44FF44;
 	--fg: #EEEEEE;
 	--fg-heavy: #FFFFFF;
-	--fg-interactive: #EEEEEE;
-	--interactive: var(--bg-a);
+	--fg-interactive: #44FF44;
+	--interactive: #44FF44;
 	--interactive-fg: var(--fg);
 }
 html.theme-four {
 	/* it's four-coded, yk */
-	--bg-1: #1A0F24;
-	--bg-2: #272033;
-	--bg-a: #8CF29B;
+	--bg-1: #22212D;
+	--bg-2: #2C2B3A;
+	--fg-interactive: #32D62C;
+	--interactive: #197F15;
+	--interactive-fg: #AAA5E2;
 }
 html.theme-zinc {
 	--bg-1: #2B3138;
 	--bg-2: #353C44;
-	--bg-a: #8895A8;
+	--interactive: #8895A8;
 	--fg-interactive: #B5C6E0;
 }
 
