@@ -135,7 +135,6 @@ code {
 }
 #main-body p {
 	color: var(--fg);
-	text-indent: 2rem;
 }
 #main-body b {
 	font-weight: bold;
