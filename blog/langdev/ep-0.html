@@ -35,7 +35,7 @@
 			</aside>
 			<main>
 				<div id = "main-body">
-<h1 id="Introduction"> <p>  Introduction </p></h1><h2 id="Why-make-a-programming-language"> <p>  Why make a programming language? </p></h2><p>  Did you know that there is a programming language where you pretend to be a chef? </p><p>  There are a lot of programming languages.
+<h2 id="Introduction"> <p>  Introduction </p></h2><h3 id="Why-make-a-programming-language"> <p>  Why make a programming language? </p></h3><p>  Did you know that there is a programming language where you pretend to be a chef? </p><p>  There are a lot of programming languages.
 			Atop the aforementioned language, which is aptly named Chef, there are also languages where you draw code using a painting app (such as Piet), and languages where you do math by placing things on top of other things (such as Forth), and many more.
 			Even within categories of programming languages, there is an incredible amount of language diversity.
 			For instance, observe the minor language category called Lisp (which is short for "list processing").
@@ -46,7 +46,7 @@
 			Such projects give us the opportunity to learn how programming systems work from a first-hand perspective, which helps develop a better understanding of how these systems function.
 			Moreover, engaging in such projects allows us to experiment with new conjectures and hypotheses, potentially allowing us to develop and demonstrate new methods. </p><p>  Therefore, I want to develop my own programming system to allow me to learn how programming languages work.
 			Additionally, I hope that I'll be able to use this system to allow me to make nice things.
-			I think that making a game or small tool by using my very own programming language would be really cool! </p><h2 id="Pathway"> <p>  Pathway </p></h2><p>  The C programming language was not made overnight.
+			I think that making a game or small tool by using my very own programming language would be really cool! </p><h3 id="Pathway"> <p>  Pathway </p></h3><p>  The C programming language was not made overnight.
 			Instead, C evolved from a programming language called B, which in turn was created using bits and pieces of several predecessor languages.
 			In much the same way, I will make a proper computer programming language by starting with a calculator language and then evolving it over time. </p><p>  In particular, I will start by implementing a REPL interface.
 			A REPL is somewhat akin to the Terminal or Command Prompt app on your computer.
@@ -68,7 +68,7 @@
 			We can then add a component called a type checker, which serves to ensure that each variable never contains a value of the wrong type.
 			Type checkers are pretty useful!
 			They can be used to do things such as proving that programs are "correct" with regards to certain criteria, for instance. </p><p>  This set of steps will lead us to implement a basic programming system with features such as lambdas, variables, and types.
-			I think that this is a perfectly reasonable goal, so this is what we'll pursue. </p><h2 id="Tooling"> <p>  Tooling </p></h2><p>  Note that, if you are not planning on replicating my project, you can ignore this small section.
+			I think that this is a perfectly reasonable goal, so this is what we'll pursue. </p><h3 id="Tooling"> <p>  Tooling </p></h3><p>  Note that, if you are not planning on replicating my project, you can ignore this small section.
 			It only covers C-specific implementation details. </p><p>  In implementing my custom programming system, I will be making use of fairly minimal tooling.
 			I'll use the C programming language, without any major modifications or additional libraries.
 			In particular, I won't use a parser generator (which is a type of tool used to make programming language development easier).
@@ -77,7 +77,7 @@
 			As a result, I'll try to keep my language's grammar and syntax simple, so that a parser generator does not become necessary. </p><p>  To transform my source code into an executable file (that is, the file that you double-click to run), I'll obviously need a C compiler.
 			I will be using Clang as my compiler, and will employ a Makefile to control Clang.
 			However, any compatible build system and modern C compiler should work when compiling my code.
-			As a general rule, I endeavor to avoid compiler-specific extensions as much as possible. </p><h1 id="Foreword-On-compilation-and-interpretation"> <p>  Foreword: On compilation and interpretation </p></h1><p>  There is much contest between whether to use compiled or interpreted languages.
+			As a general rule, I endeavor to avoid compiler-specific extensions as much as possible. </p><h2 id="Foreword-On-compilation-and-interpretation"> <p>  Foreword: On compilation and interpretation </p></h2><p>  There is much contest between whether to use compiled or interpreted languages.
 			To understand why this discourse exists, let's define compiled and interpreted systems. </p><p>  If you've ever opened an app by double-clicking it or by tapping it in your phone's home screen, you've interacted with something created using a compiler.
 			A compiled language is a language where the initial code is processed by a special tool (called a compiler) and turned into a special file that your CPU understands.
 			The resulting file is the thing that you double-click to run.
@@ -100,7 +100,7 @@
 			By using a simple compiler, I can make use of existing assembler backends (an assembler backend is a tool that helps the compiler write in a CPU's native language).
 			This would mean that the backend would handle machine-specific optimizations, thus reducing my workload.
 			It also often results in smaller executables than methods based on bundling components such as interpreters. </p><p>  The use of a compiler therefore allows me to create small, performant executables easily.
-			Hence I think that a compiler for my programming system is a better final choice than an interpreter. </p><h1 id="Designing-a-basic-REPL"> <p>  Designing a basic REPL </p></h1><p>  If you've ever used a proper REPL before, you probably have an idea of just how simple they are. </p><p>  A REPL, or a Read-Evaluate-Print Loop, is a method or system for interfacing with interpreter-based computer systems.
+			Hence I think that a compiler for my programming system is a better final choice than an interpreter. </p><h2 id="Designing-a-basic-REPL"> <p>  Designing a basic REPL </p></h2><p>  If you've ever used a proper REPL before, you probably have an idea of just how simple they are. </p><p>  A REPL, or a Read-Evaluate-Print Loop, is a method or system for interfacing with interpreter-based computer systems.
 			The most common type of REPL is the common line-based calculator (such as your basic TI-84).
 			In a line calculator, you type in a problem, the calculator solves the problem, it prints out the answer, and then the whole process repeats until you are done using the calculator.
 			As the name implies, this process takes 4 steps - namely, reading input from the user, evaluating the code, printing the response, and looping to do the same thing again. </p><p>  A REPL is practical because it makes work easy.
@@ -119,14 +119,14 @@
 			This is effectively just an overcomplicated integer-only echo loop, which happens to fail for integers that are too large.
 			The reason we're implementing all this complexity is because having these stubby components now will make it easier to improve the system later.
 			New parts will be added by simply changing the behavior of individual components, without having to alter the ways in which they interact.
-			Therefore, this complexity is being added to the design to allow us to extend and improve the design later, in a manner following from the goals we have for the system. </p><h1 id="Implementing-the-aforementioned-REPL"> <p>  Implementing the aforementioned REPL </p></h1><p>  This section will have 4 parts: Getting data from the user, understanding the data by parsing it, evaluating or processing that data, and finally printing a result.
+			Therefore, this complexity is being added to the design to allow us to extend and improve the design later, in a manner following from the goals we have for the system. </p><h2 id="Implementing-the-aforementioned-REPL"> <p>  Implementing the aforementioned REPL </p></h2><p>  This section will have 4 parts: Getting data from the user, understanding the data by parsing it, evaluating or processing that data, and finally printing a result.
 			All of these steps seem reasonably simple, but beware!
 			Here be dragons!
 			While a REPL can be a very straightforward thing to make, there are many ways to screw one up.
 			A toy REPL probably does not need to be designed with things like safety and efficiency in mind.
 			However, I will be discussing such nuanced topics anyways, because I am interested in them.
 			I hope that this discussion may help you, the reader, to better understand why the REPLs that you use happen to be how they are.
-			I also hope that it helps you implement better, safer, and more reliable REPLs, should you choose to do so. </p><h2 id="Reading-a-string"> <p>  Reading a string </p></h2><p>  Finally, we can start writing code! </p><p>  In many languages, reading a string of text from the user is quite easy.
+			I also hope that it helps you implement better, safer, and more reliable REPLs, should you choose to do so. </p><h3 id="Reading-a-string"> <p>  Reading a string </p></h3><p>  Finally, we can start writing code! </p><p>  In many languages, reading a string of text from the user is quite easy.
 			For didactic purposes, let's consider an example in Python 3.12.
 			In this language, the first step to read a string of text is the following: </p><pre> 
 x = input("> ") </pre><p>  This is also the last step.
@@ -221,7 +221,7 @@ int main() {
 } </pre><p>  This does just what we need:
 			It takes in input from the user, is capable of handling arbitrary quantities of text, and does not suffer from buffer overflows.
 			While it does lack proper error handling, it does clearly define how to handle those errors.
-			As it is, this reader satiates our goals. </p><h2 id="Parsing-an-integer"> <p>  Parsing an integer </p></h2><p>  Now that we can *obtain* a string, we can try to *understand* it.
+			As it is, this reader satiates our goals. </p><h3 id="Parsing-an-integer"> <p>  Parsing an integer </p></h3><p>  Now that we can *obtain* a string, we can try to *understand* it.
 			For simplicity, we'll start by parsing positive integers that are written in base-ten notation. </p><p>  Let's try to think of a way to parse integers.
 			As you'll recall, a four-digit number written "2357" is interpreted as "2 thousands plus 3 hundreds plus 5 tens plus 6".
 			Observe that each decimal place is ten times larger than the one to it's left.
@@ -302,7 +302,7 @@ int parse__integer(struct buffer * buf) {
 	return number;
 } </pre><p>  This code uses the times-ten-and-add method to parse from a buffer an arbitrary integer of unknown size, just like the Python code.
 			It is reliable, somewhat efficient, and does not require any internal buffer.
-			While it is not yet capable of parsing negative numbers, it is obvious that we can add negatives by simply introducing some code to detect prefix positive or negative signs and alter the <span style="color:red;"> code </span> is_negative flag accordingly. </p><h2 id="Evaluating"> <p>  Evaluating </p></h2><p>  Once the REPL has obtained and understood the user's input, it can then proceed to do something with that input.
+			While it is not yet capable of parsing negative numbers, it is obvious that we can add negatives by simply introducing some code to detect prefix positive or negative signs and alter the <span style="color:red;"> code </span> is_negative flag accordingly. </p><h3 id="Evaluating"> <p>  Evaluating </p></h3><p>  Once the REPL has obtained and understood the user's input, it can then proceed to do something with that input.
 			The current REPL doesn't support particularly complex input data *yet*, so there is not much we can do to process the input data.
 			However, we are going to be improving the calculator very soon, so we might as well start considering evaluation now. </p><p>  First, let's think about *why* we need evaluation.
 			The purpose of a calculator is to transform mathematical expressions into their final equivalent values.
@@ -329,7 +329,7 @@ struct mathnode {
 int evaluate(struct mathnode * math) {
 	// TODO: add more complex logic to the evaluator
 	return math->data.integer;
-} </pre><p>  We will discuss advanced applications of tagged unions in a future post, in which we will also implement a more powerful evaluator. </p><h2 id="Printing"> <p>  Printing </p></h2><p>  C is usually quite annoying to use for complex string operations.
+} </pre><p>  We will discuss advanced applications of tagged unions in a future post, in which we will also implement a more powerful evaluator. </p><h3 id="Printing"> <p>  Printing </p></h3><p>  C is usually quite annoying to use for complex string operations.
 			It's so hard to do string manipulation in C, in fact, that the majority of popular interpreted REPL-based programming languages were created with the sole purpose of making string processing easier.
 			However, there is *one* thing that is really easy to do in conventional C. </p><p>  It's really easy to write things in C. </p><p>  If we just want to write down a single integer, we can use this code: </p><pre> 
 #include <stdio.h>
@@ -342,7 +342,7 @@ int main() {
 			We could also replace all integers in our calculator with floating-point numbers (which are the easiest and most contentious way to represent fractions in a computer), and then tell C to print it as a decimal with a dot by using <span style="color:red;"> code </span> %f . </p><p>  Let's turn this into a function that prints a single integer: </p><pre> 
 void print__integer(int integer) {
 	printf("%d\n", node->data.integer);
-} </pre><h1 id="Wrapping-it-all-up"> <p>  Wrapping it all up </p></h1><p>  Once we have all the parts, we can connect them to each other.
+} </pre><h2 id="Wrapping-it-all-up"> <p>  Wrapping it all up </p></h2><p>  Once we have all the parts, we can connect them to each other.
 			This involves creating a loop that repeatedly obtains input, parses the input as a mathnode, evaluates that mathnode into an integer, and finally prints out the integer.
 			That resembles this: </p><pre> 
 int main(int argc, char ** argv) {
