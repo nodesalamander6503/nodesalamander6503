@@ -144,7 +144,7 @@ code {
 	font-weight: bold;
 	color: var(--fg-heavy);
 }
-#main-body ul {
+ul {
 	padding-left: 2rem;
 }
 
