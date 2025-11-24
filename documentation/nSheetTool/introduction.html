@@ -1,0 +1,97 @@
+<!doctype html>
+<html class = "theme-zinc">
+	<head>
+		<title>  Introduction  | node's site </title>
+		<link rel="stylesheet" href="/nodesalamander6503/css.css" />
+	</head>
+	<body>
+		<div id = "above-fold">
+			<h1 id = "title">  Introduction  </h1>
+			<p id = "desc"> 
+			A beginner's guide to node's sheet tool.
+		 </p>
+			<div id = "buttons">
+				<a href = "#main-body">
+					<span> Read more </span>
+				</a>
+				<a href = "$HOME$">
+					<span> Home </span>
+				</a>
+				<a href = "/main/hire-me.html">
+					<span> Contact Me </span>
+				</a>
+				
+			</div>
+		</div>
+		<div id = "inter-content">
+			<div id="priority"> <ul> <li> <p>  <a href="/contents/documentation/nSheetTool/introduction.html">  Introduction  </a> </p> </li> </ul> </div>
+		</div>
+		<div id = "majority">
+			<aside>
+				<nav>
+<div id = "inline-nav"> <p style="padding-left: 0rem;"> <a href="#What-is-nodes-sheet-tool"> What is node's sheet tool?  </a> </p> <p style="padding-left: 0rem;"> <a href="#Capabilities-and-features"> Capabilities and features  </a> </p> <p style="padding-left: 1rem;"> <a href="#Ledger-tabulation"> Ledger tabulation  </a> </p> <p style="padding-left: 1rem;"> <a href="#Budgeting"> Budgeting  </a> </p> <p style="padding-left: 1rem;"> <a href="#Statistical-analysis"> Statistical analysis  </a> </p> <p style="padding-left: 0rem;"> <a href="#Designating-a-table"> Designating a table  </a> </p> <p style="padding-left: 0rem;"> <a href="#Example-sheets"> Example sheets  </a> </p>  </div>
+				</nav>
+			</aside>
+			<main>
+				<div id = "main-body">
+<h2 id="What-is-nodes-sheet-tool"> <p>  What is node's sheet tool? </p></h2><p>  This tool is a simple add-on for Google Sheets that extends existing spreadsheets to increase their capabilities while also playing nice with your existing custom scripts and formulas. 
+			It provides structured table validation, ledger tabulation, budgeting and inventorying, and even statistical analysis.
+			Furthermore, it does so <b> easily </b> .
+			You don't need any programming experience or formula skills, and you don’t need any special training to use node's sheet tool, because it does the work for you. </p><p>  At the core of node's sheet tool is an advanced spreadsheet processing engine that can interpret and understand any properly-annotated spreadsheet.
+			(See "Designating a table" below).
+			It can dynamically perceive and respond to data, permitting it to build reports, summarize account data, highlight malformed or misleading data, and even automate budgeting and statistical analysis. </p><p>  Furthermore, since the engine is capable of interpreting any annotated spreadsheet, no matter what the annotations are, it is easy to extend.
+			You can add any column you want to any sheet that you want, and node's sheet tool will respond in a fitting and logical manner.
+			This means that you don't need to wait for an update to node's sheet tool if you want a new column or spreadsheet type to be supported. </p><h2 id="Capabilities-and-features"> <p>  Capabilities and features </p></h2><h3 id="Ledger-tabulation"> <p>  Ledger tabulation </p></h3><p>  The use of a ledger makes accounting and inventorying trivial by permitting you to track transactions and calculate a running summary of the state of your accounts.
+			In node's sheet tool, a ledger must contain two columns.
+			These columns must include a text column labeled "Account", and a numeric column labeled "Value".
+			Any table that contains these columns can be considered a ledger. </p><p>  The ledger tabulator is node's sheet tool's flagship feature.
+			It simply goes through a selected ledger and tallies account data.
+			If a budget exists, the tabulator will ensure that your accounts meet the budget thresholds.
+			The tabulator will then generate a high-quality report on the state of all your accounts, which you can preview in the spreadsheet or export as a document. </p><p>  To use the tabulator, simply go to the menu entitled "node's tool" and select the "Tabulate" option.
+			Note that it will only attempt to tabulate the sheet that you currently have open. </p><h3 id="Budgeting"> <p>  Budgeting </p></h3><p>  If a budget sheet exists, then the ledger tabulator will ensure that the ledger's sums fit the thresholds you've imposed in the budget. </p><p>  A budget sheet must contain a text column labeled "Account", and a numeric column labeled "Threshold".
+			This prescribes the per-account thresholds.
+			If the threshold is exceeded, the report that the tabulator generates will include this fact, prompting you to take measures to address this issue. </p><h3 id="Statistical-analysis"> <p>  Statistical analysis </p></h3><p>  To facilitate statistical analysis, node's sheet tool automatically calculates the mean and standard deviation of the data within any numeric column.
+			Moreover, if there are two or more numeric columns, node's sheet tool will also calculate the simple linear regressions between every combination of two columns, as well as the Pearson's correlation coefficient between said columns.
+			This allows you to quickly get an idea of the statistical parameters of any given sheet. </p><h2 id="Designating-a-table"> <p>  Designating a table </p></h2><p>  For node's sheet tool to understand and make use of a given spreadsheet table, you must annotate it with the requisite data.
+			Annotating a sheet is simple.
+			All you need to do is give each column a label and a type. </p><p>  Annotation data is stored in the two frozen rows at the top.
+			If you don't have two frozen rows at the top of your sheet, the tool will not understand your sheet and will simply assume it is not a table and ignore it.
+			The first frozen row contains labels.
+			This indicates what the data means.
+			For instance, you might annotate your table with column names such as "Name" or "Age".
+			These labels serve to tell you the meaning of your data. </p><p>  The second frozen row contains types.
+			The type annotations are used to indicate what type of data is stored - namely, whether the data in a given column is supposed to be a number, some text, a date, or something else.
+			This tells node's sheet tool what is supposed to be in a given column, thereby permitting it to help you with nearly any sort of spreadsheet table.
+			Currently, the tool only recognizes the annotations of <span style="color:red;"> code </span> num and <span style="color:red;"> code </span> text .
+			Fortunately, if you can't find a good annotation for a particular column. or if you don't want to annotate a column with a type, you don't have to.
+			You can leave any column's type annotation empty if you want to, and the tool will simply assume that this column contains arbitrary data. </p><p>  Since all columns are labeled, their order does not matter.
+			You can rearrange them to your heart's content without breaking the sheet tool.
+			Note that, while rearranging columns won't break <b> node's </b> sheet tool, this may break other third-party extensions if you have any. </p><h2 id="Example-sheets"> <p>  Example sheets </p></h2><p>  The tool comes with several example sheets built into it. </p><p>  To deploy an example, first navigate to the tool's menu.
+			Press the menu, then press the option that says "Examples".
+			You can then select any example from the list. </p><p>  These examples are fully-functional sheets complete with example data.
+			You can use them to try out the tool's features and see what it can do!
+			One may also use the examples to jump-start a new ledger or statistical analysis.
+			Just find an example that resembles your use-case, then edit it to make it match! </p>
+				</div>
+			</main>
+		</div>
+		<footer id = "footer">
+			<div class = "foot-bloc">
+				<h2> Thanks for reading! </h2>
+				<p>
+					Writing content takes a lot of effort, so it means a lot to me that you took the time to read this.
+					If you thought this was good, feel free to share it with your friends or online.
+					Furthermore, if you benefitted from this content and you'd like more, consider <!--subscribing to my RSS, or--> checking out my <a href="/hire-me">hire me</a> page.
+					Thanks, and have a nice day!
+				</p>
+			</div>
+			<div>
+				<h2> Quick links </h2>
+				<p> <a href = "/"> Home </a> </p>
+				<p> <a href = "/redirect/recent"> Recent article </a> </p>
+				<p> <a href = "/about"> About </a> </p>
+				<p> <a href = "/hire-me"> My cover letter </a> </p>
+			</div>
+		</footer>
+	</body>
+</html>
