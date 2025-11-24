@@ -97,6 +97,13 @@ body * {
 	gap: 2rem;
 	max-width: 80rem;
 }
+#inter-content {
+	margin: 2rem auto 0 auto;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	max-width: 80rem;
+}
 a {
 	color: var(--fg-interactive);
 	text-decoration: underline;

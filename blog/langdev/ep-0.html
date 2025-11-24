@@ -24,97 +24,67 @@
 				
 			</div>
 		</div>
+		<div id = "inter-content">
+			
+		</div>
 		<div id = "majority">
 			<aside>
 				<nav>
-<div id = "inline-nav"><p> <a href="#Introduction" style="padding-left: 0rem;"> Introduction </a> </p><p> <a href="#Why-make-a-programming-language" style="padding-left: 1rem;line-height: 1.5rem;"> Why make a programming language? </a> </p><p> <a href="#Pathway" style="padding-left: 1rem;line-height: 1.5rem;"> Pathway </a> </p><p> <a href="#Tooling" style="padding-left: 1rem;line-height: 1.5rem;"> Tooling </a> </p><p> <a href="#Foreword-On-compilation-and-interpretation" style="padding-left: 0rem;"> Foreword: On compilation and interpretation </a> </p><p> <a href="#Designing-a-basic-REPL" style="padding-left: 0rem;"> Designing a basic REPL </a> </p><p> <a href="#Implementing-the-aforementioned-REPL" style="padding-left: 0rem;"> Implementing the aforementioned REPL </a> </p><p> <a href="#Reading-a-string" style="padding-left: 1rem;line-height: 1.5rem;"> Reading a string </a> </p><p> <a href="#Parsing-an-integer" style="padding-left: 1rem;line-height: 1.5rem;"> Parsing an integer </a> </p><p> <a href="#Evaluating" style="padding-left: 1rem;line-height: 1.5rem;"> Evaluating </a> </p><p> <a href="#Printing" style="padding-left: 1rem;line-height: 1.5rem;"> Printing </a> </p><p> <a href="#Wrapping-it-all-up" style="padding-left: 0rem;"> Wrapping it all up </a> </p></div>
+<div id = "inline-nav"> <p style="padding-left: 0rem;"> <a href="#Introduction"> Introduction  </a> </p> <p style="padding-left: 1rem;"> <a href="#Why-make-a-programming-language"> Why make a programming language?  </a> </p> <p style="padding-left: 1rem;"> <a href="#Pathway"> Pathway  </a> </p> <p style="padding-left: 1rem;"> <a href="#Tooling"> Tooling  </a> </p> <p style="padding-left: 0rem;"> <a href="#Foreword-On-compilation-and-interpretation"> Foreword: On compilation and interpretation  </a> </p> <p style="padding-left: 0rem;"> <a href="#Designing-a-basic-REPL"> Designing a basic REPL  </a> </p> <p style="padding-left: 0rem;"> <a href="#Implementing-the-aforementioned-REPL"> Implementing the aforementioned REPL  </a> </p> <p style="padding-left: 1rem;"> <a href="#Reading-a-string"> Reading a string  </a> </p> <p style="padding-left: 1rem;"> <a href="#Parsing-an-integer"> Parsing an integer  </a> </p> <p style="padding-left: 1rem;"> <a href="#Evaluating"> Evaluating  </a> </p> <p style="padding-left: 1rem;"> <a href="#Printing"> Printing  </a> </p> <p style="padding-left: 0rem;"> <a href="#Wrapping-it-all-up"> Wrapping it all up  </a> </p>  </div>
 				</nav>
 			</aside>
 			<main>
 				<div id = "main-body">
-<h2 id="Introduction"> Introduction </h2><h3 id="Why-make-a-programming-language"> Why make a programming language? </h3><p>
-			Did you know that there is a programming language where you pretend to be a chef?
-		</p><p>
-			There are a lot of programming languages.
+<h1 id="Introduction"> <p>  Introduction </p></h1><h2 id="Why-make-a-programming-language"> <p>  Why make a programming language? </p></h2><p>  Did you know that there is a programming language where you pretend to be a chef? </p><p>  There are a lot of programming languages.
 			Atop the aforementioned language, which is aptly named Chef, there are also languages where you draw code using a painting app (such as Piet), and languages where you do math by placing things on top of other things (such as Forth), and many more.
 			Even within categories of programming languages, there is an incredible amount of language diversity.
 			For instance, observe the minor language category called Lisp (which is short for "list processing").
 			It is seldom-used to the point of obscurity.
-			Despite it's apparent disuse, there are at least 36 major dialects of Lisp which are commonly recognized by fans of the Lisp family, as well as countless smaller dialects, variants, and implementations.
-		</p><p>
-			As a result of this language surplus, it may seem like making a new programming language is a waste of time.
+			Despite it's apparent disuse, there are at least 36 major dialects of Lisp which are commonly recognized by fans of the Lisp family, as well as countless smaller dialects, variants, and implementations. </p><p>  As a result of this language surplus, it may seem like making a new programming language is a waste of time.
 			However, I think that recreational mathematicians and recreational programmers can still profit immensely from making new languages, as well as compilers and interpreters to run those languages.
 			Not only do these language projects have the potential to be incredibly fun and entertaining, they can also be quite educational.
 			Such projects give us the opportunity to learn how programming systems work from a first-hand perspective, which helps develop a better understanding of how these systems function.
-			Moreover, engaging in such projects allows us to experiment with new conjectures and hypotheses, potentially allowing us to develop and demonstrate new methods.
-		</p><p>
-			Therefore, I want to develop my own programming system to allow me to learn how programming languages work.
+			Moreover, engaging in such projects allows us to experiment with new conjectures and hypotheses, potentially allowing us to develop and demonstrate new methods. </p><p>  Therefore, I want to develop my own programming system to allow me to learn how programming languages work.
 			Additionally, I hope that I'll be able to use this system to allow me to make nice things.
-			I think that making a game or small tool by using my very own programming language would be really cool!
-		</p><h3 id="Pathway"> Pathway </h3><p>
-			The C programming language was not made overnight.
+			I think that making a game or small tool by using my very own programming language would be really cool! </p><h2 id="Pathway"> <p>  Pathway </p></h2><p>  The C programming language was not made overnight.
 			Instead, C evolved from a programming language called B, which in turn was created using bits and pieces of several predecessor languages.
-			In much the same way, I will make a proper computer programming language by starting with a calculator language and then evolving it over time.
-		</p><p>
-			In particular, I will start by implementing a REPL interface.
+			In much the same way, I will make a proper computer programming language by starting with a calculator language and then evolving it over time. </p><p>  In particular, I will start by implementing a REPL interface.
 			A REPL is somewhat akin to the Terminal or Command Prompt app on your computer.
-			It is a type of interface where you can type in some input, have it do something with that input, and recieve an output.
-		</p><p>
-			The basic REPL will be made functional by teaching it what integers are.
+			It is a type of interface where you can type in some input, have it do something with that input, and recieve an output. </p><p>  The basic REPL will be made functional by teaching it what integers are.
 			Once it has the capability to use and understand integers, I can start to add basic arithmetic.
 			This will be done by teaching the REPL to understand "s-expressions", which are a special type of mathematical notation that is easier for computers to understand.
 			We can add the concept of names or labels to the calculator to allow it to understand what a function is intended to do, and add a simple interpreter to execute the mathematical expressions and show a value to the REPL's user.
 			These steps produce a simple calculator.
 			While a calculator is not a very advanced way to communicate with the computer, it is a system for programming.
-			As a result, such a calculator language would qualify as a very basic programming language.
-		</p><p>
-			Once we have this calculator, we can introduce complexity to make it more powerful.
+			As a result, such a calculator language would qualify as a very basic programming language. </p><p>  Once we have this calculator, we can introduce complexity to make it more powerful.
 			The first thing to do is to make all names be treated as mathematical variables.
 			This lets us introduce special values, like pi.
 			As a cool bonus, it also lets us treat our calculator's methods as proper mathematical functions, rather than abstract operators.
 			The use of names as variables means that we can now allow the user to define their own variables.
 			If we add a way for the programmer to write inline code blocks or functions (known as "lambdas"), the programmer can then start implementing proper functions as lambdas stored in variables.
-			Thus the introduction of lambdas and variables gives us a lot of cool features for free!
-		</p><p>
-			These aspects are sufficient for a usable (albeit minimal) programming system.
+			Thus the introduction of lambdas and variables gives us a lot of cool features for free! </p><p>  These aspects are sufficient for a usable (albeit minimal) programming system.
 			The next thing to be added is a type system.
 			A basic type system simply lets you say what type of data is stored in each variable.
 			We can then add a component called a type checker, which serves to ensure that each variable never contains a value of the wrong type.
 			Type checkers are pretty useful!
-			They can be used to do things such as proving that programs are "correct" with regards to certain criteria, for instance.
-		</p><p>
-			This set of steps will lead us to implement a basic programming system with features such as lambdas, variables, and types.
-			I think that this is a perfectly reasonable goal, so this is what we'll pursue.
-		</p><h3 id="Tooling"> Tooling </h3><p>
-			Note that, if you are not planning on replicating my project, you can ignore this small section.
-			It only covers C-specific implementation details.
-		</p><p>
-			In implementing my custom programming system, I will be making use of fairly minimal tooling.
+			They can be used to do things such as proving that programs are "correct" with regards to certain criteria, for instance. </p><p>  This set of steps will lead us to implement a basic programming system with features such as lambdas, variables, and types.
+			I think that this is a perfectly reasonable goal, so this is what we'll pursue. </p><h2 id="Tooling"> <p>  Tooling </p></h2><p>  Note that, if you are not planning on replicating my project, you can ignore this small section.
+			It only covers C-specific implementation details. </p><p>  In implementing my custom programming system, I will be making use of fairly minimal tooling.
 			I'll use the C programming language, without any major modifications or additional libraries.
 			In particular, I won't use a parser generator (which is a type of tool used to make programming language development easier).
 			This is for my own convenience, rather than for any practical reason.
 			I simply don't want to learn how to use a parser generator.
-			As a result, I'll try to keep my language's grammar and syntax simple, so that a parser generator does not become necessary.
-		</p><p>
-			To transform my source code into an executable file (that is, the file that you double-click to run), I'll obviously need a C compiler.
+			As a result, I'll try to keep my language's grammar and syntax simple, so that a parser generator does not become necessary. </p><p>  To transform my source code into an executable file (that is, the file that you double-click to run), I'll obviously need a C compiler.
 			I will be using Clang as my compiler, and will employ a Makefile to control Clang.
 			However, any compatible build system and modern C compiler should work when compiling my code.
-			As a general rule, I endeavor to avoid compiler-specific extensions as much as possible.
-		</p><h2 id="Foreword-On-compilation-and-interpretation"> Foreword: On compilation and interpretation </h2><p>
-			There is much contest between whether to use compiled or interpreted languages.
-			To understand why this discourse exists, let's define compiled and interpreted systems.
-		</p><p>
-			If you've ever opened an app by double-clicking it or by tapping it in your phone's home screen, you've interacted with something created using a compiler.
+			As a general rule, I endeavor to avoid compiler-specific extensions as much as possible. </p><h1 id="Foreword-On-compilation-and-interpretation"> <p>  Foreword: On compilation and interpretation </p></h1><p>  There is much contest between whether to use compiled or interpreted languages.
+			To understand why this discourse exists, let's define compiled and interpreted systems. </p><p>  If you've ever opened an app by double-clicking it or by tapping it in your phone's home screen, you've interacted with something created using a compiler.
 			A compiled language is a language where the initial code is processed by a special tool (called a compiler) and turned into a special file that your CPU understands.
 			The resulting file is the thing that you double-click to run.
-			Compilers are effectively just special translators, and a compiled language is a language that you use to speak to this translator in order to control the CPU without knowing it's native language.
-		</p><p>
-			On the other hand, an interpreted language is not processed in advance.
+			Compilers are effectively just special translators, and a compiled language is a language that you use to speak to this translator in order to control the CPU without knowing it's native language. </p><p>  On the other hand, an interpreted language is not processed in advance.
 			Instead, the computer requires a special app, called an interpreter.
 			An interpreter must read and understand your code just as a compiler does.
-			Unlike a compiler, an interpreter also runs your code all on its own instead of translating it and letting the CPU run the code on its own.
-		</p><p>
-			As one might expect, these implementation differences lead to noticeable effects.
+			Unlike a compiler, an interpreter also runs your code all on its own instead of translating it and letting the CPU run the code on its own. </p><p>  As one might expect, these implementation differences lead to noticeable effects.
 			Proponents of compiled languages observe that that they're faster to execute.
 			Interpreted languages are almost always slower than compiled languages, and this difference is frequently quite extreme.
 			For instance, Python (which is an interpreted language) is reported to be one hundred times slower than C (which is compiled).
@@ -123,80 +93,47 @@
 			Clearly, there are pros and cons to both strategies.
 			I have decided to start by creating a simple, minimal interpreted language.
 			As I introduce new features, I can also add the ability for the language to be compiled.
-			This would effectively create a sort of "hybrid language", and would allow me to learn about both methods.
-		</p><p>
-			The reason I want to ultimately create a compiled language is because compiled programs can be run on others' hardware without being bundled with a special execution tool, such as an interpreter or a JIT compiler (which is a sort of hybrid interpreter-compiler device).
-			I think it would be really cool to use my programming system to make a small game or tool and publish it to the world.
-		</p><p>
-			In particular, I think it'd be very pleasant if these aforementioned softwares that I want to make could run efficiently on others' hardware.
+			This would effectively create a sort of "hybrid language", and would allow me to learn about both methods. </p><p>  The reason I want to ultimately create a compiled language is because compiled programs can be run on others' hardware without being bundled with a special execution tool, such as an interpreter or a JIT compiler (which is a sort of hybrid interpreter-compiler device).
+			I think it would be really cool to use my programming system to make a small game or tool and publish it to the world. </p><p>  In particular, I think it'd be very pleasant if these aforementioned softwares that I want to make could run efficiently on others' hardware.
 			I don't want to bundle an interpreter, since those tend to be quite large and slow.
 			I also don't want to bundle a JIT system, as those are often even larger, and are also far more complex and time-consuming to make.
 			By using a simple compiler, I can make use of existing assembler backends (an assembler backend is a tool that helps the compiler write in a CPU's native language).
 			This would mean that the backend would handle machine-specific optimizations, thus reducing my workload.
-			It also often results in smaller executables than methods based on bundling components such as interpreters.
-		</p><p>
-			The use of a compiler therefore allows me to create small, performant executables easily.
-			Hence I think that a compiler for my programming system is a better final choice than an interpreter.
-		</p><h2 id="Designing-a-basic-REPL"> Designing a basic REPL </h2><p>
-			If you've ever used a proper REPL before, you probably have an idea of just how simple they are.
-		</p><p>
-			A REPL, or a Read-Evaluate-Print Loop, is a method or system for interfacing with interpreter-based computer systems.
+			It also often results in smaller executables than methods based on bundling components such as interpreters. </p><p>  The use of a compiler therefore allows me to create small, performant executables easily.
+			Hence I think that a compiler for my programming system is a better final choice than an interpreter. </p><h1 id="Designing-a-basic-REPL"> <p>  Designing a basic REPL </p></h1><p>  If you've ever used a proper REPL before, you probably have an idea of just how simple they are. </p><p>  A REPL, or a Read-Evaluate-Print Loop, is a method or system for interfacing with interpreter-based computer systems.
 			The most common type of REPL is the common line-based calculator (such as your basic TI-84).
 			In a line calculator, you type in a problem, the calculator solves the problem, it prints out the answer, and then the whole process repeats until you are done using the calculator.
-			As the name implies, this process takes 4 steps - namely, reading input from the user, evaluating the code, printing the response, and looping to do the same thing again.
-		</p><p>
-		A REPL is practical because it makes work easy.
+			As the name implies, this process takes 4 steps - namely, reading input from the user, evaluating the code, printing the response, and looping to do the same thing again. </p><p>  A REPL is practical because it makes work easy.
 			You don't need to wait for your code to compile.
 			You don't even need to exit your editor to run a command.
-			Just press "enter" and whatever you wrote will be executed immediately.
-		</p><p>
-			As it turns out, a basic REPL is fairly easy to make.
+			Just press "enter" and whatever you wrote will be executed immediately. </p><p>  As it turns out, a basic REPL is fairly easy to make.
 			We know that a REPL consists of four parts.
 			If we avoid overcomplicating each part, we can make an REPL that is incredibly simple.
-			Let's design a trivial REPL in this manner:
-		</p><p>
-			In each iteration of the loop, our simple REPL shall start by reading a the text written by the user.
+			Let's design a trivial REPL in this manner: </p><p>  In each iteration of the loop, our simple REPL shall start by reading a the text written by the user.
 			We can then make a simple parser.
 			A parser is a component which reads and understands ("parses") some written text.
 			Our parser will just parse a single integer, or throw an error if it finds something that is not an integer.
 			Since all integers are already in their most basic form, there is no need to "evaluate" an integer, so we can skip the E in the REPL for now.
-			Finally, we'll make the REPL print out the integer, completing the loop and allowing the user to see the result of their writings.
-		</p><p>
-			Some of you have have noticed that this strongly resembles a basic echo loop.
+			Finally, we'll make the REPL print out the integer, completing the loop and allowing the user to see the result of their writings. </p><p>  Some of you have have noticed that this strongly resembles a basic echo loop.
 			At this stage, you'd be correct.
 			This is effectively just an overcomplicated integer-only echo loop, which happens to fail for integers that are too large.
 			The reason we're implementing all this complexity is because having these stubby components now will make it easier to improve the system later.
 			New parts will be added by simply changing the behavior of individual components, without having to alter the ways in which they interact.
-			Therefore, this complexity is being added to the design to allow us to extend and improve the design later, in a manner following from the goals we have for the system.
-		</p><h2 id="Implementing-the-aforementioned-REPL"> Implementing the aforementioned REPL </h2><p>
-			This section will have 4 parts: Getting data from the user, understanding the data by parsing it, evaluating or processing that data, and finally printing a result.
+			Therefore, this complexity is being added to the design to allow us to extend and improve the design later, in a manner following from the goals we have for the system. </p><h1 id="Implementing-the-aforementioned-REPL"> <p>  Implementing the aforementioned REPL </p></h1><p>  This section will have 4 parts: Getting data from the user, understanding the data by parsing it, evaluating or processing that data, and finally printing a result.
 			All of these steps seem reasonably simple, but beware!
 			Here be dragons!
 			While a REPL can be a very straightforward thing to make, there are many ways to screw one up.
 			A toy REPL probably does not need to be designed with things like safety and efficiency in mind.
 			However, I will be discussing such nuanced topics anyways, because I am interested in them.
 			I hope that this discussion may help you, the reader, to better understand why the REPLs that you use happen to be how they are.
-			I also hope that it helps you implement better, safer, and more reliable REPLs, should you choose to do so.
-		</p><h3 id="Reading-a-string"> Reading a string </h3><p>
-			Finally, we can start writing code!
-		</p><p>
-			In many languages, reading a string of text from the user is quite easy.
+			I also hope that it helps you implement better, safer, and more reliable REPLs, should you choose to do so. </p><h2 id="Reading-a-string"> <p>  Reading a string </p></h2><p>  Finally, we can start writing code! </p><p>  In many languages, reading a string of text from the user is quite easy.
 			For didactic purposes, let's consider an example in Python 3.12.
-			In this language, the first step to read a string of text is the following:
-		</p><pre>
-x = input("> ")</pre><p>
-			This is also the last step.
-			In one line of code, we have printed a prompt, recieved a string, and stored it in a variable, in a safe manner that is compliant with principles of memory safety, data injection avoidance, and Unicode usage.
-		</p><p>
-			However, we're using C instead.
-			C has a variety of methods for reading string input from a user, all of which have their pros and their cons.
-		</p><p>
-			The easiest method is to use <code>gets</code>.
-			The <code>gets</code> function, which is short for "get string", is both easy, convenient, and unsafe.
-			It reads an undetermined quantity of data from the user, and while it is convenient, it is also prone to buffer overflows.
-		</p><p>
-			Consider the following implementation, which is equivalent in purpose to the above Python code:
-		</p><pre>
+			In this language, the first step to read a string of text is the following: </p><pre> 
+x = input("> ") </pre><p>  This is also the last step.
+			In one line of code, we have printed a prompt, recieved a string, and stored it in a variable, in a safe manner that is compliant with principles of memory safety, data injection avoidance, and Unicode usage. </p><p>  However, we're using C instead.
+			C has a variety of methods for reading string input from a user, all of which have their pros and their cons. </p><p>  The easiest method is to use <span style="color:red;"> code </span> gets .
+			The <span style="color:red;"> code </span> gets function, which is short for "get string", is both easy, convenient, and unsafe.
+			It reads an undetermined quantity of data from the user, and while it is convenient, it is also prone to buffer overflows. </p><p>  Consider the following implementation, which is equivalent in purpose to the above Python code: </p><pre> 
 #include <stdio.h>
 
 
@@ -207,21 +144,17 @@ int main() {
 	gets(buff);
 
 	return 0;
-}</pre><p>
-			Just like our Python code, it reads a string and stores it in a variable.
-			It does so by copying what the user wrote and writing it down in a variable called <code>buff</code> (short for "buffer", which means a space in memory allocated to store some large-ish quantity of data).
-			Although it does work, it doesn't know how much space there is in <code>buff</code>.
+} </pre><p>  Just like our Python code, it reads a string and stores it in a variable.
+			It does so by copying what the user wrote and writing it down in a variable called <span style="color:red;"> code </span> buff (short for "buffer", which means a space in memory allocated to store some large-ish quantity of data).
+			Although it does work, it doesn't know how much space there is in <span style="color:red;"> code </span> buff .
 			It's like taping a piece of paper to a wall, telling a blind person where the paper begins, and asking them to write some text you dictate to them.
 			This strategy will certainly work, but you might accidentally end up with text spilling off the paper and onto the wall.
 			Such an issue is called a buffer overflow.
 			In this case, a buffer overflow will occur if the user enters more than 63 bytes of text.
-			Such an issue could lead to data corruption, undefined program behavior, and even (on some operating systems, especially older versions of Windows) cause your computer to crash.
-		</p><p>
-			The C programmer's solution was to make a new function, which we call <code>scanf</code>.
+			Such an issue could lead to data corruption, undefined program behavior, and even (on some operating systems, especially older versions of Windows) cause your computer to crash. </p><p>  The C programmer's solution was to make a new function, which we call <span style="color:red;"> code </span> scanf .
 			This function is nice because it *does* know how big the buffer is.
-			The <code>scanf</code> function is actually very complex and happens to have a lot of peculiar tricks, but we'll ignore the features and and focus on its use as a safer string reader.
-			View the following <code>scanf</code>-based string loader and observe that it is aware of the buffer size and is therefore immune to buffer overflows.
-		</p><pre>
+			The <span style="color:red;"> code </span> scanf function is actually very complex and happens to have a lot of peculiar tricks, but we'll ignore the features and and focus on its use as a safer string reader.
+			View the following <span style="color:red;"> code </span> scanf -based string loader and observe that it is aware of the buffer size and is therefore immune to buffer overflows. </p><pre> 
 #include <stdio.h>
 
 int main() {
@@ -232,25 +165,21 @@ int main() {
     scanf("%63[^\n]s", &x);
 
     return 0;
-}</pre><p>
-			This is certainly a bit safer, but there's still a problem.
+} </pre><p>  This is certainly a bit safer, but there's still a problem.
 			Do you see it?
 			Imagine that you want to parse a sum of one hundred integers for some reason.
 			How will you fit *one hundred integers*, as well as a few non-integer symbols, into a mere 63 bytes?
 			While you can certainly fit small, simple expressions into a buffer that is 63 bytes wide, larger expressions won't fit.
 			Therefore, it stands to reason that the most effective type of REPL wouldn't just have a static buffer.
 			Instead, it would have to be capable of resizing the buffer to accomodate arbitrary string sizes.
-			We may refer to this resizeable buffer as a "dynamically-allocated buffer".
-		</p><p>
-			To solve all this, I'll write a reader function that uses a resizeable buffer.
+			We may refer to this resizeable buffer as a "dynamically-allocated buffer". </p><p>  To solve all this, I'll write a reader function that uses a resizeable buffer.
 			This works by handling two things at once - namely, the acts of managing the buffer and of adding data to it.
 			To read data into a buffer, we first try to get one byte from the user.
 			If there are no more bytes to read, we simply stop reading - the buffer must now be full of all the text the user has written.
 			Otherwise, we check to see if the buffer has space available.
 			If it does not have space, we make space by increasing the buffer's size.
 			The byte we read earlier is then added to the end of the buffer, and a counter is updated to reflect how much of the buffer's space has been taken up.
-			In C, that algorithm looks like this:
-		</p><pre>
+			In C, that algorithm looks like this: </p><pre> 
 #include <stdio.h>
 
 char * input_string = 0;
@@ -289,39 +218,27 @@ char * input() {
 int main() {
 	char * x = input();
 	return 0;
-}</pre><p>
-			This does just what we need:
+} </pre><p>  This does just what we need:
 			It takes in input from the user, is capable of handling arbitrary quantities of text, and does not suffer from buffer overflows.
 			While it does lack proper error handling, it does clearly define how to handle those errors.
-			As it is, this reader satiates our goals.
-		</p><h3 id="Parsing-an-integer"> Parsing an integer </h3><p>
-			Now that we can *obtain* a string, we can try to *understand* it.
-			For simplicity, we'll start by parsing positive integers that are written in base-ten notation.
-		</p><p>
-			Let's try to think of a way to parse integers.
+			As it is, this reader satiates our goals. </p><h2 id="Parsing-an-integer"> <p>  Parsing an integer </p></h2><p>  Now that we can *obtain* a string, we can try to *understand* it.
+			For simplicity, we'll start by parsing positive integers that are written in base-ten notation. </p><p>  Let's try to think of a way to parse integers.
 			As you'll recall, a four-digit number written "2357" is interpreted as "2 thousands plus 3 hundreds plus 5 tens plus 6".
 			Observe that each decimal place is ten times larger than the one to it's left.
 			Therefore, you might want to parse an integer by telling the computer to read it in exactly that manner.
 			This involves loading the entire integer into a buffer, discerning the buffer's size, using exponents to obtain each positional magnitude, and then summing up the products of each digit's value and each positional magnitude.
-			In Python, that might resemble this:
-		</p><pre>
+			In Python, that might resemble this: </p><pre> 
 string = "2357" # somehow load the string representing the number into a buffer
-number = sum([ int(digit) * pow(10, len(string) - position - 1) for position, digit in enumerate(string) ])</pre><p>
-			This works, and it works quite well.
+number = sum([ int(digit) * pow(10, len(string) - position - 1) for position, digit in enumerate(string) ]) </pre><p>  This works, and it works quite well.
 			If you open up your preferred Python interpreter and paste this in, you'll discover that it is perfectly serviceable.
 			However, if you try to port it to C, you'll note that the buffer needs to be allocated.
 			This is clearly inefficient.
 			If you use a static buffer allocated on the stack, you will suffer from only being able to parse a numbers of a limited size.
-			Alternatively, if you use a heap-allocated buffer, you'll end up spending a lot of time on heap allocation and may risk memory leaks.
-		</p><p>
-			Fortunately, there is another strategy you can use.
+			Alternatively, if you use a heap-allocated buffer, you'll end up spending a lot of time on heap allocation and may risk memory leaks. </p><p>  Fortunately, there is another strategy you can use.
 			Not only is this strategy immune to allocation issues, it's also easier to implement!
 			It relies on the fact that if you know the value of an integer X, adding a new digit Y to the tail-end is equivalent to increasing X by ten and adding the value of Y.
 			This means that we can parse an integer without knowing how large it is, as long as we know the value of some beginning part.
-			Moreover, since the first digit in a number is always a digit, you can just interpret the initial digit as representing it's literal value (for instance, interpret the digit "9" as meaning the number nine).
-		</p><p>
-			In Python, that might resemble this:
-		</p><pre>
+			Moreover, since the first digit in a number is always a digit, you can just interpret the initial digit as representing it's literal value (for instance, interpret the digit "9" as meaning the number nine). </p><p>  In Python, that might resemble this: </p><pre> 
 string = "...2357"
 index = 3
 # first, get the value of the initial digit
@@ -334,16 +251,14 @@ while True:
 	if not c in "0123456789": break # if it's not a digit, ignore it
 	index += 1 # it is a digit, so consume the current character
 	number *= 10
-	number += int(c)</pre><p>
-			This is of comparable complexity to the initial strategy, and is clearly slightly superior due to lacking a buffer.
+	number += int(c) </pre><p>  This is of comparable complexity to the initial strategy, and is clearly slightly superior due to lacking a buffer.
 			However, it can still be improved upon.
 			You see, zero has the property that it can always be treated as the value of some invisible higher place.
 			This is because place-value notations (such as base-ten) are very convenient, and are intentionally designed to let you treat any unused place or unwritten digit as a zero.
 			Simply put, you can take some number represented using n digits and pretend like the n-plus-one place has an invisible zero there.
 			We can therefore remove the code for getting an intial digit's value and simply act as though the initial digit's value is known to be zero, without actually having to read the intial digit's value.
 			The initial digit is therefore treated exactly identically to all other digits, which substantially simplifies the process of parsing.
-			In Python, that looks like this.
-		</p><pre>
+			In Python, that looks like this. </p><pre> 
 string = "...2357"
 index = 3
 number = 0
@@ -352,8 +267,7 @@ while True:
 	if not c in "0123456789": break
 	index += 1
 	number *= 10
-	number += int(c)</pre><p>
-			This is both simple and effective, which means it meets our needs just fine.
+	number += int(c) </pre><p>  This is both simple and effective, which means it meets our needs just fine.
 			As a result, I won't try to optimize any further.
 			However, before porting this to C, there is one more thing to consider.
 			Namely, how should we treat the user's input data?
@@ -366,8 +280,7 @@ while True:
 			To avoid both issues, my solution is to create a special buffer contraption.
 			This special buffer will abstract the internal reading logic.
 			Instead of needing to know how to obtain the user's input text, our parser will simply as the buffer for data one byte at a time.
-			This makes the process of writing a parser into an extremely straightforward task:
-		</p><pre>
+			This makes the process of writing a parser into an extremely straightforward task: </p><pre> 
 int parse__integer(struct buffer * buf) {
 	int number = 0;
 	bool is_negative = 0;
@@ -387,28 +300,16 @@ int parse__integer(struct buffer * buf) {
 		number *= -1;
 	}
 	return number;
-}</pre><p>
-			This code uses the times-ten-and-add method to parse from a buffer an arbitrary integer of unknown size, just like the Python code.
+} </pre><p>  This code uses the times-ten-and-add method to parse from a buffer an arbitrary integer of unknown size, just like the Python code.
 			It is reliable, somewhat efficient, and does not require any internal buffer.
-			While it is not yet capable of parsing negative numbers, it is obvious that we can add negatives by simply introducing some code to detect prefix positive or negative signs and alter the <code>is_negative</code> flag accordingly.
-		</p><h3 id="Evaluating"> Evaluating </h3><p>
-			Once the REPL has obtained and understood the user's input, it can then proceed to do something with that input.
+			While it is not yet capable of parsing negative numbers, it is obvious that we can add negatives by simply introducing some code to detect prefix positive or negative signs and alter the <span style="color:red;"> code </span> is_negative flag accordingly. </p><h2 id="Evaluating"> <p>  Evaluating </p></h2><p>  Once the REPL has obtained and understood the user's input, it can then proceed to do something with that input.
 			The current REPL doesn't support particularly complex input data *yet*, so there is not much we can do to process the input data.
-			However, we are going to be improving the calculator very soon, so we might as well start considering evaluation now.
-		</p><p>
-			First, let's think about *why* we need evaluation.
+			However, we are going to be improving the calculator very soon, so we might as well start considering evaluation now. </p><p>  First, let's think about *why* we need evaluation.
 			The purpose of a calculator is to transform mathematical expressions into their final equivalent values.
 			For instance, it might transform something of the form "1 + 1" into the integer 2.
-			I therefore believe our evaluation function should produce an integer.
-		</p><p>
-			Now, let's consider *what* we are evaluating.
+			I therefore believe our evaluation function should produce an integer. </p><p>  Now, let's consider *what* we are evaluating.
 			Since we are building a calculator, it stands to reason that we want to evaluate some sort of mathematical expression.
-			Let's therefore make the evaluation function take in some sort of data structure that represents a mathematical expression.
-		</p><p>
-			Our evaluation function is therefore going to take in a mathematical expression, represented as some special data structure, do some processing upon that data structure, and return an integer as a result.
-		</p><p>
-			Let's implement this by first defining our special data structure:
-		</p><pre>
+			Let's therefore make the evaluation function take in some sort of data structure that represents a mathematical expression. </p><p>  Our evaluation function is therefore going to take in a mathematical expression, represented as some special data structure, do some processing upon that data structure, and return an integer as a result. </p><p>  Let's implement this by first defining our special data structure: </p><pre> 
 enum mathnode__tag {
 	mathnode__tag__integer,
 };
@@ -420,48 +321,30 @@ union mathnode__data {
 struct mathnode {
 	enum mathnode__tag tag;
 	union mathnode__data data;
-};</pre><p>
-			Note that this data structure is implemented as a tagged union.
+}; </pre><p>  Note that this data structure is implemented as a tagged union.
 			A tagged union is a special data structure that can hold a variety of types of data, but can only hold one datum at a time.
 			You can think of it as a small pocket.
 			A tagged union can store a booklet *or* a Rubik's Cube *or* a phone *or* a DVD, but can not store more than one item at once.
-			This is useful because it means that we could feasibly extend or modify this data structure so that it could store or represent *any* mathematical expression or value.
-		</p><p>
-			Hence our evaluation function, which should be able to take in an arbitrary mathematical expression, might resemble this:
-		</p><pre>
+			This is useful because it means that we could feasibly extend or modify this data structure so that it could store or represent *any* mathematical expression or value. </p><p>  Hence our evaluation function, which should be able to take in an arbitrary mathematical expression, might resemble this: </p><pre> 
 int evaluate(struct mathnode * math) {
 	// TODO: add more complex logic to the evaluator
 	return math->data.integer;
-}</pre><p>
-			We will discuss advanced applications of tagged unions in a future post, in which we will also implement a more powerful evaluator.
-		</p><h3 id="Printing"> Printing </h3><p>
-			C is usually quite annoying to use for complex string operations.
+} </pre><p>  We will discuss advanced applications of tagged unions in a future post, in which we will also implement a more powerful evaluator. </p><h2 id="Printing"> <p>  Printing </p></h2><p>  C is usually quite annoying to use for complex string operations.
 			It's so hard to do string manipulation in C, in fact, that the majority of popular interpreted REPL-based programming languages were created with the sole purpose of making string processing easier.
-			However, there is *one* thing that is really easy to do in conventional C.
-		</p><p>
-			It's really easy to write things in C.
-		</p><p>
-			If we just want to write down a single integer, we can use this code:
-		</p><pre>
+			However, there is *one* thing that is really easy to do in conventional C. </p><p>  It's really easy to write things in C. </p><p>  If we just want to write down a single integer, we can use this code: </p><pre> 
 #include <stdio.h>
 
 int main() {
 	int x = 42;
 	printf("%d\n", x);
-}</pre><p>
-			That little <code>%d</code> is a special instruction that tells the <code>printf</code> function to format it's input <code>x</code> as an integer.
-			If we decide to be absolute nerds, we could instead use <code>%x</code>, which will tell <code>printf</code> that <code>x</code> should be printed in the hexadecimal notation, rather than in decimal.
-			We could also replace all integers in our calculator with floating-point numbers (which are the easiest and most contentious way to represent fractions in a computer), and then tell C to print it as a decimal with a dot by using <code>%f</code>.
-		</p><p>
-			Let's turn this into a function that prints a single integer:
-		</p><pre>
+} </pre><p>  That little <span style="color:red;"> code </span> %d is a special instruction that tells the <span style="color:red;"> code </span> printf function to format it's input <span style="color:red;"> code </span> x as an integer.
+			If we decide to be absolute nerds, we could instead use <span style="color:red;"> code </span> %x , which will tell <span style="color:red;"> code </span> printf that <span style="color:red;"> code </span> x should be printed in the hexadecimal notation, rather than in decimal.
+			We could also replace all integers in our calculator with floating-point numbers (which are the easiest and most contentious way to represent fractions in a computer), and then tell C to print it as a decimal with a dot by using <span style="color:red;"> code </span> %f . </p><p>  Let's turn this into a function that prints a single integer: </p><pre> 
 void print__integer(int integer) {
 	printf("%d\n", node->data.integer);
-}</pre><h2 id="Wrapping-it-all-up"> Wrapping it all up </h2><p>
-			Once we have all the parts, we can connect them to each other.
+} </pre><h1 id="Wrapping-it-all-up"> <p>  Wrapping it all up </p></h1><p>  Once we have all the parts, we can connect them to each other.
 			This involves creating a loop that repeatedly obtains input, parses the input as a mathnode, evaluates that mathnode into an integer, and finally prints out the integer.
-			That resembles this:
-		</p><pre>
+			That resembles this: </p><pre> 
 int main(int argc, char ** argv) {
 	char * text;
 	struct buffer buffer;
@@ -485,38 +368,26 @@ int main(int argc, char ** argv) {
 
 		print__integer(integer);
 	}
-}</pre><p>
-			We can finally compile our tiny interpreter REPL calculator thing!
+} </pre><p>  We can finally compile our tiny interpreter REPL calculator thing!
 			First, let's just test-compile the code file.
-			For those of you following along at home, make sure that you have everything in the correct order, and that all your <code>#include</code> statements are present.
-			You'll need to include <code>stdio.h</code> and <code>bool.h</code> and <code>stdlib.h</code>, or else it won't compile without modifications.
-			Once you've ensured everything is in order, you can easily quickly test-compile it by simply running a command akin to <code>clang main.c</code>.
-			This will produce an executable named <code>a.out</code> (or something like that), which you run by entering <code>./a.out</code>.
-		</p><p>
-			Now that we know our code works, we can create a Makefile.
+			For those of you following along at home, make sure that you have everything in the correct order, and that all your <span style="color:red;"> code </span> #include statements are present.
+			You'll need to include <span style="color:red;"> code </span> stdio.h and <span style="color:red;"> code </span> bool.h and <span style="color:red;"> code </span> stdlib.h , or else it won't compile without modifications.
+			Once you've ensured everything is in order, you can easily quickly test-compile it by simply running a command akin to <span style="color:red;"> code </span> clang main.c .
+			This will produce an executable named <span style="color:red;"> code </span> a.out (or something like that), which you run by entering <span style="color:red;"> code </span> ./a.out . </p><p>  Now that we know our code works, we can create a Makefile.
 			The Makefile is just a special script that tells a tool called Make how to compile our code.
-			This is useful because it makes compilation easier - Make will do all the work of compiling and linking all your code in the correct order, which allows you to avoid spendng actual time and effort on compiling your code.
-		</p><p>
-			The most basic Makefile is essentially just a fancy Bash script that calls <code>clang</code> for you.
-			We might write it like this:
-		</p><pre>
+			This is useful because it makes compilation easier - Make will do all the work of compiling and linking all your code in the correct order, which allows you to avoid spendng actual time and effort on compiling your code. </p><p>  The most basic Makefile is essentially just a fancy Bash script that calls <span style="color:red;"> code </span> clang for you.
+			We might write it like this: </p><pre> 
 main:
-	clang main.c -o repl</pre><p>
-			Paste that into a file called Makefile and you'll be able to auto-compile your code by simply executing the <code>make</code> command.
-			It'll generate an executable called <code>repl</code> that, when run, will do exactly what we designed it to do.
-		</p><p>
-			At last, we've finished!
+	clang main.c -o repl </pre><p>  Paste that into a file called Makefile and you'll be able to auto-compile your code by simply executing the <span style="color:red;"> code </span> make command.
+			It'll generate an executable called <span style="color:red;"> code </span> repl that, when run, will do exactly what we designed it to do. </p><p>  At last, we've finished!
 			We have made a simple minimal REPL with almost no features whatsoever.
 			In doing so, we have learned how REPLs work, and how they're implemented.
 			We have discovered the risks of string processing in C, and learned how to teach a computer to read.
 			We created a simple evaluator that does almost nothing.
-			Finally, we made it write stuff and then do the exact same process again.
-		</p><p>
-			As it stands, this REPL is fairly ineffective.
+			Finally, we made it write stuff and then do the exact same process again. </p><p>  As it stands, this REPL is fairly ineffective.
 			Hence our next article ought to improve upon this REPL by introducing new, more powerful features.
 			In particular, I'd like to make it support s-expressions, as alluded to in the introduction.
-			This will allow our calculator REPL to input and subsequently evaluate simple mathematical functions or expressions.
-		</p>
+			This will allow our calculator REPL to input and subsequently evaluate simple mathematical functions or expressions. </p>
 				</div>
 			</main>
 		</div>
