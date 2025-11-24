@@ -102,7 +102,11 @@ body * {
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;
-	max-width: 80rem;
+	max-width: 60rem;
+}
+#priority {
+	background: var(--bg-2);
+	padding: 0 0.5rem;
 }
 a {
 	color: var(--fg-interactive);
