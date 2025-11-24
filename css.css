@@ -140,6 +140,9 @@ code {
 #main-body p {
 	color: var(--fg);
 }
+#main-body > p {
+	text-indent: 2rem;
+}
 #main-body b {
 	font-weight: bold;
 	color: var(--fg-heavy);
