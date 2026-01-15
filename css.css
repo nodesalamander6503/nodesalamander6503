@@ -133,7 +133,7 @@ code {
 }
 .math {
 	font-family: "Fira Code", "Roboto Mono", monospace;
-	color: #FF0000;
+	/* color: #FF0000; */
 }
 .fig {
 	margin: 0 auto;
