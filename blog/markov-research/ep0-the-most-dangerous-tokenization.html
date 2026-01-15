@@ -82,7 +82,7 @@
 			No randomness or tie-breaking heuristics were used.
 			Simiarly, the word tokenization algorithm follows the conventional approach of treating each sequence of non-space characters followed by a single space as a word <a class="citation" href="#sennrich,haddow,birch"> [cite] </a> .
 			Only the most common words were selected for the vocabulary.
-			The word vocabularies were composed of the <span class="math"> <span>n-1</span> </span> words selected, as well as a special token intended to represent unknowns. </p><p>  For the two methods that take a token quantity parameter (word and byte-pair encoding), we test four token quantities.
+			The word vocabularies were composed of the <span class="math"> <span> $$ n-1 $$ </span> </span> words selected, as well as a special token intended to represent unknowns. </p><p>  For the two methods that take a token quantity parameter (word and byte-pair encoding), we test four token quantities.
 			In particular, we use vocabulary sizes of 256, 512, 1024, and 2048 tokens.
 			These numbers were chosen entirely because they're convenient for me. </p><p>  To evaluate the effect of tokenization granularity on first-order Markov perplexity, I conducted a controlled experiment in which each tokenization strategy and vocabulary-size configuration produced a distinct Markov chain model.
 			The experiment proceeded in four steps, described below. </p><p>  The first step was corpus procurement and preprocessing.
@@ -99,7 +99,7 @@
 			The probability of any given transition was therefore predicated, in the usual manner, based on the set of transitions observed in the training corpus <a class="citation" href="#douc,moulines,priouret,soulier"> [cite] </a> No smoothing, discounting, back-off, or interpolation was applied, as the intention of this study is to measure the relationship between tokenization granularity and raw transition-matrix sparsity.
 			Each tokenization–vocabulary pair therefore yields a unique transition matrix defined strictly by empirical counts. </p><p>  Finally, each trained Markov model was evaluated on the identically tokenized held-out test corpus.
 			The log-likelihood of the test sequence under each model was computed by summing the transition log-probabilities of each token conditioned on its predecessor.
-			Perplexity was then computed in the usual way as <span class="math"> <span>PPL = exp( - (1/N) \cdot \sum log P(x_t | x_{t-1}) )</span> </span> , where <span class="math"> <span>N</span> </span> is the number of tokens in the test sequence <a class="citation" href="#shannon"> [cite] </a> .
+			Perplexity was then computed in the usual way as <span class="math"> <span> $$ PPL = exp( - (1/N) \cdot \sum log P(x_t | x_{t-1}) ) $$ </span> </span> , where <span class="math"> <span> $$ N $$ </span> </span> is the number of tokens in the test sequence <a class="citation" href="#shannon"> [cite] </a> .
 			This procedure yields a comparable perplexity estimate for all models, allowing direct comparison across tokenization strategies and vocabulary sizes. </p><h2 id="Results"> <p>  Results </p></h2><p>  This research discerned a positive correlation between vocabulary size and perplexity for a single-token Markov model.
 			The particular perplexities are depicted in the following figure: </p><div class = "fig">
 <table>
