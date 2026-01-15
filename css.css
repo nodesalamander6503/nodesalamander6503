@@ -47,12 +47,13 @@ body * {
 }
 
 
-#above-fold {
+#above-fold-wrap {
 	background: #FFF;
 	background: var(--bg-2);
+}
+#above-fold {
 	font-weight: bold;
 	min-height: 30vh;
-	padding: 4rem;
 	position: relative;
 	overflow: hidden;
 	display: flex;
@@ -60,6 +61,10 @@ body * {
 	align-items: center;
 	justify-content: center;
 	gap: 2rem;
+	margin: 0 auto;
+	padding: 4rem 0;
+	max-width: 40rem;
+	width: calc(100% - 8rem);
 }
 #above-fold #title {
 	font-size: 4rem;
@@ -84,7 +89,7 @@ body * {
 }
 
 
-#inline-nav, #main-body {
+#inline-nav, #inline-citations, #main-body {
 	margin: 0 auto;
 	width: calc(100% - 2rem);
 	max-width: 40rem;
@@ -126,6 +131,13 @@ pre {
 code {
 	margin: 0 0.25rem;
 }
+.math {
+	font-family: "Fira Code", "Roboto Mono", monospace;
+	color: #FF0000;
+}
+.fig {
+	margin: 0 auto;
+}
 #main-body h2 {
 	margin: 3rem 0 1rem 0;
 	font-weight: bold;
@@ -149,6 +161,9 @@ code {
 }
 ul {
 	padding-left: 2rem;
+}
+.err {
+	color: #FF6666;
 }
 
 #footer {

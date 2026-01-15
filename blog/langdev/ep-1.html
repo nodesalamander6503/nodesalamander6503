@@ -2,23 +2,27 @@
 <html class = "theme-four">
 	<head>
 		<title>  Binomial operations  | node's site </title>
-		<link rel="stylesheet" href="/nodesalamander6503/css.css" />
+		<link rel="stylesheet" href="/nodesalamander6503/css.css" onerror="this.onerror=null;this.href='https://nodesalamander6503.github.io/nodesalamander6503/css.css'" />
 	</head>
 	<body>
-		<div id = "above-fold">
-			<h1 id = "title">  Binomial operations  </h1>
-			<p id = "desc">  </p>
-			<div id = "buttons">
-				<a href = "#main-body">
-					<span> Read more </span>
-				</a>
-				<a href = "$HOME$">
-					<span> Home </span>
-				</a>
-				<a href = "/main/hire-me.html">
-					<span> Contact Me </span>
-				</a>
-				
+		<div id = "above-fold-wrap">
+			<div id = "above-fold">
+				<h1 id = "title">  Binomial operations  </h1>
+				<p id = "desc">  </p>
+				<div id = "buttons">
+					<!--
+					<a href = "#main-body">
+						<span> Read more </span>
+					</a>
+					<a href = "$HOME$">
+						<span> Home </span>
+					</a>
+					<a href = "/main/hire-me.html">
+						<span> Contact Me </span>
+					</a>
+					-->
+					
+				</div>
 			</div>
 		</div>
 		<div id = "inter-content">
@@ -26,9 +30,8 @@
 		</div>
 		<div id = "majority">
 			<aside>
-				<nav>
 <div id = "inline-nav"> <p style="padding-left: 0rem;"> <a href="#Introduction"> Introduction  </a> </p> <p style="padding-left: 0rem;"> <a href="#Handling-Errors"> Handling Errors  </a> </p> <p style="padding-left: 1rem;"> <a href="#A-major-blunder"> A major blunder  </a> </p> <p style="padding-left: 1rem;"> <a href="#A-better-method"> A better method  </a> </p> <p style="padding-left: 1rem;"> <a href="#Panic-At-the-software"> Panic! At the software  </a> </p> <p style="padding-left: 0rem;"> <a href="#Adding-functionality"> Adding functionality  </a> </p> <p style="padding-left: 0rem;"> <a href="#Do-it-better-makes-us-faster"> Do it better, makes us faster  </a> </p> <p style="padding-left: 1rem;"> <a href="#Do-it-better"> Do it better  </a> </p> <p style="padding-left: 1rem;"> <a href="#Makes-us-faster"> Makes us faster  </a> </p> <p style="padding-left: 0rem;"> <a href="#Conclusion"> Conclusion  </a> </p>  </div>
-				</nav>
+
 			</aside>
 			<main>
 				<div id = "main-body">
@@ -80,7 +83,8 @@ union result__datum {
 struct result {
 	bool is_erroneous;
 	union result__datum datum;
-}; </pre><p>  If we imagine the program as a boss and each function as a tiny employee who can perform only one task, then this <code>result</code> envelope allows each employee to provide their boss with either the answer that the boss asked for or a detailed message explaining what went wrong.
+}; </pre>
+<p>  If we imagine the program as a boss and each function as a tiny employee who can perform only one task, then this <code>result</code> envelope allows each employee to provide their boss with either the answer that the boss asked for or a detailed message explaining what went wrong.
 			The boss can then decide to handle the error on their own, or to pass the error along to the boss' boss.
 			However, this new mechanism means that both the boss and the employees must be taught how the new messaging system works! </p><p>  To account for this, I created a set of useful tools for the boss and employees to use.
 			These tools can automatically package a successful result or error message into an envelope and send it in one step.
@@ -128,12 +132,19 @@ struct result {
 			This is because we can simply have the function or algorithm include itself as one step, as a way to repeat. </p><p>  Imagine you have a strange type of Russian nesting doll.
 			Instead of having exactly one doll immediately inside each other doll, the number of dolls immediately inside a "parent" doll is a quantity within the range of 0 and 3.
 			Suppose you want to un-nest all the dolls, so that you have them all laid out on the table.
-			Your set of instructions might look like this: </p><ul> <li> <p>  Obtain the current doll </p> </li><li> <p>  Open it up </p> </li><li> <p>  Repeat these steps (starting from step 1) for each doll inside the current doll </p> </li><li> <p>  Place the current doll on the table </p> </li><li> <p>  Done! </p> </li> </ul><p>  This set of steps will clearly result in all dolls being arranged on the table, and yet is done with only one small set of steps!
+			Your set of instructions might look like this: </p><ul>
+<li> <p>  Obtain the current doll </p> </li>
+<li> <p>  Open it up </p> </li>
+<li> <p>  Repeat these steps (starting from step 1) for each doll inside the current doll </p> </li>
+<li> <p>  Place the current doll on the table </p> </li>
+<li> <p>  Done! </p> </li>
+</ul><p>  This set of steps will clearly result in all dolls being arranged on the table, and yet is done with only one small set of steps!
 			We achieved this by essentially splitting the problem into a bunch of little problems, each of which is both simple and similar, and then having the instructions only explain how to subdivide a big problem into little problems and then solve one of the simple problems.
 			This is called recursion.
 			More formally, recursion is when some function is defined in terms of itself. </p><p>  Therefore, we can make the evaluator capable of solving complex problems by teaching it to split the complex problems into smaller, simpler problems, use many "copies" of itself to solve all the problems, then return the final result. </p><p>  Now that recursion has been added, we can compute arbitrarily complex nested equations, such as a division of sums. </p><pre> 
 > (div (add 3 7) 10)
-1 </pre><h2 id="Conclusion"> <p>  Conclusion </p></h2><p>  Overall, through this article, we turned our REPL from a clunky, finicky, one-operation-only system into a robust tool that can solve all sorts of problems and can even recover from various types of errors. 
+1 </pre>
+<h2 id="Conclusion"> <p>  Conclusion </p></h2><p>  Overall, through this article, we turned our REPL from a clunky, finicky, one-operation-only system into a robust tool that can solve all sorts of problems and can even recover from various types of errors. 
 			At the moment, this tool only supports integers.
 			While integers are useful, they aren't everything.
 			There exist many sorts of data that are not integers, such as text and irrational numbers and polygons and pictures and colors.
@@ -141,13 +152,14 @@ struct result {
 				</div>
 			</main>
 		</div>
+		<!--
 		<footer id = "footer">
 			<div class = "foot-bloc">
 				<h2> Thanks for reading! </h2>
 				<p>
 					Writing content takes a lot of effort, so it means a lot to me that you took the time to read this.
 					If you thought this was good, feel free to share it with your friends or online.
-					Furthermore, if you benefitted from this content and you'd like more, consider <!--subscribing to my RSS, or--> checking out my <a href="/hire-me">hire me</a> page.
+					Furthermore, if you benefitted from this content and you'd like more, consider <!-subscribing to my RSS, or-> checking out my <a href="/hire-me">hire me</a> page.
 					Thanks, and have a nice day!
 				</p>
 			</div>
@@ -159,5 +171,6 @@ struct result {
 				<p> <a href = "/hire-me"> My cover letter </a> </p>
 			</div>
 		</footer>
+		-->
 	</body>
 </html>

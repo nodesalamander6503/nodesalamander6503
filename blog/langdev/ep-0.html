@@ -2,26 +2,30 @@
 <html class = "theme-four">
 	<head>
 		<title>  Let's make a calculator language  | node's site </title>
-		<link rel="stylesheet" href="/nodesalamander6503/css.css" />
+		<link rel="stylesheet" href="/nodesalamander6503/css.css" onerror="this.onerror=null;this.href='https://nodesalamander6503.github.io/nodesalamander6503/css.css'" />
 	</head>
 	<body>
-		<div id = "above-fold">
-			<h1 id = "title">  Let's make a calculator language  </h1>
-			<p id = "desc"> 
+		<div id = "above-fold-wrap">
+			<div id = "above-fold">
+				<h1 id = "title">  Let's make a calculator language  </h1>
+				<p id = "desc"> 
 			In which I create a simple calculator-like REPL tool.
 			This article covers tokenizing, parsing, and processing data.
 		 </p>
-			<div id = "buttons">
-				<a href = "#main-body">
-					<span> Read more </span>
-				</a>
-				<a href = "$HOME$">
-					<span> Home </span>
-				</a>
-				<a href = "/main/hire-me.html">
-					<span> Contact Me </span>
-				</a>
-				
+				<div id = "buttons">
+					<!--
+					<a href = "#main-body">
+						<span> Read more </span>
+					</a>
+					<a href = "$HOME$">
+						<span> Home </span>
+					</a>
+					<a href = "/main/hire-me.html">
+						<span> Contact Me </span>
+					</a>
+					-->
+					
+				</div>
 			</div>
 		</div>
 		<div id = "inter-content">
@@ -29,9 +33,8 @@
 		</div>
 		<div id = "majority">
 			<aside>
-				<nav>
 <div id = "inline-nav"> <p style="padding-left: 0rem;"> <a href="#Introduction"> Introduction  </a> </p> <p style="padding-left: 1rem;"> <a href="#Why-make-a-programming-language"> Why make a programming language?  </a> </p> <p style="padding-left: 1rem;"> <a href="#Pathway"> Pathway  </a> </p> <p style="padding-left: 1rem;"> <a href="#Tooling"> Tooling  </a> </p> <p style="padding-left: 0rem;"> <a href="#Foreword-On-compilation-and-interpretation"> Foreword: On compilation and interpretation  </a> </p> <p style="padding-left: 0rem;"> <a href="#Designing-a-basic-REPL"> Designing a basic REPL  </a> </p> <p style="padding-left: 0rem;"> <a href="#Implementing-the-aforementioned-REPL"> Implementing the aforementioned REPL  </a> </p> <p style="padding-left: 1rem;"> <a href="#Reading-a-string"> Reading a string  </a> </p> <p style="padding-left: 1rem;"> <a href="#Parsing-an-integer"> Parsing an integer  </a> </p> <p style="padding-left: 1rem;"> <a href="#Evaluating"> Evaluating  </a> </p> <p style="padding-left: 1rem;"> <a href="#Printing"> Printing  </a> </p> <p style="padding-left: 0rem;"> <a href="#Wrapping-it-all-up"> Wrapping it all up  </a> </p>  </div>
-				</nav>
+
 			</aside>
 			<main>
 				<div id = "main-body">
@@ -129,7 +132,8 @@
 			I also hope that it helps you implement better, safer, and more reliable REPLs, should you choose to do so. </p><h3 id="Reading-a-string"> <p>  Reading a string </p></h3><p>  Finally, we can start writing code! </p><p>  In many languages, reading a string of text from the user is quite easy.
 			For didactic purposes, let's consider an example in Python 3.12.
 			In this language, the first step to read a string of text is the following: </p><pre> 
-x = input("> ") </pre><p>  This is also the last step.
+x = input("> ") </pre>
+<p>  This is also the last step.
 			In one line of code, we have printed a prompt, recieved a string, and stored it in a variable, in a safe manner that is compliant with principles of memory safety, data injection avoidance, and Unicode usage. </p><p>  However, we're using C instead.
 			C has a variety of methods for reading string input from a user, all of which have their pros and their cons. </p><p>  The easiest method is to use <code>gets</code> .
 			The <code>gets</code> function, which is short for "get string", is both easy, convenient, and unsafe.
@@ -144,7 +148,8 @@ int main() {
 	gets(buff);
 
 	return 0;
-} </pre><p>  Just like our Python code, it reads a string and stores it in a variable.
+} </pre>
+<p>  Just like our Python code, it reads a string and stores it in a variable.
 			It does so by copying what the user wrote and writing it down in a variable called <code>buff</code> (short for "buffer", which means a space in memory allocated to store some large-ish quantity of data).
 			Although it does work, it doesn't know how much space there is in <code>buff</code> .
 			It's like taping a piece of paper to a wall, telling a blind person where the paper begins, and asking them to write some text you dictate to them.
@@ -165,7 +170,8 @@ int main() {
     scanf("%63[^\n]s", &x);
 
     return 0;
-} </pre><p>  This is certainly a bit safer, but there's still a problem.
+} </pre>
+<p>  This is certainly a bit safer, but there's still a problem.
 			Do you see it?
 			Imagine that you want to parse a sum of one hundred integers for some reason.
 			How will you fit *one hundred integers*, as well as a few non-integer symbols, into a mere 63 bytes?
@@ -218,7 +224,8 @@ char * input() {
 int main() {
 	char * x = input();
 	return 0;
-} </pre><p>  This does just what we need:
+} </pre>
+<p>  This does just what we need:
 			It takes in input from the user, is capable of handling arbitrary quantities of text, and does not suffer from buffer overflows.
 			While it does lack proper error handling, it does clearly define how to handle those errors.
 			As it is, this reader satiates our goals. </p><h3 id="Parsing-an-integer"> <p>  Parsing an integer </p></h3><p>  Now that we can *obtain* a string, we can try to *understand* it.
@@ -229,7 +236,8 @@ int main() {
 			This involves loading the entire integer into a buffer, discerning the buffer's size, using exponents to obtain each positional magnitude, and then summing up the products of each digit's value and each positional magnitude.
 			In Python, that might resemble this: </p><pre> 
 string = "2357" # somehow load the string representing the number into a buffer
-number = sum([ int(digit) * pow(10, len(string) - position - 1) for position, digit in enumerate(string) ]) </pre><p>  This works, and it works quite well.
+number = sum([ int(digit) * pow(10, len(string) - position - 1) for position, digit in enumerate(string) ]) </pre>
+<p>  This works, and it works quite well.
 			If you open up your preferred Python interpreter and paste this in, you'll discover that it is perfectly serviceable.
 			However, if you try to port it to C, you'll note that the buffer needs to be allocated.
 			This is clearly inefficient.
@@ -251,7 +259,8 @@ while True:
 	if not c in "0123456789": break # if it's not a digit, ignore it
 	index += 1 # it is a digit, so consume the current character
 	number *= 10
-	number += int(c) </pre><p>  This is of comparable complexity to the initial strategy, and is clearly slightly superior due to lacking a buffer.
+	number += int(c) </pre>
+<p>  This is of comparable complexity to the initial strategy, and is clearly slightly superior due to lacking a buffer.
 			However, it can still be improved upon.
 			You see, zero has the property that it can always be treated as the value of some invisible higher place.
 			This is because place-value notations (such as base-ten) are very convenient, and are intentionally designed to let you treat any unused place or unwritten digit as a zero.
@@ -267,7 +276,8 @@ while True:
 	if not c in "0123456789": break
 	index += 1
 	number *= 10
-	number += int(c) </pre><p>  This is both simple and effective, which means it meets our needs just fine.
+	number += int(c) </pre>
+<p>  This is both simple and effective, which means it meets our needs just fine.
 			As a result, I won't try to optimize any further.
 			However, before porting this to C, there is one more thing to consider.
 			Namely, how should we treat the user's input data?
@@ -300,7 +310,8 @@ int parse__integer(struct buffer * buf) {
 		number *= -1;
 	}
 	return number;
-} </pre><p>  This code uses the times-ten-and-add method to parse from a buffer an arbitrary integer of unknown size, just like the Python code.
+} </pre>
+<p>  This code uses the times-ten-and-add method to parse from a buffer an arbitrary integer of unknown size, just like the Python code.
 			It is reliable, somewhat efficient, and does not require any internal buffer.
 			While it is not yet capable of parsing negative numbers, it is obvious that we can add negatives by simply introducing some code to detect prefix positive or negative signs and alter the <code>is_negative</code> flag accordingly. </p><h3 id="Evaluating"> <p>  Evaluating </p></h3><p>  Once the REPL has obtained and understood the user's input, it can then proceed to do something with that input.
 			The current REPL doesn't support particularly complex input data *yet*, so there is not much we can do to process the input data.
@@ -321,7 +332,8 @@ union mathnode__data {
 struct mathnode {
 	enum mathnode__tag tag;
 	union mathnode__data data;
-}; </pre><p>  Note that this data structure is implemented as a tagged union.
+}; </pre>
+<p>  Note that this data structure is implemented as a tagged union.
 			A tagged union is a special data structure that can hold a variety of types of data, but can only hold one datum at a time.
 			You can think of it as a small pocket.
 			A tagged union can store a booklet *or* a Rubik's Cube *or* a phone *or* a DVD, but can not store more than one item at once.
@@ -329,7 +341,8 @@ struct mathnode {
 int evaluate(struct mathnode * math) {
 	// TODO: add more complex logic to the evaluator
 	return math->data.integer;
-} </pre><p>  We will discuss advanced applications of tagged unions in a future post, in which we will also implement a more powerful evaluator. </p><h3 id="Printing"> <p>  Printing </p></h3><p>  C is usually quite annoying to use for complex string operations.
+} </pre>
+<p>  We will discuss advanced applications of tagged unions in a future post, in which we will also implement a more powerful evaluator. </p><h3 id="Printing"> <p>  Printing </p></h3><p>  C is usually quite annoying to use for complex string operations.
 			It's so hard to do string manipulation in C, in fact, that the majority of popular interpreted REPL-based programming languages were created with the sole purpose of making string processing easier.
 			However, there is *one* thing that is really easy to do in conventional C. </p><p>  It's really easy to write things in C. </p><p>  If we just want to write down a single integer, we can use this code: </p><pre> 
 #include <stdio.h>
@@ -337,12 +350,14 @@ int evaluate(struct mathnode * math) {
 int main() {
 	int x = 42;
 	printf("%d\n", x);
-} </pre><p>  That little <code>%d</code> is a special instruction that tells the <code>printf</code> function to format it's input <code>x</code> as an integer.
+} </pre>
+<p>  That little <code>%d</code> is a special instruction that tells the <code>printf</code> function to format it's input <code>x</code> as an integer.
 			If we decide to be absolute nerds, we could instead use <code>%x</code> , which will tell <code>printf</code> that <code>x</code> should be printed in the hexadecimal notation, rather than in decimal.
 			We could also replace all integers in our calculator with floating-point numbers (which are the easiest and most contentious way to represent fractions in a computer), and then tell C to print it as a decimal with a dot by using <code>%f</code> . </p><p>  Let's turn this into a function that prints a single integer: </p><pre> 
 void print__integer(int integer) {
 	printf("%d\n", node->data.integer);
-} </pre><h2 id="Wrapping-it-all-up"> <p>  Wrapping it all up </p></h2><p>  Once we have all the parts, we can connect them to each other.
+} </pre>
+<h2 id="Wrapping-it-all-up"> <p>  Wrapping it all up </p></h2><p>  Once we have all the parts, we can connect them to each other.
 			This involves creating a loop that repeatedly obtains input, parses the input as a mathnode, evaluates that mathnode into an integer, and finally prints out the integer.
 			That resembles this: </p><pre> 
 int main(int argc, char ** argv) {
@@ -368,7 +383,8 @@ int main(int argc, char ** argv) {
 
 		print__integer(integer);
 	}
-} </pre><p>  We can finally compile our tiny interpreter REPL calculator thing!
+} </pre>
+<p>  We can finally compile our tiny interpreter REPL calculator thing!
 			First, let's just test-compile the code file.
 			For those of you following along at home, make sure that you have everything in the correct order, and that all your <code>#include</code> statements are present.
 			You'll need to include <code>stdio.h</code> and <code>bool.h</code> and <code>stdlib.h</code> , or else it won't compile without modifications.
@@ -378,7 +394,8 @@ int main(int argc, char ** argv) {
 			This is useful because it makes compilation easier - Make will do all the work of compiling and linking all your code in the correct order, which allows you to avoid spendng actual time and effort on compiling your code. </p><p>  The most basic Makefile is essentially just a fancy Bash script that calls <code>clang</code> for you.
 			We might write it like this: </p><pre> 
 main:
-	clang main.c -o repl </pre><p>  Paste that into a file called Makefile and you'll be able to auto-compile your code by simply executing the <code>make</code> command.
+	clang main.c -o repl </pre>
+<p>  Paste that into a file called Makefile and you'll be able to auto-compile your code by simply executing the <code>make</code> command.
 			It'll generate an executable called <code>repl</code> that, when run, will do exactly what we designed it to do. </p><p>  At last, we've finished!
 			We have made a simple minimal REPL with almost no features whatsoever.
 			In doing so, we have learned how REPLs work, and how they're implemented.
@@ -391,13 +408,14 @@ main:
 				</div>
 			</main>
 		</div>
+		<!--
 		<footer id = "footer">
 			<div class = "foot-bloc">
 				<h2> Thanks for reading! </h2>
 				<p>
 					Writing content takes a lot of effort, so it means a lot to me that you took the time to read this.
 					If you thought this was good, feel free to share it with your friends or online.
-					Furthermore, if you benefitted from this content and you'd like more, consider <!--subscribing to my RSS, or--> checking out my <a href="/hire-me">hire me</a> page.
+					Furthermore, if you benefitted from this content and you'd like more, consider <!-subscribing to my RSS, or-> checking out my <a href="/hire-me">hire me</a> page.
 					Thanks, and have a nice day!
 				</p>
 			</div>
@@ -409,5 +427,6 @@ main:
 				<p> <a href = "/hire-me"> My cover letter </a> </p>
 			</div>
 		</footer>
+		-->
 	</body>
 </html>

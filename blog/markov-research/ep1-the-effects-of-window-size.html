@@ -1,0 +1,183 @@
+<!doctype html>
+<html class = "theme-four">
+	<head>
+		<title>  The Effects of Window Size on Markov Models  | node's site </title>
+		<link rel="stylesheet" href="/nodesalamander6503/css.css" onerror="this.onerror=null;this.href='https://nodesalamander6503.github.io/nodesalamander6503/css.css'" />
+	</head>
+	<body>
+		<div id = "above-fold-wrap">
+			<div id = "above-fold">
+				<h1 id = "title">  The Effects of Window Size on Markov Models  </h1>
+				<p id = "desc"> 
+			This paper investigates the relationship between context window size and predictive performance in character-level Markov models trained on limited natural language data.
+			Using the short story "The Most Dangerous Game" as a training corpus, I evaluate unsmoothed Markov models with window sizes ranging from 1 to 4 characters and measure their performance via perplexity on held-out test data.
+			Contrary to the intuitive expectation that larger context windows improve prediction accuracy, the results demonstrate that perplexity increases exponentially with window size, with each additional character in the context window multiplying log-perplexity by a factor of approximately 1.17.
+			Linear regression analysis reveals a strong positive correlation between window size and log-perplexity, indicating systematic performance degradation as context expands.
+			This counterintuitive finding is explained by the exponential growth of the state space relative to the fixed size of the training corpus: larger windows create exponentially more possible character sequences, most of which never appear in training, resulting in severe data sparsity and unreliable probability estimates.
+			These results highlight a fundamental tension between model capacity and data availability in statistical language modeling, with implications for the design of predictive models in resource-constrained settings.
+		 </p>
+				<div id = "buttons">
+					<!--
+					<a href = "#main-body">
+						<span> Read more </span>
+					</a>
+					<a href = "$HOME$">
+						<span> Home </span>
+					</a>
+					<a href = "/main/hire-me.html">
+						<span> Contact Me </span>
+					</a>
+					-->
+					
+				</div>
+			</div>
+		</div>
+		<div id = "inter-content">
+			
+		</div>
+		<div id = "majority">
+			<aside>
+<div id = "inline-nav"> <p style="padding-left: 0rem;"> <a href="#Abstract"> Abstract  </a> </p> <p style="padding-left: 0rem;"> <a href="#Introduction"> Introduction  </a> </p> <p style="padding-left: 0rem;"> <a href="#Related-Work"> Related Work  </a> </p> <p style="padding-left: 0rem;"> <a href="#Methods"> Methods  </a> </p> <p style="padding-left: 0rem;"> <a href="#Results"> Results  </a> </p> <p style="padding-left: 0rem;"> <a href="#Discussion"> Discussion  </a> </p> <p style="padding-left: 0rem;"> <a href="#Conclusion"> Conclusion  </a> </p>  </div>
+<div id="inline-citations">
+<p> Essai d'une recherche statistique sur le texte du roman "Eugène Onéguine". Authored by Andrey A. Markov. <a id="markov" href="https://scholar.google.com/scholar?q=Markov+1913+Essai+recherche+statistique">View content</a>. </p>
+<p> A Mathematical Theory of Communication. Authored by Claude E. Shannon. <a id="shannon" href="https://scholar.google.com/scholar?q=Shannon+1948+Mathematical+Theory+Communication">View content</a>. </p>
+<p> Speech and Language Processing (Chapter 3: N-gram Language Models). Authored by Daniel Jurafsky, James H. Martin. <a id="jurafsky,martin" href="https://web.stanford.edu/~jurafsky/slp3/3.pdf">View content</a>. </p>
+<p> Selective Markov models for predicting Web page accesses. Authored by Mukund Deshpande, George Karypis. <a id="deshpande,karypis" href="https://scholar.google.com/scholar?q=Deshpande+Karypis+2004+Selective+Markov+models">View content</a>. </p>
+<p> An Empirical Study of Smoothing Techniques for Language Modeling. Authored by Stanley F. Chen, Joshua Goodman. <a id="chen,goodman" href="https://dash.harvard.edu/entities/publication/73120378-fb0f-6bd4-e053-0100007fdf3b">View content</a>. </p>
+<p> Are Larger Pretrained Language Models Uniformly Better? Comparing Performance at the Instance Level. Authored by Ruiqi Yin, Graham Neubig. <a id="yin,neubig" href="https://arxiv.org/abs/2109.07740">View content</a>. </p>
+<p> Lost in the Middle: How Language Models Use Long Contexts. Authored by Nelson F. Liu, Kevin Lin, John Hewitt, Ashwin ParanjapeMichele Bevilacqua, Fabio Petroni, Percy Liang. <a id="liu,etal" href="https://arxiv.org/abs/2307.03172">View content</a>. </p>
+<p> Markov Chains: Basic Definitions. Authored by Randal Douc, Eric Moulines, Pierre Priouret, Philippe Soulier. <a id="douc,moulines,priouret,soulier" href="https://link.springer.com/chapter/10.1007/978-3-319-97704-1_1">View content</a>. </p>
+</div>
+			</aside>
+			<main>
+				<div id = "main-body">
+<h2 id="Abstract"> <p>  Abstract </p></h2><p>  This paper investigates the relationship between context window size and predictive performance in character-level Markov models trained on limited natural language data.
+			Using the short story "The Most Dangerous Game" as a training corpus, I evaluate unsmoothed Markov models with window sizes ranging from 1 to 4 characters and measure their performance via perplexity on held-out test data.
+			Contrary to the intuitive expectation that larger context windows improve prediction accuracy, the results demonstrate that perplexity increases exponentially with window size, with each additional character in the context window multiplying log-perplexity by a factor of approximately 1.17.
+			Linear regression analysis reveals a strong positive correlation between window size and log-perplexity ( <span class="math"> <span>β</span><sub><span>1</span></sub><span> </span><span>≈</span><span> </span><span>1.1671</span> </span> ), indicating systematic performance degradation as context expands.
+			This counterintuitive finding is explained by the exponential growth of the state space relative to the fixed size of the training corpus: larger windows create exponentially more possible character sequences, most of which never appear in training, resulting in severe data sparsity and unreliable probability estimates.
+			These results highlight a fundamental tension between model capacity and data availability in statistical language modeling, with implications for the design of predictive models in resource-constrained settings. </p><h2 id="Introduction"> <p>  Introduction </p></h2><p>  Markov chains have long served as a foundational tool for statistical language modeling, offering a principled approach to predicting sequential data based on limited historical context.
+			The performance of Markov models depends critically on the choice of context window size, which determines how many previous tokens the model considers when making predictions.
+			While intuition suggests that larger context windows should improve predictive accuracy by providing more information, the relationship between window size and model performance is more nuanced, particularly when training data is limited. </p><p>  This paper investigates the effect of context window size on the perplexity of character-level Markov models trained on a small natural language corpus.
+			Specifically, I examine whether increasing the window size from 1 to 4 characters improves or degrades predictive performance as measured by perplexity on held-out test data.
+			The central hypothesis is that context window size is correlated with perplexity, though the direction and magnitude of this correlation may depend on the availability of training data relative to the size of the state space. </p><p>  The choice of character-level tokenization is deliberate: by constraining the vocabulary to the ASCII character set, I minimize the state space and isolate the effect of context window size without the confounding influence of vocabulary expansion.
+			The corpus selected for this study is the short story "The Most Dangerous Game," which provides a natural language dataset that is both small enough to permit rapid experimentation and complex enough to reflect the statistical properties of real text.
+			Importantly, no smoothing techniques are applied to the probability estimates, allowing me to observe the raw impact of state-space growth on model performance under data-constrained conditions. </p><p>  The findings of this study have implications for the design of statistical language models in resource-limited settings.
+			Understanding how context window size interacts with corpus size can inform practical decisions about model architecture when computational resources or training data are scarce.
+			Additionally, this work provides a controlled comparison point for evaluating the benefits of smoothing techniques and neural architectures, which are designed precisely to address the limitations of unsmoothed Markov models observed here. </p><h2 id="Related-Work"> <p>  Related Work </p></h2><p>  The application of Markov chains to language modeling has a long history, dating back to Markov's original 1913 work analyzing letter sequences in Pushkin's Eugene Onegin <a class="citation" href="#markov"> [cite] </a> .
+			Shannon later formalized this approach in his foundational 1948 paper "A Mathematical Theory of Communication," demonstrating how Markov chains could create statistical models of real sequential data such as English text <a class="citation" href="#shannon"> [cite] </a> .
+			These early works established the framework for n-gram language models, which remain fundamental to natural language processing despite the recent dominance of neural approaches. </p><p>  N-gram models, which are equivalent to higher-order Markov chains, have been extensively studied in the language modeling literature.
+			Standard references demonstrate that higher-order n-grams generally produce more coherent text and achieve lower perplexity scores when evaluated on held-out test sets <a class="citation" href="#jurafsky,martin"> [cite] </a> .
+			These results suggest that increasing context window size improves predictive performance under typical conditions with adequate training data. </p><p>  However, the relationship between context window size and model performance is not universally positive across all settings.
+			Deshpande and Karypis investigated selective Markov models for predicting web page accesses, finding that larger context windows can make models more susceptible to small variations in history <a class="citation" href="#deshpande,karypis"> [cite] </a> .
+			These findings suggest that the optimal window size for Markov models depends critically on the characteristics of the training data and the specific prediction task. </p><p>  The curse of dimensionality represents a fundamental challenge for higher-order Markov models.
+			As the order of the model increases, the number of possible state transitions grows exponentially, requiring correspondingly larger training corpora to reliably estimate transition probabilities <a class="citation" href="#douc,moulines,priouret,soulier"> [cite] </a> .
+			Without sufficient training data, higher-order models suffer from severe data sparsity, where most possible n-gram sequences never appear in the training corpus.
+			This sparsity manifests as zero-probability estimates for unseen sequences, which in turn produce degraded performance during evaluation.
+			To address data sparsity, the standard practice in n-gram modeling is to employ smoothing techniques such as back-off estimation, Good-Turing smoothing, or linear interpolation across multiple n-gram orders <a class="citation" href="#chen,goodman"> [cite] </a> .
+			The present study deliberately omits smoothing in order to isolate the raw effect of context window size on model performance under data-constrained conditions. </p><p>  Research on neural network architectures reveals different patterns in how context window size affects performance.
+			For neural machine translation models with fixed context windows, larger context sizes can yield better translation quality, but only with extended training <a class="citation" href="#yin,neubig"> [cite] </a> .
+			These models appear to plateau at higher success rates with larger contexts, but require more training time to reach any given performance level.
+			This suggests that the benefits of larger context windows in neural models depend on the model's capacity to learn complex relationships within the extended context, which requires sufficient training iterations. </p><p>  Large language models using the attention mechanism operate with variable context windows, and their performance shows complex dependencies on context length.
+			Some research indicates that these models may not always benefit from increased window size, with evidence suggesting that attention-based models tend to focus more heavily on the beginning and end of long context windows while neglecting information in the middle <a class="citation" href="#liu,etal"> [cite] </a> .
+			This phenomenon, sometimes termed the "lost in the middle" problem, indicates that simply expanding context availability does not guarantee improved utilization of that context. </p><h2 id="Methods"> <p>  Methods </p></h2><p>  I chose to use the short story "The Most Dangerous Game" as a corpus to test the methods on.
+			The decision was rather arbitrary, and was intended to be both small enough to permit me to run my calculations rapidly, while also being complex enough to reflect the underlying complexities of natural language datasets. </p><p>  I defined my Markov chain model using the conventional method.
+			Namely, Markov chains are any predictive system which follows the Markov principle, which is that the estimated probability of the subsequent event is based entirely on the previous event or events.
+			For this paper, the "previous events" constitute a window of the last <span class="math"> <span>n</span> </span> tokens in the series, where <span class="math"> <span>n</span> </span> is the window size parameter. </p><p>  This study employs character-level tokenization exclusively, treating each ASCII character as an atomic token.
+			Character encoding is defined as subdividing the corpus into individual ASCII characters.
+			This choice was made deliberately to minimize the state space of the Markov model, as character-level tokenization produces a vocabulary size bounded by the ASCII character set (approximately 127 printable characters).
+			By constraining the tokenization method, I isolate the effect of context window size on model performance without introducing confounding variation from vocabulary granularity.
+			It is therefore important to note that other tokenization methods may cause Markov models to have different behavior. </p><p>  To evaluate the effect of context window size on Markov model perplexity, I tested four distinct window sizes: 1, 2, 3, and 4 characters.
+			A window size of 1 corresponds to a first-order Markov model, where predictions depend only on the immediately preceding character.
+			As a result, the values procured from the first-order Markov model must be equivalent in this experiment to those procured in the previous experiment, as they are the same procedure.
+			Larger window sizes incorporate additional historical context, resulting in higher-order Markov models.
+			These window sizes were selected to span a range from minimal context to moderately extended context while remaining computationally tractable for the small corpus used in this study. </p><p>  The experiment proceeded in four steps, described below. </p><p>  The first step was corpus procurement and preprocessing.
+			The raw text of the short story was normalized only to the extent required to ensure internal consistency.
+			I preserved all punctuation, capitalization, and spacing.
+			No stemming, lemmatization, or lowercasing was applied.
+			The corpus was then divided into a training portion and a testing portion by selecting the first 80% of the characters as the training segment and the remaining 20% as the held-out test segment.
+			This split ensures that all models evaluate the same continuation-prediction task under comparable conditions. </p><p>  Tokenization was the next step.
+			Because this study employs character-level tokenization exclusively, each character in both the training and test corpora was treated as an individual token.
+			No vocabulary construction was necessary, as the character set is predetermined by the ASCII encoding scheme.
+			This step therefore produced identically tokenized training and test sequences for all models, with variation introduced solely through the context window size parameter.
+			This step is only acknowledged for consistency and interpretability with respect to other Markov model experiments. </p><p>  The third step was the construction of each Markov model given the tokenized training corpus.
+			For each window size configuration, I constructed an <span class="math"> <span>n</span> </span> -th order Markov chain by counting transitions from sequences of <span class="math"> <span>n</span> </span> consecutive characters to the subsequent character.
+			The probability of any given transition was estimated based on the empirical frequencies observed in the training corpus.
+			No smoothing, discounting, back-off, or interpolation was applied, as the intention of this study is to measure the relationship between context window size and raw transition-matrix sparsity.
+			Each window size therefore yields a unique transition table defined strictly by empirical counts. </p><p>  Finally, each trained Markov model was evaluated on the held-out test corpus.
+			The log-likelihood of the test sequence under each model was computed by summing the transition log-probabilities of each character conditioned on its preceding context window.
+			Perplexity was then computed in the usual way as <span class="math"> <span>PPL</span><span> </span><span>=</span><span> </span><span>exp(-(1/N)</span><span> </span><span>⋅</span><span> </span><span>Σ</span><span> </span><span>log</span><span> </span><span>P(x</span><sub><span>t</span></sub><span> </span><span>|</span><span> </span><span>x</span><sub><span><span> </span><span>t</span><span> </span><span>-</span><span> </span><span>1</span><span> </span></span></sub><span>,</span><span> </span><span>...,</span><span> </span><span>x</span><sub><span><span> </span><span>t</span><span> </span><span>-</span><span> </span><span>n</span><span> </span></span></sub><span>))</span> </span> , where <span class="math"> <span>N</span> </span> is the number of tokens in the test sequence.
+			This procedure yields a comparable perplexity estimate for all models, allowing direct comparison across context window sizes. </p><h2 id="Results"> <p>  Results </p></h2><p>  This research discerned a positive correlation between context window size and perplexity for character-level Markov models.
+			The particular perplexities are depicted in the following table: </p><div class = "fig">
+<table>
+<tr> <th>  Window Size  </th> <th>  Perplexity  </th> </tr>
+<tr> <td> <p>  1 </p> </td>
+<td> <p>  10.8227 </p> </td>
+ </tr>
+<tr> <td> <p>  2 </p> </td>
+<td> <p>  11.8659 </p> </td>
+ </tr>
+<tr> <td> <p>  3 </p> </td>
+<td> <p>  55.1167 </p> </td>
+ </tr>
+<tr> <td> <p>  4 </p> </td>
+<td> <p>  317.3171 </p> </td>
+ </tr>
+</table>
+</div><p>  The table demonstrates that perplexity increases consistently with context window size.
+			For the character-level models tested on "The Most Dangerous Game" corpus, each increment in window size from 1 to 4 resulted in substantially higher perplexity values, indicating degraded predictive performance despite the availability of additional contextual information.
+			Specifically, the perplexity values exhibited exponential growth as the window size increased, reflecting the rapid expansion of the state space and the corresponding data sparsity issues. </p><p>  To quantify the relationship between window size and model performance, I performed a linear regression analysis relating context window size to the logarithm of perplexity.
+			The regression model takes the form <span class="math"> <span class="err">log(PPL)</span><span> </span><span>=</span><span> </span><span>β</span><sub><span>0</span></sub><span> </span><span>+</span><span> </span><span>β</span><sub><span>1</span></sub><span> </span><span>⋅</span><span> </span><span>w</span> </span> , where <span class="math"> <span>w</span> </span> represents the window size and <span class="math"> <span>PPL</span> </span> denotes perplexity.
+			The fitted model yielded parameter estimates of <span class="math"> <span>β</span><sub><span>0</span></sub><span> </span><span>≈</span><span> </span><span>0.7385</span> </span> and <span class="math"> <span>β</span><sub><span>1</span></sub><span> </span><span>≈</span><span> </span><span>1.1671</span> </span> .
+			The positive slope coefficient <span class="math"> <span>β</span><sub><span>1</span></sub> </span> confirms that log-perplexity increases linearly with window size, which implies that perplexity itself grows exponentially as context windows expand. </p><p>  The slope value of approximately 1.17 indicates that each unit increase in window size corresponds to an increase of roughly 1.17 units in log-perplexity.
+			Equivalently, this means that perplexity is multiplied by a factor of approximately <span class="math"> <span>e</span><sup><span><span>1.1671</span></span></sup><span> </span><span>≈</span><span> </span><span>3.21</span> </span> for each additional character added to the context window.
+			This exponential relationship quantifies the severity of the data sparsity problem: the state space grows exponentially with window size, and without sufficient training data to populate this expanded state space, predictive accuracy deteriorates rapidly. </p><p>  The intercept value of approximately 0.74 corresponds to the expected log-perplexity when the window size approaches zero.
+			Exponentiating this value yields a baseline perplexity of approximately <span class="math"> <span>e</span><sup><span><span>0.7385</span></span></sup><span> </span><span>≈</span><span> </span><span>2.09</span> </span> , which can be interpreted as the limiting performance of an extremely simple model with minimal context.
+			The strong linear relationship in log-space (corresponding to an exponential relationship in original space) suggests that the deterioration in performance is systematic and predictable across the range of window sizes tested. </p><h2 id="Discussion"> <p>  Discussion </p></h2><p>  The experimental results exhibit a consistent pattern: increasing context window size leads to higher perplexity for character-level Markov models trained on a small corpus.
+			This pattern contradicts the intuitive expectation that additional context should improve predictive accuracy.
+			However, the result is explicable from the structure of the Markov estimation problem when applied to limited training data. </p><p>  As window size increases, the state space of the Markov chain expands exponentially.
+			A first-order model (window size 1) requires estimating transition probabilities for approximately 127 × 127 character pairs.
+			A second-order model (window size 2) requires estimating probabilities for <span class="math"> <span>127</span><sup><span>3</span></sup> </span> possible trigrams, and higher-order models grow the state space accordingly.
+			Because transition probabilities are estimated directly from empirical frequencies without smoothing, any increase in state-space dimensionality reduces the reliability of estimates when training data is limited.
+			The corpus used in this study comprises only a few kilobytes of text.
+			At this scale, the vast majority of possible higher-order character sequences never appear in the training data, resulting in a sparse transition table with many zero-probability transitions.
+			When the test set contains previously unseen character sequences, the model assigns them a probability of zero, which manifests as extremely high perplexity. </p><p>  This finding contradicts results reported in prior literature, where larger context windows typically improve language model performance.
+			However, those studies generally employ either substantially larger corpora, smoothing techniques to handle unseen sequences, or neural architectures that can generalize across similar contexts.
+			The present experiment deliberately omits smoothing to isolate the raw effect of state-space expansion on sparse empirical estimates.
+			The results therefore reveal a fundamental limitation of unsmoothed Markov models: they require training data whose size scales with the exponential growth of the state space. </p><p>  It is plausible that a substantially larger training corpus would provide sufficient statistical support for larger context windows, potentially yielding the performance improvements observed in prior studies.
+			Nevertheless, our findings demonstrate an important principle: simply increasing the amount of contextual information available to a model does not guarantee improved performance.
+			The relationship between context window size and model effectiveness appears to be corpus-size dependent, and practitioners must carefully consider the interaction between model capacity and data availability when designing Markov-based language models for resource-constrained settings. </p><p>  The study faces several limitations.
+			It evaluates only a single corpus, is constrained to a single language and subject domain, and it does not incorporate smoothing techniques that might mitigate sparsity effects.
+			Additionally, the window sizes tested, while spanning a reasonable range for character-level models, do not extend to the much larger context windows employed by modern neural language models.
+			Future work may extend this analysis to larger corpora, incorporate various smoothing methods, and compare the behavior of Markov models against neural architectures under equivalent data constraints. </p><h2 id="Conclusion"> <p>  Conclusion </p></h2><p>  This study demonstrates that the perplexity of character-level Markov models is significantly impacted by context window size, but not always in the expected direction.
+			For models trained on small corpora without smoothing, we observed that increasing the context window size actually increased perplexity, indicating diminished model performance rather than improvement.
+			These findings suggest that expanding the model's context window is not a universal solution for enhancing predictive accuracy. </p><p>  The observed degradation stems from the exponential growth of the state space as window size increases, coupled with the limited statistical support provided by a small training corpus.
+			When the number of possible character sequences grows faster than the availability of training examples, the resulting transition probability estimates become unreliable, and the model encounters many previously unseen sequences during evaluation.
+			This fundamental tension between model capacity and data availability has important implications for the design of statistical language models in data-constrained settings. </p><p>  Rather, the optimal window size depends critically on the characteristics of the training data, particularly corpus size.
+			Future work should investigate the threshold corpus sizes at which larger context windows begin to yield performance benefits, and develop principled methods for selecting appropriate window sizes given available training data.
+			Additionally, research into smoothing techniques that can effectively interpolate across sparse higher-order statistics may help resolve the tension between context richness and estimation reliability. </p>
+				</div>
+			</main>
+		</div>
+		<!--
+		<footer id = "footer">
+			<div class = "foot-bloc">
+				<h2> Thanks for reading! </h2>
+				<p>
+					Writing content takes a lot of effort, so it means a lot to me that you took the time to read this.
+					If you thought this was good, feel free to share it with your friends or online.
+					Furthermore, if you benefitted from this content and you'd like more, consider <!-subscribing to my RSS, or-> checking out my <a href="/hire-me">hire me</a> page.
+					Thanks, and have a nice day!
+				</p>
+			</div>
+			<div>
+				<h2> Quick links </h2>
+				<p> <a href = "/"> Home </a> </p>
+				<p> <a href = "/redirect/recent"> Recent article </a> </p>
+				<p> <a href = "/about"> About </a> </p>
+				<p> <a href = "/hire-me"> My cover letter </a> </p>
+			</div>
+		</footer>
+		-->
+	</body>
+</html>

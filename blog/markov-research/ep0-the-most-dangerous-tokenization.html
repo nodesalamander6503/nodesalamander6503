@@ -1,0 +1,211 @@
+<!doctype html>
+<html class = "theme-four">
+	<head>
+		<title>  The Most Dangerous Tokenization: An Analysis of Tokenization Effects on Simple Markov Models  | node's site </title>
+		<link rel="stylesheet" href="/nodesalamander6503/css.css" onerror="this.onerror=null;this.href='https://nodesalamander6503.github.io/nodesalamander6503/css.css'" />
+	</head>
+	<body>
+		<div id = "above-fold-wrap">
+			<div id = "above-fold">
+				<h1 id = "title">  The Most Dangerous Tokenization: An Analysis of Tokenization Effects on Simple Markov Models  </h1>
+				<p id = "desc"> 
+			This paper analyzes the effects of vocabulary size on the effectiveness of first-order Markov models.
+			Through a deterministic experimental framework, we applied three tokenization strategies and four vocabulary sizes.
+			The results of this experiment show that a linear increase in vocabulary size causes an exponential increase in perplexity.
+			The findings highlight a structural limitation of first-order Markov models.
+		 </p>
+				<div id = "buttons">
+					<!--
+					<a href = "#main-body">
+						<span> Read more </span>
+					</a>
+					<a href = "$HOME$">
+						<span> Home </span>
+					</a>
+					<a href = "/main/hire-me.html">
+						<span> Contact Me </span>
+					</a>
+					-->
+					
+				</div>
+			</div>
+		</div>
+		<div id = "inter-content">
+			
+		</div>
+		<div id = "majority">
+			<aside>
+<div id = "inline-nav"> <p style="padding-left: 0rem;"> <a href="#Abstract"> Abstract  </a> </p> <p style="padding-left: 0rem;"> <a href="#Introduction"> Introduction  </a> </p> <p style="padding-left: 0rem;"> <a href="#Related-Work"> Related Work  </a> </p> <p style="padding-left: 0rem;"> <a href="#Methods"> Methods  </a> </p> <p style="padding-left: 0rem;"> <a href="#Results"> Results  </a> </p> <p style="padding-left: 0rem;"> <a href="#Discussion"> Discussion  </a> </p> <p style="padding-left: 0rem;"> <a href="#Conclusion"> Conclusion  </a> </p>  </div>
+<div id="inline-citations">
+<p> Neural Machine Translation of Rare Words with Subword Units. Authored by Rico Sennrich, Barry Haddow, Alexandra Birch. </p>
+<p> A New Algorithm for Data Compression. Authored by Phillip Gage. <a id="gage" href="https://github.com/tpn/pdfs/blob/master/A%20New%20Algorithm%20for%20Data%20Compression%20(1994).pdf">View content</a>. </p>
+<p> An Empirical Study of Smoothing Techniques for Language Modeling. Authored by Stanley F. Chen, Joshua Goodman. <a id="chen,goodman" href="https://dash.harvard.edu/entities/publication/73120378-fb0f-6bd4-e053-0100007fdf3b">View content</a>. </p>
+<p> CONSTRAINED STOCHASTIC LANGUAGE MODELS. Authored by Kevin E. Mark, Michael I. Miller, Ulf Grenander. <a id="mrk,miller,grenander" href="https://link.springer.com/chapter/10.1007/978-1-4612-4056-3_7">View content</a>. </p>
+<p> Markov Chains: Basic Definitions. Authored by Randal Douc, Eric Moulines, Pierre Priouret, Philippe Soulier. <a id="douc,moulines,priouret,soulier" href="https://link.springer.com/chapter/10.1007/978-3-319-97704-1_1">View content</a>. </p>
+</div>
+			</aside>
+			<main>
+				<div id = "main-body">
+<h2 id="Abstract"> <p>  Abstract </p></h2><p>  This paper analyzes the effects of vocabulary size on the effectiveness of first-order Markov models.
+			Through a deterministic experimental framework, we applied three tokenization strategies across a range of vocabulary sizes on a fixed training and testing corpus.
+			Each method resulted in a distinct transition matrix estimated via empirical transition rates discerned within a training corpus, which was then tested on a testing corpus to discern actual effectiveness. </p><p>  The results of this experiment show a consistent and substantial increase in perplexity as vocabulary size increases.
+			In particular, a linear increase in vocabulary size causes an exponential increase in perplexity.
+			This pattern reflects the increased sparsity of the transition matrix and the corresponding lose of reliability in empirical frequency estimates.
+			The findings highlight a structural limitation of first-order Markov models: their performance is highly sensitive to token-space cardinality and degrades rapidly as granularity increases. </p><p>  These results provide a clean quantitative account of tokenization effects in simple statistical models and establish a basis for more general analyses involving higher-order dependencies, smoothing strategies, and hybrid tokenization schemes. </p><h2 id="Introduction"> <p>  Introduction </p></h2><p>  Tokenization is a fundamental part of next-in-sequence prediction algorithms, such as large language models (LLMs), Markov chains, and other tools.
+			Tokens are necessary because the set of possibilities must often be converted into a finite bounded set in order for an algorithm to discern transition probabilities.
+			While current research often focuses on transformer-based approaches, the classical Markov model remains a useful tool for learning the effects of various types of tokenization choices. </p><p>  This paper aims to study the effect of vocabulary size on the effectiveness of a first-order Markov model.
+			We study three different tokenization strategies, including character tokenization, word tokenization, and tokenization via byte-pair encoding.
+			The latter two methods are studied across a variety of vocabulary size options.
+			In doing so, we are able to test the effect of various vocabulary sizes on the effectiveness of a simple first-order Markov model. </p><p>  The results of this paper indicate a clear relationship between vocabulary size and perplexity.
+			Larger vocabularies consistently resulted in increased perplexity, with the steepest growths observed for byte-pair encoding.
+			These trends can be attributed to the rapid expansion of the state space, which grows exponentially relative to the linear growth of the vocabulary size, and therefore reduces the reliability of the Markov models. </p><p>  The contributions of this work are threefold.
+			First, it provides a consistent and reproducible framework which can be used to test the effects of a given tokenization scheme in a model-independent manner.
+			Second, it provides a model which serves to describe the effect that vocabulary size impacts perplexity.
+			Finally, this paper shows that the intuition often applied to a neural model with an arbitrarily large context window may not transfer to a Markov model.
+			These results clarify the statistical implications of vocabulary size and also establish a foundation for further work on context-limited language models. </p><h2 id="Related-Work"> <p>  Related Work </p></h2><p>  Gage discerned a method which alters the tokenization strategy by increasing the information contained in each token <a class="citation" href="#gage"> [cite] </a> .
+			This method, called byte-pair encoding (BPE), was developed to improve data compression by permitting frequent and obvious transitions to be collapsed into single transitions, or single facts.
+			BPE is known to be effective at compressing some types of content, and rarely (if ever) causes an increase in the size of a compressed file <a class="citation" href="#gage"> [cite] </a> . </p><p>  The relation between compression and next-token prediction has been studied <a class="citation" href="#"> [cite] </a>  </p><p>  Prior research has been conducted concerning the use of BPE to improve neural networks' performance at translation tasks.
+			Sennrich, Haddow, and Birch showed that the use of BPE to encode words lead to significant improvement over previous strategies, and afforded ML-based text transliteration techniques better quality when dealing with both in-vocabulary and out-of-vocabulary words .
+			In fact, they went so far as to claim that a smaller vocabulary of only a few thousand tokens may yield better results overall than a large vocabulary composed of 50,000 words, as was common at the time.
+			This leads me to believe that a simple information-optimized BPE tokenization comprised of roughly 1024 (two to the tenth) tokens would likely be far more useful for a generative text model than a word-based tokenization scheme. </p><h2 id="Methods"> <p>  Methods </p></h2><p>  I chose to use the short story "The Most Dangerous Game" as a corpus to test the methods on.
+			The decision was rather arbitrary, and was intended to be both small enough to permit me to run my calculations rapidly, while also being complex enough to allow me to reflect the underlying complexities of natural language datasets. </p><p>  I defined my Markov chain model using the conventional method.
+			Namely, Markov chains are any predictive system which follows the Markov principle, which is that the estimated probability of the subsequent event is based entirely on the previous event <a class="citation" href="#douc,moulines,priouret,soulier"> [cite] </a> .
+			For this paper, the "previous event" is the last token in the series. </p><p>  We compare three different tokenization methods (character, word, byte-pair encoding).
+			Character encoding is defined as subdividing the corpus into ASCII characters.
+			Word encoding is defined as subdividing the corpus in such a way that each unique word is a token.
+			I chose to treat capitalization as significant, and make each word token include the space that follows it, as well as any incidental punctuation.
+			Finally, byte-pair encoding is defined exactly as Gage defined it <a class="citation" href="#gage"> [cite] </a> .
+			I applied it in the same manner that Sennrich, Haddow, and Birch applied it to neural networks <a class="citation" href="#sennrich,haddow,birch"> [cite] </a> . </p><p>  Custom implementations of both BPE and word tokenization are used, to guarantee reliability and determinism.
+			The BPE implementation followed Gage's byte-merging protocol <a class="citation" href="#gage"> [cite] </a> .
+			That is, all merge operations were computed exclusively on the training corpus, following the conventional BPE rule of iteratively merging the most frequent adjacent token pair.
+			Because the implementation is deterministic and contains no stochastic components, the resulting vocabulary and merge table are fully reproducible from the training text alone.
+			No randomness or tie-breaking heuristics were used.
+			Simiarly, the word tokenization algorithm follows the conventional approach of treating each sequence of non-space characters followed by a single space as a word <a class="citation" href="#sennrich,haddow,birch"> [cite] </a> .
+			Only the most common words were selected for the vocabulary.
+			The word vocabularies were composed of the <span class="math"> <span>n-1</span> </span> words selected, as well as a special token intended to represent unknowns. </p><p>  For the two methods that take a token quantity parameter (word and byte-pair encoding), we test four token quantities.
+			In particular, we use vocabulary sizes of 256, 512, 1024, and 2048 tokens.
+			These numbers were chosen entirely because they're convenient for me. </p><p>  To evaluate the effect of tokenization granularity on first-order Markov perplexity, I conducted a controlled experiment in which each tokenization strategy and vocabulary-size configuration produced a distinct Markov chain model.
+			The experiment proceeded in four steps, described below. </p><p>  The first step was corpus procurement and preprocessing.
+			The raw text of the short story was normalized only to the extent required to ensure internal consistency.
+			I preserved all punctuation, capitalization, and spacing, unless a tokenization strategy explicitly required segmentation based on these features.
+			No stemming, lemmatization, or lowercasing was applied.
+			The corpus was then divided into a training portion and a testing portion by selecting the first 80% of the characters as the training segment and the remaining 20% as the held-out test segment.
+			This split ensures that all models evaluate the same continuation-prediction task under comparable conditions. </p><p>  Tokenization was the next step.
+			Each model used one tokenization strategy and one vocabulary size (except for the character-level model, which had no vocabulary parameter).
+			As previously explained, the strategies were character tokenization, word tokenization, and tokenization via byte-pair encoding.
+			For the two strategies requiring vocabulary size selection (word and BPE), the experiment used vocabularies of sizes 256, 512, 1024, and 2048 tokens.
+			This step therefore produced both a vocabulary for each method-model pair, as well as appropriately-tokenized test and training corpora. </p><p>  The third step was the construction of each Markov model given the tokenized training corpora.
+			For each tokenized training sequence, I constructed a first-order Markov chain by counting transitions between consecutive tokens.
+			The probability of any given transition was therefore predicated, in the usual manner, based on the set of transitions observed in the training corpus <a class="citation" href="#douc,moulines,priouret,soulier"> [cite] </a> No smoothing, discounting, back-off, or interpolation was applied, as the intention of this study is to measure the relationship between tokenization granularity and raw transition-matrix sparsity.
+			Each tokenization–vocabulary pair therefore yields a unique transition matrix defined strictly by empirical counts. </p><p>  Finally, each trained Markov model was evaluated on the identically tokenized held-out test corpus.
+			The log-likelihood of the test sequence under each model was computed by summing the transition log-probabilities of each token conditioned on its predecessor.
+			Perplexity was then computed in the usual way as <span class="math"> <span>PPL</span><span> </span><span>=</span><span> </span><span>exp(</span><span> </span><span>-</span><span> </span><span>(1/N)</span><span> </span><span>⋅</span><span> </span><span>Σ</span><span> </span><span>log</span><span> </span><span>P(x</span><sub><span>t</span></sub><span> </span><span>|</span><span> </span><span>x</span><sub><span><span>t-1</span></span></sub><span>)</span><span> </span><span>)</span> </span> , where <span class="math"> <span>N</span> </span> is the number of tokens in the test sequence <a class="citation" href="#shannon"> [cite] </a> .
+			This procedure yields a comparable perplexity estimate for all models, allowing direct comparison across tokenization strategies and vocabulary sizes. </p><h2 id="Results"> <p>  Results </p></h2><p>  This research discerned a positive correlation between vocabulary size and perplexity for a single-token Markov model.
+			The particular perplexities are depicted in the following figure: </p><div class = "fig">
+<table>
+<tr> <th>  Category  </th> <th>  Vocabulary  </th> <th>  Perplexity  </th> </tr>
+<tr> <td> <p>  Character </p> </td>
+<td> <p>   </p> </td>
+<td> <p>  10.8227 </p> </td>
+ </tr>
+<tr> <td> <p>  BPE </p> </td>
+<td> <p>  256 </p> </td>
+<td> <p>  1988.3598 </p> </td>
+ </tr>
+<tr> <td> <p>  BPE </p> </td>
+<td> <p>  512 </p> </td>
+<td> <p>  157044.412 </p> </td>
+ </tr>
+<tr> <td> <p>  BPE </p> </td>
+<td> <p>  1024 </p> </td>
+<td> <p>  14738525.4914 </p> </td>
+ </tr>
+<tr> <td> <p>  BPE </p> </td>
+<td> <p>  2048 </p> </td>
+<td> <p>  1465229794.3536 </p> </td>
+ </tr>
+<tr> <td> <p>  Word </p> </td>
+<td> <p>  256 </p> </td>
+<td> <p>  320.3785 </p> </td>
+ </tr>
+<tr> <td> <p>  Word </p> </td>
+<td> <p>  512 </p> </td>
+<td> <p>  3492.0142 </p> </td>
+ </tr>
+<tr> <td> <p>  Word </p> </td>
+<td> <p>  1024 </p> </td>
+<td> <p>  10893.3822 </p> </td>
+ </tr>
+<tr> <td> <p>  Word </p> </td>
+<td> <p>  2048 </p> </td>
+<td> <p>  349655.6732 </p> </td>
+ </tr>
+</table>
+</div><p>  This table seems to imply two interesting claims.
+			First, it appears to suggest that, for these simple Markov chains with a single token of context, increasing the vocabulary size seems to increase the perplexity.
+			Observe how, within any category, the perplexity of every Markov chain is strictly greater than those chains in the same category with a smaller vocabulary size.
+			Furthermore, this difference appears to be more pronounced for BPE-based models than for word-based models. </p><p>  To further analyse the relation between perplexity and vocabulary size, I used a simple linear regression to correlate vocabulary size to log-perplexity, being sure to account for diffferences in model category.
+			The experimental results were that perplexity goes up exponentially with vocabulary size.
+			The results of the regressions are contained in the following figure: </p><div class = "fig">
+<table>
+<tr> <th>  Category  </th> <th>  Beta  </th> </tr>
+<tr> <td> <p>  BPE </p> </td>
+<td> <p>  0.0071 </p> </td>
+ </tr>
+<tr> <td> <p>  Word </p> </td>
+<td> <p>  0.0036 </p> </td>
+ </tr>
+</table>
+</div><p>  This clearly shows that there is a positive correlation between vocabulary size and log-perplexity.
+			For a BPE model, increasing the vocabulary size by a mere 141 tokens will increase the log-perplexity by roughly 1 unit on average.
+			This means that perplexity doubles with every vocabulary increase of about 141 tokens for the BPE model. </p><h2 id="Discussion"> <p>  Discussion </p></h2><p>  The experimental results exhibit a consistent pattern: increasing vocabulary size leads to higher perplexity for first-order Markov models, with the effect most pronounced under byte-pair encoding.
+			This pattern is expected from the structure of the Markov estimation problem.
+			As vocabulary size increases, the state space of the Markov chain expands, and the empirical transition matrix becomes substantially sparser.
+			In particular, the matrix's area grows exponentially.
+			Because transition probabilities are estimated directly from empirical frequencies without smoothing, any increase in state-space dimensionality reduces the reliability of estimates and increases the entropy of the predictive distribution.
+			The observed perplexity increase is therefore a direct reflection of data fragmentation across a larger number of token types. </p><p>  Character-level models maintain the lowest perplexity because they operate over a small, dense transition matrix in which most character-to-character transitions appear frequently in natural language.
+			A character-level model can not be increased in vocabulary size past approximately 127 characters when constrained to the ASCII character set.
+			In contrast, word-level and BPE tokenizations introduce many low-frequency or rare tokens.
+			The Markov model treats these tokens as independent states, producing a transition matrix populated with many zero-count or low-count entries.
+			These sparse transitions degrade prediction accuracy on the test set and manifest as higher perplexity. </p><p>  The comparative behavior of word-level and BPE tokenizations is also informative.
+			Although BPE is generally regarded as more effective for modern neural language models, those benefits derive from the ability to share representations across subword units and to exploit multi-token context.
+			In a first-order Markov setting with no learned representations, BPE's fragmented subword structure provides no advantage and instead increases the number of possible transitions that must be estimated.
+			This explains why BPE perplexity increases more sharply with vocabulary size compared to word-level tokenization in this experiment. </p><p>  These results highlight a fundamental limitation of first-order Markov models as linguistic predictors: they are highly sensitive to the granularity of the token space and perform best when the tokenization minimizes state-space size and transition sparsity.
+			The findings are consistent with previous literature observing that higher-order statistical dependencies in natural language require models that leverage longer contexts or shared embeddings.
+			The present experiment isolates the tokenization effect by controlling for model class, allowing a clean examination of how granularity alone affects predictability. </p><p>  The study faces several limitations.
+			It evaluates only a single corpus, is constrained to a single language and subject domain, and it does not incorporate smoothing techniques or higher-order Markov dependencies that might mitigate sparsity effects.
+			Additionally, the vocabulary sizes tested, while convenient for controlled experimentation, do not reflect optimized tokenizers used in modern language modeling.
+			Future work may extend this analysis to multi-order Markov models, alternative corpora, and variable-window tokenization effects that allow hybrid granularity. </p><h2 id="Conclusion"> <p>  Conclusion </p></h2><p>  This study examined the relation between vocabulary size and predictive performance in a first-order Markov model when applied to natural language.
+			In particular, it tested the effect that vocabulary size had on perplexity when controlled for tokenization method.
+			We discerned that increasing vocabulary size yielded a consistent and exponential increase in perplexity for any given model, which implies that the increase in vocabulary size caused the model to perform worse. </p><p>  These results appear to reflect a fundamental property of Markov chains.
+			Namely, a Markov chain requires information to make predictions, but can only rely on one previous event as information.
+			Increasing the vocabulary size grows the quantity of information in a linear manner at best, but will cause the transition space to grow exponentially.
+			Therefore increasing vocabulary size without also increasing the size of the context window causes the Markov chain to perform worse in next-token prediction. </p><p>  This analysis is limited by its use of a single natural-language corpus.
+			It is possible that these results don't generalize cleanly to simpler corpora, or to corpora that aren't natural language.
+			For instance, a Markov chain that predicts the next weather event or economic state may fare better or worse than the models I tested.
+			Future work may generalize these findings to higher-order Markov models and more advanced corpora. </p>
+				</div>
+			</main>
+		</div>
+		<!--
+		<footer id = "footer">
+			<div class = "foot-bloc">
+				<h2> Thanks for reading! </h2>
+				<p>
+					Writing content takes a lot of effort, so it means a lot to me that you took the time to read this.
+					If you thought this was good, feel free to share it with your friends or online.
+					Furthermore, if you benefitted from this content and you'd like more, consider <!-subscribing to my RSS, or-> checking out my <a href="/hire-me">hire me</a> page.
+					Thanks, and have a nice day!
+				</p>
+			</div>
+			<div>
+				<h2> Quick links </h2>
+				<p> <a href = "/"> Home </a> </p>
+				<p> <a href = "/redirect/recent"> Recent article </a> </p>
+				<p> <a href = "/about"> About </a> </p>
+				<p> <a href = "/hire-me"> My cover letter </a> </p>
+			</div>
+		</footer>
+		-->
+	</body>
+</html>
